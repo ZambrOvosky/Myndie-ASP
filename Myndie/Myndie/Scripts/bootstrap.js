@@ -2358,7 +2358,7 @@
           var margin = $$$1(element).data('margin-right');
 
           if (typeof margin !== 'undefined') {
-            $$$1(element).css('margin-right', margin).removeData('margin-right');
+              $$$1(element).css('margin-right', margin).removeData('margin-right');
           }
         }); // Restore body padding
 

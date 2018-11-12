@@ -1,0 +1,34 @@
+﻿
+@{
+}
+
+<div>
+    <center>
+
+        <table class="table table-striped table-dark">
+            <thead><tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Moderator Id</th>
+                <th>Promote to Moderator</th>
+                <th>Demote to User</th>
+            </tr></thead>
+            <tbody>
+                @foreach(var u in ViewBag.Users)
+                {
+                    <tr>
+                        <td>@u.Id</td>
+                        <td>@u.Username</td>
+                        <td>@u.Name</td>
+                        <td>@u.Email</td>
+                        <td>@u.ModeratorId</td>
+                        <td>@Html.ActionLink(" Promote ", "Promote", new { id = u.Id })</td>
+                        <td>@Html.ActionLink(" Demote ", "Demote", new { id = u.Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </center>
+</div>

@@ -1,0 +1,49 @@
+﻿
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <form class="needs-validation" method="post" novalidate action="/Language/Validate">
+                <div class="row col-6">
+                    <div class="col-12">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" value="@ViewBag.Lang.Name" required name="language.Name" />
+
+                        <div class="invalid-tooltip">
+                            Please choose a valid Name
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <input type="submit" value="Register" class="btn btn-danger" />
+            </form>
+        </center>
+    </div>
+
+    <script>
+            (function() { 'use strict';
+                window.addEventListener('load', function() {
+                    var forms = document.getElementsByClassName('needs-validation');
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                        });
+                }, false);
+            })();
+    </script>
+</body>
+</html>

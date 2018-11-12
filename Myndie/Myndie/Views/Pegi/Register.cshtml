@@ -1,0 +1,73 @@
+﻿
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <form class="needs-validation" novalidate method="post" action="/Pegi/Validate">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="Age">Age</label>
+                        <input type="number" class="form-control" id="Age" value="@ViewBag.Pegi.Age" placeholder="Age" required name="pegi.Age" />
+                        <div class="invalid-tooltip">
+                            Please choose a valid Age.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="Desc">Description</label>
+                        <input type="text" class="form-control" id="Desc" value="@ViewBag.Pegi.Desc" placeholder="Desc" required name="pegi.Desc" />
+                        <div class="invalid-tooltip">
+                            Please choose a valid Description.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="PhotoPath">Path</label>
+                        <input type="text" class="form-control" id="PhotoPath" value="@ViewBag.Pegi.PhotoPath" placeholder="Path" required name="pegi.PhotoPath" />
+                        <div class="invalid-tooltip">
+                            Please choose a valid Path.
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <input type="submit" value="Register" class="btn btn-danger" />
+            </form>
+            <br />
+            <div class="@ViewBag.Class" style="width:80%;" role="alert">
+                @Html.ValidationMessage("Pegi.Age")<br />
+                @Html.ValidationMessage("Pegi.Desc")<br />
+                @Html.ValidationMessage("Pegi.PhotoPath")<br />
+            </div>
+        </center>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

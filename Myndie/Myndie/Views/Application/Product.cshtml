@@ -1,0 +1,21 @@
+﻿
+@{
+}
+
+<div width="80%">
+    @ViewBag.App.Name
+    <hr />
+    @ViewBag.App.Desc
+    <div width="50%" class="float-right">
+        Version - @ViewBag.App.Version <br />
+        Publisher - @ViewBag.App.PublisherName <br />
+        Release Date - @ViewBag.App.ReleaseDate <br />
+        Developer Name - @ViewBag.Dev.Name <br />
+    </div>
+    <br /><br /><br /><br /><br />
+    <hr />
+    <div width="40%" class="float-right">
+        @ViewBag.App.Price
+        <button class="btn btn-danger">Add to Cart</button>
+    </div>
+</div>

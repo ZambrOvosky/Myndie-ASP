@@ -1,0 +1,23 @@
+﻿
+@{
+}
+
+<body>
+    <center>
+        <div class="container" width="80%">
+            <ul class="justify-content-end nav nav-tabs fixed-top sticky-top" id="navId">
+                <li class="nav-item">
+                    <a href="/Application/Register" class="nav-link">Application</a>
+                </li>
+
+            </ul>
+        </div>
+    </center>
+
+    @ViewBag.Dev.Name
+        @foreach (var a in ViewBag.DevGames)
+        {
+            <h1>@a.Name</h1>
+        }
+</body>
+                
