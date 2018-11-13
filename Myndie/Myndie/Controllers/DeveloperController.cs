@@ -54,10 +54,15 @@ namespace Myndie.Controllers
             {
                 DeveloperDAO dao = new DeveloperDAO();
                 ApplicationDAO appdao = new ApplicationDAO();
+                UserDAO udao = new UserDAO();
+                CountryDAO cdao = new CountryDAO();
                 Developer dev = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
 
                 ViewBag.DevGames = appdao.GetDevGames(dev.Id);
                 ViewBag.Dev = dev;
+                ViewBag.User = u;
+                ViewBag.CountryUser = cdao.SearchById(u.CountryId);
                 return View();
             }
             else

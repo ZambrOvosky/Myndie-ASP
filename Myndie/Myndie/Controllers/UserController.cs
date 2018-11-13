@@ -95,6 +95,7 @@ namespace Myndie.Controllers
                 ViewBag.User = u;
                 ViewBag.Country = cdao.List();
                 ViewBag.Lang = ldao.List();
+                ViewBag.UserCountry = cdao.SearchById(u.CountryId);
                 return View();
             }
             return RedirectToAction("../Home/Index");            
@@ -117,7 +118,7 @@ namespace Myndie.Controllers
             }
             result = "An error ocurred";
             return Json(result, JsonRequestBehavior.AllowGet);
-                //return RedirectToAction("Profile");
+                //return RedirectToAction("ProfileView");
             }
             catch {
                 result = "An error ocurred";
@@ -125,19 +126,19 @@ namespace Myndie.Controllers
             }
         }
 
-        public ActionResult ChangePassword(string psw, string cpsw)
+        public ActionResult ChangePassword(string cpsw, string npsw)
         {
             UserDAO dao = new UserDAO();
+            User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
             //var result = "";
-            if (psw != null && cpsw != null && psw == cpsw){
-                if(psw.Length > 4)
+            if (cpsw != null && npsw != null && cpsw != npsw && u.Password == cpsw){
+                if(npsw.Length > 4)
                 {
-                    User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
-                    u.Password = psw;
+                    u.Password = npsw;
                     dao.Update();
                     //result = "Password Changed";
                     //return Json(result, JsonRequestBehavior.AllowGet);
-                    return RedirectToAction("Profile");
+                    return RedirectToAction("ProfileView");
                 }
                 else
                 {
@@ -146,7 +147,7 @@ namespace Myndie.Controllers
             }
             else
             {
-                ModelState.AddModelError("user.PasswordDM", "Your passwords don't match");
+                ModelState.AddModelError("user.PasswordDM", "Your password don't match");
             }
             User u2 = dao.SearchById(int.Parse(Session["Id"].ToString()));
             CountryDAO cdao = new CountryDAO();
@@ -156,7 +157,7 @@ namespace Myndie.Controllers
             ViewBag.Lang = ldao.List();
             //result = "Error";
             //return Json(result, JsonRequestBehavior.AllowGet);
-            return View("Profile");
+            return View("ProfileView");
         }
 
         public ActionResult Logout()

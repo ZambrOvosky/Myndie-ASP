@@ -1,0 +1,33 @@
+/**
+ *
+ * Type your custom styles
+ *
+ */
+
+
+
+/**
+ * Additional styles for Anime demo
+ */
+/* Site Background */
+body:after {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/site-background.jpg');
+    background-size: cover;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: -1;
+}
+.content-wrap {
+    background: rgba(17, 3, 17, 0.9);
+}
+
+/* Boxed container */
+.content-wrap {
+    max-width: 1240px;
+}

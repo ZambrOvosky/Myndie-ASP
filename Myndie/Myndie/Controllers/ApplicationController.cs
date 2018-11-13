@@ -51,6 +51,8 @@ namespace Myndie.Controllers
                             app.DeveloperId = Dev.Id;
                             dao = new ApplicationDAO();
                             dao.Add(app);
+                            Dev.NumSoft++;
+                            ddao.Update();
                             result = "Successfully Registered";
                             return Json(result, JsonRequestBehavior.AllowGet);
                             //return RedirectToAction("Register");

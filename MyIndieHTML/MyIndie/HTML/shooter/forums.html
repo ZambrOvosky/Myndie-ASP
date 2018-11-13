@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!--
+  Name: Youplay - Game Template based on Bootstrap
+  Version: 3.0.0
+  Author: nK
+  Website: http://nkdev.info
+  Support: http://nk.ticksy.com
+  Purchase: http://themeforest.net/item/youplay-game-template-based-on-bootstrap/11306207?ref=_nK
+  License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+  Copyright 2016.
+-->
+<html>
+
+
+<!-- Mirrored from html.nkdev.info/youplay/shooter/forums.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 May 2016 12:44:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>youplay</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Icon -->
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <!-- Google Fonts -->
+
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" type="text/css" href="../assets/bower_components/font-awesome/css/font-awesome.min.css" />
+  <!-- Youplay -->
+
+  <link rel="stylesheet" type="text/css" href="../assets/youplay/css/youplay-shooter.min.css" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+  <!-- RTL (uncomment this to enable RTL support) -->
+  <!-- <link rel="stylesheet" type="text/css" href="../assets/youplay/css/youplay-rtl.css" /> -->
+
+</head>
+
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar-youplay navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="off-canvas" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index-2.html">
+          <img src="assets/images/logo.png" alt="">
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="index-2.html#preorder">
+                        Pre-Order
+                        <span class="label">Early Edition</span>
+                    </a>
+          </li>
+          <li>
+            <a href="blog.html">
+                        News
+                        <span class="label">Our Blog</span>
+                    </a>
+          </li>
+          <li class="active">
+            <a href="forums.html">
+                        Community
+                        <span class="label">Forums</span>
+                    </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown dropdown-hover dropdown-cart">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <i class="fa fa-user"></i>
+            </a>
+            <div class="dropdown-menu pb-20" style="width: 300px;">
+              <div class="block-content ml-20 mr-20 mnb-10">
+                <div class="lwa lwa-default">
+                  <form class="block-content" action="#" method="post">
+                    <p>Username:</p>
+                    <div class="youplay-input">
+                      <input type="text" name="log">
+                    </div>
+
+                    <p>Password:</p>
+                    <div class="youplay-input">
+                      <input type="password" name="pwd">
+                    </div>
+
+                    <div class="youplay-checkbox mb-15 ml-5">
+                      <input type="checkbox" name="rememberme" value="forever" id="rememberme" tabindex="103">
+                      <label for="rememberme">Remember Me</label>
+                    </div>
+
+                    <button class="btn btn-sm ml-0 mr-0" name="wp-submit" id="lwa_wp-submit" tabindex="100">Log In</button>
+
+                    <br>
+                    <p><a href="#">Lost password?</a> | <a href="#">Register</a>
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- /Navbar -->
+
+
+  <!-- Main Content -->
+  <section class="content-wrap">
+
+    <!-- Banner -->
+    <div class="youplay-banner banner-top xsmall">
+      <div class="image" style="background-image: url('assets/images/banner-bg.jpg')">
+      </div>
+
+      <div class="info">
+        <div>
+          <div class="container">
+            <h2>Forums</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Banner -->
+
+
+    <div class="container youplay-content">
+
+      <div class="col-md-9">
+
+        <!-- Breadcrumb -->
+        <div class="mt-10 pull-left">
+          <a href="index-2.html">Home</a>
+          <span class="fa fa-angle-right"></span>
+          <span>Forums</span>
+        </div>
+        <!-- /Breadcrumb -->
+
+        <!-- Search -->
+        <form action="http://html.nkdev.info/youplay/shooter/search.html" class="pull-right">
+          <p>Search by Forum:</p>
+          <div class="youplay-input pull-left">
+            <input type="text" name="search">
+          </div>
+          <button class="btn pull-right">Search</button>
+        </form>
+        <!-- /Search -->
+
+        <div class="clearfix"></div>
+
+        <!-- Forums List -->
+        <ul class="youplay-forum mr-10">
+          <li class="header">
+            <ul>
+              <li class="cell-icon"></li>
+              <li class="cell-info">Forum</li>
+              <li class="cell-topic-count">Topics</li>
+              <li class="cell-reply-count">Posts</li>
+              <li class="cell-freshness">Freshness</li>
+            </ul>
+          </li>
+
+          <li class="body">
+            <ul>
+              <li class="cell-icon">
+                <i class="fa fa-folder-open-o"></i>
+              </li>
+              <li class="cell-info">
+                <a href="#!" class="title h4">Games</a>
+                <div class="description">Games for different consoles</div>
+                <ul class="forums-list">
+                  <li><a href="#!"><i class="fa fa-folder-open-o"></i> Xbox</a>,</li>
+                  <li><a href="#!"><i class="fa fa-folder-open-o"></i> PlayStation</a>,</li>
+                  <li><a href="#!"><i class="fa fa-folder-open-o"></i> PC</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="cell-topic-count">7</li>
+              <li class="cell-reply-count">21</li>
+              <li class="cell-freshness">
+                <a href="#!">1 year, 4 months ago</a>
+                <p>
+                  <a href="#!">
+                    <img alt="" src="assets/images/avatar-user-2.png" height="25" width="25">John Doe
+                  </a>
+                </p>
+              </li>
+            </ul>
+
+            <ul>
+              <li class="cell-icon">
+                <i class="fa fa-folder-open-o"></i>
+              </li>
+              <li class="cell-info">
+                <a href="#!" class="title h4">Clothing</a>
+                <div class="description">Clothing (Category)</div>
+                <ul class="forums-list">
+                  <li><a href="#!"><i class="fa fa-folder-open-o"></i> Men’s</a>,</li>
+                  <li><a href="#!"><i class="fa fa-folder-open-o"></i> Women’s</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="cell-topic-count">0</li>
+              <li class="cell-reply-count">0</li>
+              <li class="cell-freshness">
+                No Topics
+              </li>
+            </ul>
+
+            <ul>
+              <li class="cell-icon">
+                <i class="fa fa-folder-open-o"></i>
+              </li>
+              <li class="cell-info">
+                <a href="#!" class="title h4">Mobile Apps</a>
+                <div class="description">Mobile Apps Forum</div>
+              </li>
+              <li class="cell-topic-count">0</li>
+              <li class="cell-reply-count">0</li>
+              <li class="cell-freshness">
+                No Topics
+              </li>
+            </ul>
+
+            <ul>
+              <li class="cell-icon">
+                <i class="fa fa-folder-open-o"></i>
+              </li>
+              <li class="cell-info">
+                <a href="#!" class="title h4">Mobile Games</a>
+                <div class="description">Mobile games forum</div>
+              </li>
+              <li class="cell-topic-count">1</li>
+              <li class="cell-reply-count">1</li>
+              <li class="cell-freshness">
+                <a href="#!">6 months, 1 week ago</a>
+                <p>
+                  <a href="#!" class="bbp-author-avatar">
+                    <img alt="" src="assets/images/avatar-user-2.png" height="25" width="25">John Doe
+                  </a>
+                </p>
+              </li>
+            </ul>
+
+            <ul>
+              <li class="cell-icon">
+                <i class="fa fa-folder-open-o"></i>
+              </li>
+              <li class="cell-info">
+                <a href="#!" class="title h4">Devide Market</a>
+                <div class="description">Buy and sell old devides</div>
+              </li>
+              <li class="cell-topic-count">0</li>
+              <li class="cell-reply-count">0</li>
+              <li class="cell-freshness">
+                No Topics
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+        <!-- /Forums List -->
+
+        <div class="clearfix"></div>
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-md-3">
+
+        <!-- Side Search -->
+        <div class="side-block">
+          <p>Search by Games:</p>
+          <form action="http://html.nkdev.info/youplay/shooter/search.html">
+            <div class="youplay-input">
+              <input type="text" name="search" placeholder="enter search term">
+            </div>
+          </form>
+        </div>
+        <!-- /Side Search -->
+
+        <!-- Side Categories -->
+        <div class="side-block">
+          <h4 class="block-title">Categories</h4>
+          <ul class="block-content">
+            <li><a href="#!">All</a>
+            </li>
+            <li><a href="#!">Action</a>
+            </li>
+            <li><a href="#!">Adventure</a>
+            </li>
+            <li><a href="#!">Casual</a>
+            </li>
+            <li><a href="#!">Indie</a>
+            </li>
+            <li><a href="#!">Racing</a>
+            </li>
+            <li><a href="#!">RPG</a>
+            </li>
+            <li><a href="#!">Simulation</a>
+            </li>
+            <li><a href="#!">Strategy</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /Side Categories -->
+
+        <!-- Side Popular News -->
+        <div class="side-block">
+          <h4 class="block-title">Popular News</h4>
+          <div class="block-content p-0">
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="blog-post-1.html" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-cos-1-500x375.jpg" alt="">
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="blog-post-1.html" title="Bloodborne - First Try!">Ready for Preorder - Call of Shooter</a></h4>
+                <span class="date"><i class="fa fa-calendar"></i> May 14, 2016</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="#!" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-cos-2-500x375.jpg" alt="">
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="#!" title="Whats New in Middle-earth">Closed Beta Started Today - Call of Shooter</a></h4>
+                <span class="date"><i class="fa fa-calendar"></i> April 24, 2016</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+
+            <!-- Single News Block -->
+            <div class="row youplay-side-news">
+              <div class="col-xs-3 col-md-4">
+                <a href="#!" class="angled-img">
+                  <div class="img">
+                    <img src="assets/images/game-cos-3-500x375.jpg" alt="">
+                  </div>
+                </a>
+              </div>
+              <div class="col-xs-9 col-md-8">
+                <h4 class="ellipsis"><a href="#!" title="Let's Grind Diablo III">We are in Facebook Now!</a></h4>
+                <span class="date"><i class="fa fa-calendar"></i> April 5, 2016</span>
+              </div>
+            </div>
+            <!-- /Single News Block -->
+          </div>
+        </div>
+        <!-- /Side Popular News -->
+
+        <!-- Instagram -->
+        <div class="side-block">
+          <h4 class="block-title">Instagram</h4>
+          <div class="youplay-instagram row small-gap" data-instagram-user-id="2133360819"></div>
+        </div>
+        <!-- /Instagram -->
+
+      </div>
+      <!-- /Right Side -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="youplay-footer">
+      <div class="wrapper">
+
+        <!-- Widgets -->
+        <div class="widgets">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="side-block">
+                  <div class="block-content">
+                    <img src="assets/images/logo.png" alt="">
+                    <br>
+                    <br>
+                    <p>
+                      Pretium placerat senectus cubilia purus. In curae; sem morbi odio, platea magna. Fames integer accumsan. Pellentesque proin fermentum et consequat.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <!-- Side Popular News -->
+                <div class="side-block">
+                  <h4 class="block-title">Popular News</h4>
+                  <div class="block-content p-0">
+                    <!-- Single News Block -->
+                    <div class="row youplay-side-news">
+                      <div class="col-xs-3 col-md-4">
+                        <a href="blog-post-1.html" class="angled-img">
+                          <div class="img">
+                            <img src="assets/images/game-cos-1-500x375.jpg" alt="">
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-xs-9 col-md-8">
+                        <h4 class="ellipsis"><a href="blog-post-1.html" title="Bloodborne - First Try!">Ready for Preorder - Call of Shooter</a></h4>
+                        <span class="date"><i class="fa fa-calendar"></i> May 14, 2016</span>
+                      </div>
+                    </div>
+                    <!-- /Single News Block -->
+
+                    <!-- Single News Block -->
+                    <div class="row youplay-side-news">
+                      <div class="col-xs-3 col-md-4">
+                        <a href="#!" class="angled-img">
+                          <div class="img">
+                            <img src="assets/images/game-cos-2-500x375.jpg" alt="">
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-xs-9 col-md-8">
+                        <h4 class="ellipsis"><a href="#!" title="Whats New in Middle-earth">Closed Beta Started Today - Call of Shooter</a></h4>
+                        <span class="date"><i class="fa fa-calendar"></i> April 24, 2016</span>
+                      </div>
+                    </div>
+                    <!-- /Single News Block -->
+
+                    <!-- Single News Block -->
+                    <div class="row youplay-side-news">
+                      <div class="col-xs-3 col-md-4">
+                        <a href="#!" class="angled-img">
+                          <div class="img">
+                            <img src="assets/images/game-cos-3-500x375.jpg" alt="">
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-xs-9 col-md-8">
+                        <h4 class="ellipsis"><a href="#!" title="Let's Grind Diablo III">We are in Facebook Now!</a></h4>
+                        <span class="date"><i class="fa fa-calendar"></i> April 5, 2016</span>
+                      </div>
+                    </div>
+                    <!-- /Single News Block -->
+                  </div>
+                </div>
+                <!-- /Side Popular News -->
+              </div>
+              <div class="col-md-3">
+                <!-- Our Twitter -->
+                <div class="side-block">
+                  <h4 class="block-title">Our Twitter</h4>
+                  <div class="block-content">
+                    <div class="youplay-twitter" data-twitter-user-name="nkdevv" data-twitter-count="2" data-twitter-hide-replies="false"></div>
+                  </div>
+                </div>
+                <!-- /Our Twitter -->
+              </div>
+              <div class="col-md-3">
+                <!-- Instagram -->
+                <div class="side-block">
+                  <h4 class="block-title">Instagram</h4>
+                  <div class="youplay-instagram row small-gap" data-instagram-user-id="2133360819"></div>
+                </div>
+                <!-- /Instagram -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Widgets -->
+
+        <!-- Copyright -->
+        <div class="copyright">
+          <div class="container">
+            <strong>nK</strong> &copy; 2016. All rights reserved
+          </div>
+        </div>
+        <!-- /Copyright -->
+      </div>
+    </footer>
+    <!-- /Footer -->
+
+
+  </section>
+  <!-- /Main Content -->
+
+  <!-- Search Block -->
+  <div class="search-block">
+    <a href="#!" class="search-toggle glyphicon glyphicon-remove"></a>
+    <form action="http://html.nkdev.info/youplay/shooter/search.html">
+      <div class="youplay-input">
+        <input type="text" name="search" placeholder="Search...">
+      </div>
+    </form>
+  </div>
+  <!-- /Search Block -->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- Hexagon Progress -->
+  <script type="text/javascript" src="../assets/bower_components/HexagonProgress/jquery.hexagonprogress.min.js"></script>
+
+
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Jarallax -->
+  <script type="text/javascript" src="../assets/bower_components/jarallax/dist/jarallax.min.js"></script>
+
+  <!-- Smooth Scroll -->
+  <script type="text/javascript" src="../assets/bower_components/smoothscroll-for-websites/SmoothScroll.js"></script>
+  <!-- Youplay -->
+  <script type="text/javascript" src="../assets/youplay/js/youplay.min.js"></script>
+
+  <!-- init youplay -->
+  <script>
+    if(typeof youplay !== 'undefined') {
+        youplay.init({
+            // enable parallax
+            parallax:         true,
+    
+            // set small navbar on load
+            navbarSmall:      false,
+    
+            // enable fade effect between pages
+            fadeBetweenPages: true,
+    
+            // twitter and instagram php paths
+            php: {
+                twitter: './php/twitter/tweet.php',
+                instagram: './php/instagram/instagram.php'
+            }
+        });
+    }
+  </script>
+
+
+</body>
+
+
+<!-- Mirrored from html.nkdev.info/youplay/shooter/forums.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 May 2016 12:44:09 GMT -->
+</html>
