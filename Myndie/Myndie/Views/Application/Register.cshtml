@@ -1,100 +1,105 @@
 ﻿@{
 }
+<!-- Main Content -->
+<section class="content-wrap">
 
-<!DOCTYPE html>
+    <!-- Banner -->
+    <div class="myndie-banner banner-top myndie-banner-parallax small">
+        <div class="image" style="background-image: url('../assets/images/banner-blog-bg.jpg')">
+        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Register</title>
-</head>
-<body>
-    <div class="container">
+        <div class="info">
+            <div>
+                <div class="container align-center">
+                    <h1>Upload an Application</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Banner -->
+
+    <div class="container myndie-content">
         <center>
-            <form id="RegisterApp" class="needs-validation" novalidate method="post" enctype="multipart/form-data" onsubmit="return AjaxPostRegisterApp(this)" >
-                <div class="form-row">
-                    <div class="col">
-                        <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="Name" value="@ViewBag.App.Name" placeholder="Name" required name="app.Name" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Name.
+            <form id="RegisterApp" class="needs-validation" novalidate method="post" enctype="multipart/form-data" onsubmit="return AjaxPostRegisterApp(this)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Name:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="Name" value="@ViewBag.App.Name" placeholder="Name" required name="app.Name" />
                         </div>
                     </div>
-                    <div class="col-6">
-                        <label for="Desc">Description</label>
-                        <input type="text" class="form-control" id="Desc" value="@ViewBag.App.Desc" placeholder="Description" required name="app.Desc" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Description.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col">
-                        <label for="Price">Price</label>
-                        <input type="text" class="form-control" id="Price" value="@ViewBag.App.Price" placeholder="Price" required name="app.Price" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Price.
-                        </div>
-                    </div>
-                    <div class="col">
-                        <label for="Version">Version</label>
-                        <input type="text" class="form-control" id="Version" value="@ViewBag.App.Version" placeholder="Version" required name="app.Version" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Version.
+                    <div class="col-md-6">
+                        <p>Description:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="Desc" value="@ViewBag.App.Desc" placeholder="Description" required name="app.Desc" />
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="col">
-                        <label for="PublisherName">Publisher Name</label>
-                        <input type="text" class="form-control" id="PublisherName" value="@ViewBag.App.PublisherName" placeholder="Publisher Name" required name="app.PublisherName" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Name.
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Price:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="Price" value="@ViewBag.App.Price" placeholder="Price" required name="app.Price" />
                         </div>
                     </div>
-                    <div class="col">
-                        <label for="Archive">Archive Path</label>
-                        <input type="text" class="form-control" id="Archive" value="@ViewBag.App.Archive" placeholder="Archive Path" required name="app.Archive" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Archive.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-6">
-                        <label for="ReleaseDate">Release Date</label>
-                        <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.App.ReleaseDate" placeholder="" required name="app.ReleaseDate" />
-                        <div class="invalid-tooltip">
-                            Please choose a valid Date.
+                    <div class="col-md-6">
+                        <p>Version:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="Version" value="@ViewBag.App.Version" placeholder="Version" required name="app.Version" />
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="col">
-                        <label for="TypeApp">Type</label><br />
-                        <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
-                                @foreach (var c in ViewBag.Type){
-                                    <option value="@c.Id" selected="@c.Id.Equals(ViewBag.App.TypeAppId)"> @c.Name</option>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Publisher Name:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="PublisherName" value="@ViewBag.App.PublisherName" placeholder="Publisher Name" required name="app.PublisherName" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Files:</p>
+                        <div class="myndie-input">
+                            <input type="text" class="form-control" id="Archive" value="@ViewBag.App.Archive" placeholder="Archive Path" required name="app.Archive" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Release Date:</p>
+                        <div class="myndie-input">
+                            <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.App.ReleaseDate" placeholder="" required name="app.ReleaseDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <p>Type:</p>
+                        <label class="myndie-select">
+                            <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
+                                @foreach (var t in ViewBag.Type)
+                                {
+                                    <option value="@t.Id" selected="@t.Id.Equals(ViewBag.App.TypeAppId)"> @t.Name</option>
                                 }
-                        </select>
-                        <div class="invalid-tooltip">
-                            Please choose a valid Type.
-                        </div>
+                            </select>
+                        </label>
                     </div>
-                    <div class="col">
-                        <label for="Pegi">Pegi</label><br />
-                        <select class="custom-select" required id="app.PegiId" name="app.PegiId">
-                                @foreach (var p in ViewBag.Pegi){
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Pegi:</p>
+                        <label class="myndie-select">
+                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
+                                @foreach (var p in ViewBag.Pegi)
+                                {
                                     <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
                                 }
-                        </select>
-                        <div class="invalid-tooltip">
-                            Please choose a valid Pegi.
-                        </div>
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <br /><br />
-                <input type="submit" value="Register" class="btn btn-danger" />
+                <div class="align-center">
+                    <button type="submit" class="btn btn-lg">Register</button>
+                </div>
             </form>
             <br />
             <div class="@ViewBag.Class" style="width:80%;" role="alert">
@@ -150,6 +155,4 @@
         }
     </script>
 
-</body>
-
-</html>
+</section>
