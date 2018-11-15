@@ -97,6 +97,35 @@
                     </div>
                 </div>
                 <br /><br />
+
+                <div class="row">
+                    <p>Images:</p>
+                        <div id="dropzone">
+                            Drop your images Here
+                        </div>
+                    <br>
+                </div>
+                <style>
+                    #dropzone{
+                        background:#b5b5b5;
+                        border: black dashed 1px;
+                        height: 50px;
+                        text-align: center;
+                        color:#fff;
+                    }
+                    .active-drop{
+                        background: #77bafa !important;
+                        border: solid 2px blue !important;
+                        opacity: .5;
+                        color: black !important;
+                    }
+                </style>
+                <ul id="uploadlist">
+
+                </ul>
+
+                <br /><br />
+
                 <div class="align-center">
                     <button type="submit" class="btn btn-lg">Register</button>
                 </div>
@@ -153,6 +182,34 @@
             $.ajax(ajaxConfig);
             return false;
         }
+    </script>
+    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <script>
+        $(function () {
+            $('#dropzone').filedrop({
+                url: '@Url.Action("AppUploadImages")',
+                allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
+                allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
+                paramname: 'images',
+                maxfiles: 5,
+                maxfilesize: 20, //MBs
+                dragOver: function () {
+                    $('#dropzone').addClass('active-drop');
+                },
+                dragLeave: function () {
+                    $('#dropzone').removeClass('active-drop');
+                },
+                drop: function () {
+                    $('#dropzone').removeClass('active-drop');
+                },
+                afterAll: function (e) {
+                    $('#dropzone').html('Files Uploaded');
+                },
+                uploadFinished: function (i, file, response, time) {
+                    $('#uploadlist').append('<li>' + file.name + '</li>');
+                }
+            })
+        })
     </script>
 
 </section>

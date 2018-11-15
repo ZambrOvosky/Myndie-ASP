@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -93,6 +94,17 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("../Home/Index");
             }
+        }
+
+        [HttpPost]
+        public ActionResult AppUploadImages(IEnumerable<HttpPostedFileBase> images)
+        {
+            foreach(var img in images)
+            {
+                string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                img.SaveAs(Path.Combine(Server.MapPath("~/images/app"), filePath));
+            }
+            return Json("Files Uploaded");
         }
     }
 }

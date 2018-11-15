@@ -45,6 +45,9 @@
     <!-- Social Likes -->
     <link rel="stylesheet" type="text/css" href="~/assets/bower_components/social-likes/dist/social-likes_flat.css" />
 
+    <!-- DropZone -->
+    <link rel="stylesheet" href="~/assets/css/dropzone/dropzone.css">
+
 
     <!-- RTL (uncomment this to enable RTL support) -->
     <!-- <link rel="stylesheet" type="text/css" href="~/assets/myndie/css/myndie-rtl.css" /> -->
@@ -110,18 +113,18 @@
                         </div>
                     </li>
                     <!--<li class="dropdown dropdown-hover ">
-          <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Community <span class="caret"></span> <span class="label">Develop With Anyone</span>
-          </a>
-          <div class="dropdown-menu">
-            <ul role="menu">
-              <li><a href="forums.html">Discussions</a>
-              </li>
-              <li><a href="forums.html">Your Posts</a>
-              </li>
-            </ul>
-          </div>
-        </li>-->
+                      <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Community <span class="caret"></span> <span class="label">Develop With Anyone</span>
+                      </a>
+                      <div class="dropdown-menu">
+                        <ul role="menu">
+                          <li><a href="forums.html">Discussions</a>
+                          </li>
+                          <li><a href="forums.html">Your Posts</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-center">
                     <li>
@@ -131,157 +134,157 @@
                             </div>
                         </form>
                     </li>
-                    
+
                 </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="search-toggle" href="search.html">
+                            <i class="entypo-search"></i>
+                        </a>
+                    </li>
+                    @if (Session["Id"] != null)
+                    {
+                        <li class="dropdown dropdown-hover dropdown-cart">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="entypo-mail"></i><span class="badge pull-right bg-primary">2</span>
+                            </a>
+                            <div class="dropdown-menu" style="width: 400px;">
+                                <div class="row myndie-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+
+                                                <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
+
+                                        <h4 class="ellipsis"><a href="#">Asuma send you a friend request</a></h4><br>
+                                        <div class="btn-group pull-right">
+                                            <a href="#" class="btn btn-default btn-sm">Accept</a>
+                                            <a href="#" class="btn btn-default btn-sm">Reject</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="row myndie-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+
+                                                <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <div class="btn-group pull-right">
+                                            <a href=""><i class="entypo-cancel"></i></a>
+                                        </div>
+                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
+
+                                        <h4 class="ellipsis"><a href="#">Asuma send you a Message</a></h4><br>
+                                        <div class="btn-group pull-right">
+                                            <a href="#" class="btn btn-default btn-sm">View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="dropdown dropdown-hover dropdown-cart">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="entypo-basket"></i><span class="badge pull-right bg-primary">2</span>
+                            </a>
+                            <div class="dropdown-menu" style="width: 300px;">
+                                <div class="row myndie-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+
+                                                <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
+
+                                        <h4 class="ellipsis"><a href="#">Bloodborne</a></h4>
+                                        <span class="quantity">1 × <span class="amount">$50.00</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="row myndie-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+
+                                                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
+
+                                        <h4 class="ellipsis"><a href="#">Kingdoms of Amalur</a></h4>
+                                        <span class="quantity">1 × <span class="amount">$20.00</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="ml-20 mr-20 pull-right">
+                                    <strong>Subtotal:</strong>  <span class="amount">$70.00</span>
+                                </div>
+
+                                <div class="btn-group pull-right m-15">
+                                    <a href="#" class="btn btn-default btn-sm">View Cart</a>
+                                    <a href="#" class="btn btn-default btn-sm">Checkout</a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+
+                    @if (Session["Id"] != null)
+                    {
+                        <li class="dropdown dropdown-hover">
+                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @Session["Username"].ToString() <span class="badge bg-default">2</span> <span class="caret"></span> <span class="label">it is you</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <ul role="menu">
+                                    <li>
+                                        <a href="~/User/ProfileView">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="library.html">Library (168)</a>
+                                    </li>
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <a href="wishlist.html">Wishlist <span class="badge pull-right bg-primary">13</span></a>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <a href="/User/Logout">Log Out</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
                         <li>
-                            <a class="search-toggle" href="search.html">
-                                <i class="entypo-search"></i>
+                            <a role="button" data-toggle="modal" data-target="#myModal">
+                                <i class="entypo-user"></i>
                             </a>
                         </li>
-                        @if (Session["Id"] != null)
-                        {
-                            <li class="dropdown dropdown-hover dropdown-cart">
-                                <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="entypo-mail"></i><span class="badge pull-right bg-primary">2</span>
-                                </a>
-                                <div class="dropdown-menu" style="width: 400px;">
-                                    <div class="row myndie-side-news">
-                                        <div class="col-xs-3 col-md-4">
-                                            <a href="#" class="angled-img">
-                                                <div class="img">
 
-                                                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-9 col-md-8">
-                                            <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                            <h4 class="ellipsis"><a href="#">Asuma send you a friend request</a></h4><br>
-                                            <div class="btn-group pull-right">
-                                                <a href="#" class="btn btn-default btn-sm">Accept</a>
-                                                <a href="#" class="btn btn-default btn-sm">Reject</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="divider"></div>
-                                    <div class="row myndie-side-news">
-                                        <div class="col-xs-3 col-md-4">
-                                            <a href="#" class="angled-img">
-                                                <div class="img">
-
-                                                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-9 col-md-8">
-                                            <div class="btn-group pull-right">
-                                                <a href=""><i class="entypo-cancel"></i></a>
-                                            </div>
-                                            <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                            <h4 class="ellipsis"><a href="#">Asuma send you a Message</a></h4><br>
-                                            <div class="btn-group pull-right">
-                                                <a href="#" class="btn btn-default btn-sm">View</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="dropdown dropdown-hover dropdown-cart">
-                                <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="entypo-basket"></i><span class="badge pull-right bg-primary">2</span>
-                                </a>
-                                <div class="dropdown-menu" style="width: 300px;">
-                                    <div class="row myndie-side-news">
-                                        <div class="col-xs-3 col-md-4">
-                                            <a href="#" class="angled-img">
-                                                <div class="img">
-
-                                                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-9 col-md-8">
-                                            <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                            <h4 class="ellipsis"><a href="#">Bloodborne</a></h4>
-                                            <span class="quantity">1 × <span class="amount">$50.00</span></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="row myndie-side-news">
-                                        <div class="col-xs-3 col-md-4">
-                                            <a href="#" class="angled-img">
-                                                <div class="img">
-
-                                                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-9 col-md-8">
-                                            <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                            <h4 class="ellipsis"><a href="#">Kingdoms of Amalur</a></h4>
-                                            <span class="quantity">1 × <span class="amount">$20.00</span></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="ml-20 mr-20 pull-right">
-                                        <strong>Subtotal:</strong>  <span class="amount">$70.00</span>
-                                    </div>
-
-                                    <div class="btn-group pull-right m-15">
-                                        <a href="#" class="btn btn-default btn-sm">View Cart</a>
-                                        <a href="#" class="btn btn-default btn-sm">Checkout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        }
-
-
-                        @if (Session["Id"] != null)
-                        {
-                            <li class="dropdown dropdown-hover">
-                                <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    @Session["Username"].ToString() <span class="badge bg-default">2</span> <span class="caret"></span> <span class="label">it is you</span>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <ul role="menu">
-                                        <li>
-                                            <a href="~/User/ProfileView">Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="library.html">Library (168)</a>
-                                        </li>
-                                        <li class="divider"></li>
-
-                                        <li>
-                                            <a href="wishlist.html">Wishlist <span class="badge pull-right bg-primary">13</span></a>
-                                        </li>
-
-                                        <li class="divider"></li>
-
-                                        <li>
-                                            <a href="/User/Logout">Log Out</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </li>
-                        }
-                        else
-                        {
-                            <li>
-                                <a role="button" data-toggle="modal" data-target="#myModal">
-                                    <i class="entypo-user"></i>
-                                </a>
-                            </li>
-
-                        }
-                    </ul>
+                    }
+                </ul>
             </div>
         </div>
     </nav>
@@ -354,10 +357,10 @@
                 <form id="Login" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
                     <div class="modal-body">
                         <div class="myndie-input">
-                            <input type="text" class="form-control" id="Username" placeholder="Username" required name="user.Username" />
+                            <input type="text" class="form-control" id="UsernameLogin" placeholder="Username" required name="user.Username" />
                         </div>
                         <div class="myndie-input">
-                            <input type="password" class="form-control" id="Password" placeholder="Password" required name="user.Password" />
+                            <input type="password" class="form-control" id="PasswordLogin" placeholder="Password" required name="user.Password" />
                         </div>
                         <a href="~/User/Register" class="small m-0">Forgot your password?</a>
                     </div>
@@ -402,7 +405,7 @@
         function AjaxPost(formData) {
             var ajaxConfig = {
                 type: "post",
-                url: "../User/Login",
+                url: "../../../User/Login",
                 data: new FormData(formData),
                 success: function (result) {
                     alert(result);
@@ -420,6 +423,7 @@
     </script>
     <!-- jQuery -->
     <script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/bower_components/jquery/dist/jquery.validate.min.js"></script>
 
     <!-- Hexagon Progress -->
     <script type="text/javascript" src="~/assets/bower_components/HexagonProgress/jquery.hexagonprogress.min.js"></script>
@@ -450,6 +454,9 @@
 
     <!-- Social Likes -->
     <script type="text/javascript" src="~/assets/bower_components/social-likes/dist/social-likes.min.js"></script>
+
+    <!-- DropZone -->
+    <script src="~/assets/css/dropzone/dropzone.js"></script>
 
 
     <!-- init myndie -->
