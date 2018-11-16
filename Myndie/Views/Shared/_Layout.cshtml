@@ -20,7 +20,7 @@
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="~/assets/css/font-icons/entypo/css/entypo.css">
+    @*<link rel="stylesheet" href="~/assets/css/font-icons/entypo/css/entypo.css">*@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="~/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
@@ -45,8 +45,9 @@
     <!-- Social Likes -->
     <link rel="stylesheet" type="text/css" href="~/assets/bower_components/social-likes/dist/social-likes_flat.css" />
 
-    <!-- DropZone -->
-    <link rel="stylesheet" href="~/assets/css/dropzone/dropzone.css">
+    <!-- FilePond -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
 
 
     <!-- RTL (uncomment this to enable RTL support) -->
@@ -56,6 +57,8 @@
 
 
 <body>
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
     <!-- Preloader -->
     <div class="page-preloader preloader-wrapp">
@@ -385,45 +388,19 @@
         </form>
     </div>
     <!-- /Search Block -->
-
-    <script>
-        $('#emailto').typeahead({
-            displayText: function (item) {
-                return item.name + ' ' + item.surname + ', ' + item.company
-            },
-            afterSelect: function (item) {
-                this.$element[0].value = item.email
-            },
-            source: [
-                { "name": "Marcos", "surname": "Siolin", "company": "Vortex", "email": "marcossion@combot.com", "city": "Talpa" },
-                { "name": "Léo", "surname": "Noguerira", "company": "Voryex", "email": "leonogueirac@franscene.com", "city": "Vienna" },
-                { "name": "Igor", "surname": "Myamoto", "company": "Voryexo", "email": "danoninho@whiskeycomp.com", "city": "Belva" },
-                { "name": "João", "surname": "Vitor", "company": "Voryexu", "email": "zambrovosky@opticom.com", "city": "Lodoga" },
-                { "name": "Jade", "surname": "Cristina", "company": "Voryexa", "email": "zavitoskione@irack.com", "city": "Bodega" }
-            ]
-        });
-        function AjaxPost(formData) {
-            var ajaxConfig = {
-                type: "post",
-                url: "../../../User/Login",
-                data: new FormData(formData),
-                success: function (result) {
-                    alert(result);
-                    window.location.href = "/Home/Index"
-                }
-            }
-            if ($(formData).attr('enctype') == "multipart/form-data") {
-                ajaxConfig["contentType"] = false;
-                ajaxConfig["processData"] = false;
-            }
-
-            $.ajax(ajaxConfig);
-            return false;
-        }
-    </script>
     <!-- jQuery -->
     <script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="~/assets/bower_components/jquery/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.filedrop.js"></script>
+
+    <!-- include FilePond library -->
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+    <!-- include FilePond plugins -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
 
     <!-- Hexagon Progress -->
     <script type="text/javascript" src="~/assets/bower_components/HexagonProgress/jquery.hexagonprogress.min.js"></script>
@@ -454,9 +431,6 @@
 
     <!-- Social Likes -->
     <script type="text/javascript" src="~/assets/bower_components/social-likes/dist/social-likes.min.js"></script>
-
-    <!-- DropZone -->
-    <script src="~/assets/css/dropzone/dropzone.js"></script>
 
 
     <!-- init myndie -->
@@ -496,6 +470,85 @@
         });
     </script>
 
+    <script>
+        //$('#emailto').typeahead({
+        //    displayText: function (item) {
+        //        return item.name + ' ' + item.surname + ', ' + item.company
+        //    },
+        //    afterSelect: function (item) {
+        //        this.$element[0].value = item.email
+        //    },
+        //    source: [
+        //        { "name": "Marcos", "surname": "Siolin", "company": "Vortex", "email": "marcossion@combot.com", "city": "Talpa" },
+        //        { "name": "Léo", "surname": "Noguerira", "company": "Voryex", "email": "leonogueirac@franscene.com", "city": "Vienna" },
+        //        { "name": "Igor", "surname": "Myamoto", "company": "Voryexo", "email": "danoninho@whiskeycomp.com", "city": "Belva" },
+        //        { "name": "João", "surname": "Vitor", "company": "Voryexu", "email": "zambrovosky@opticom.com", "city": "Lodoga" },
+        //        { "name": "Jade", "surname": "Cristina", "company": "Voryexa", "email": "zavitoskione@irack.com", "city": "Bodega" }
+        //    ]
+        //});
+        function AjaxPost(formData) {
+            var ajaxConfig = {
+                type: "post",
+                url: "../../../User/Login",
+                data: new FormData(formData),
+                success: function (result) {
+                    alert(result);
+                    window.location.href = "/Home/Index"
+                }
+            }
+            if ($(formData).attr('enctype') == "multipart/form-data") {
+                ajaxConfig["contentType"] = false;
+                ajaxConfig["processData"] = false;
+            }
+
+            $.ajax(ajaxConfig);
+            return false;
+        }
+    </script>
+
+    @*FILEPOND*@
+    <script>
+        
+        //$('.my-pond').filepond();
+
+        // Turn input element into a pond with configuration options
+        //$('.my-pond').filepond({
+        //    allowMultiple: true
+        //});
+
+        //const Filep = FilePond.create(
+        //    document.querySelector('.my-pond')
+        //);
+        //const pond = document.querySelector('.my-pond');
+        //pond.addEventListener('FilePond:addfile', e => {
+        //    console.log('File added', e);
+        //    Filep.processFile().then(file => {
+        //        if (error) {
+        //            console.log('Oh no');
+        //            return;
+        //        }
+        //        console.log('File in the server', file.status);
+        //    });
+        //});
+            
+        
+        
+           
+        
+
+        //FilePond.setOptions({
+        //    server: {
+        //        url: "http://localhost:6823/Application/AppUploadImages",
+        //        method: 'POST',
+        //        withCredentials: false,
+        //        headers: {},
+        //        timeout: 7000,
+        //        onload: null,
+        //        onerror: null
+        //    }
+        //});
+
+    </script>
 </body>
 
 </html>

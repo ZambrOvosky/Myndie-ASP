@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Myndie.DAO;
 using Myndie.Models;
+using System.Web.Script.Serialization;
 
 namespace Myndie.Controllers
 {
@@ -33,9 +34,14 @@ namespace Myndie.Controllers
             
         }
 
-        public ActionResult Validate(Application app)
+        public ActionResult Validate(Application app, IList<HttpPostedFileBase> filepond)
         {
             var result = "";
+            //foreach (var img in filepond)
+            //{
+            //    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+            //    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+            //}
             if (ModelState.IsValid)
             {
                 try
@@ -45,9 +51,9 @@ namespace Myndie.Controllers
                     Application uniq = dao.IsUnique(app);
                     DeveloperDAO ddao = new DeveloperDAO();
                     Developer Dev = ddao.SearchById(int.Parse(Session["DevId"].ToString()));
-                    if(Dev != null)
+                    if (Dev != null)
                     {
-                        if(uniq == null)
+                        if (uniq == null)
                         {
                             app.DeveloperId = Dev.Id;
                             dao = new ApplicationDAO();
@@ -59,18 +65,18 @@ namespace Myndie.Controllers
                             //return RedirectToAction("Register");
                         }
                         else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
-                        
+
                     }
-                    else { result = "You are not a Developer"; return Json(result, JsonRequestBehavior.AllowGet); }                    
+                    else { result = "You are not a Developer"; return Json(result, JsonRequestBehavior.AllowGet); }
                 }
                 catch
-                {                    
+                {
                     ViewBag.App = app;
                     result = "An Error Occurred";
-                    return Json(result, JsonRequestBehavior.AllowGet);                    
+                    return Json(result, JsonRequestBehavior.AllowGet);
                     //return RedirectToAction("Register");
-                }                
-            }            
+                }
+            }
             ViewBag.App = app;
             ViewBag.Class = "alert alert-danger";
             result = "An Error Occurred";
@@ -97,14 +103,19 @@ namespace Myndie.Controllers
         }
 
         [HttpPost]
-        public ActionResult AppUploadImages(IEnumerable<HttpPostedFileBase> images)
+        public ActionResult AppUploadImages(dynamic json)
         {
-            foreach(var img in images)
-            {
-                string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
-                img.SaveAs(Path.Combine(Server.MapPath("~/images/app"), filePath));
-            }
-            return Json("Files Uploaded");
+            json.id = 13;
+            ////dynamic x = json.file;
+            //string x = json.toString();
+            //JavaScriptSerializer serializer = new JavaScriptSerializer();
+            //dynamic result = serializer.DeserializeObject(x);
+            //foreach(var img in result.detail.file)
+            //{
+            //    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+            //    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+            //}
+            return Json("Sucesso");
         }
     }
 }

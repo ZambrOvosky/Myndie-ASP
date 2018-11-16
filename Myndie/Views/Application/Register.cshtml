@@ -98,32 +98,18 @@
                 </div>
                 <br /><br />
 
-                <div class="row">
+                <div class="row col-md-6 align-self-center" >
                     <p>Images:</p>
-                        <div id="dropzone">
-                            Drop your images Here
-                        </div>
-                    <br>
+                    <input type="file"
+                            class="my-pond"
+                            name="filepond"
+                            multiple
+                            id="my-pond"
+                            data-max-file-size="3MB"
+                            data-max-files="3"
+                           >
+                    <br />
                 </div>
-                <style>
-                    #dropzone{
-                        background:#b5b5b5;
-                        border: black dashed 1px;
-                        height: 50px;
-                        text-align: center;
-                        color:#fff;
-                    }
-                    .active-drop{
-                        background: #77bafa !important;
-                        border: solid 2px blue !important;
-                        opacity: .5;
-                        color: black !important;
-                    }
-                </style>
-                <ul id="uploadlist">
-
-                </ul>
-
                 <br /><br />
 
                 <div class="align-center">
@@ -181,11 +167,10 @@
             }
             $.ajax(ajaxConfig);
             return false;
-        }
+        };
     </script>
-    <script src="~/Scripts/jquery.filedrop.js"></script>
-    <script>
-        $(function () {
+    @*<script>
+        (function () {
             $('#dropzone').filedrop({
                 url: '@Url.Action("AppUploadImages")',
                 allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
@@ -210,6 +195,20 @@
                 }
             })
         })
-    </script>
+    </script>*@
+    @*FILEPOND*@
 
+    <script>
+
+
+
+        
+
+        
+
+        //// Select the file input and use create() to turn it into a pond
+        //FilePond.create(
+        //    document.querySelector('input')
+        //);
+    </script>
 </section>

@@ -526,8 +526,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\app\" />
-    <Folder Include="images\user\" />
+    <Folder Include="media\app\" />
+    <Folder Include="media\user\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
