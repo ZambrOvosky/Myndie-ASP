@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                         <p>Files:</p>
                         <div class="myndie-input">
-                            <input type="text" class="form-control" id="Archive" value="@ViewBag.App.Archive" placeholder="Archive Path" required name="app.Archive" />
+                            <input type="file" class="form-control" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                     <p>Images:</p>
                     <input type="file"
                             class="my-pond"
-                            name="filepond"
+                            name="images"
                             multiple
                             id="my-pond"
                             data-max-file-size="3MB"

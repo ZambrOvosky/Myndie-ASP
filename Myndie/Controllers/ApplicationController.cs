@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Myndie.DAO;
 using Myndie.Models;
+using System.IO;
 using System.Web.Script.Serialization;
 
 namespace Myndie.Controllers
@@ -34,14 +34,10 @@ namespace Myndie.Controllers
             
         }
 
-        public ActionResult Validate(Application app, IList<HttpPostedFileBase> filepond)
+        public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File)
         {
             var result = "";
-            //foreach (var img in filepond)
-            //{
-            //    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
-            //    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
-            //}
+
             if (ModelState.IsValid)
             {
                 try
@@ -50,6 +46,7 @@ namespace Myndie.Controllers
                     ApplicationDAO dao = new ApplicationDAO();
                     Application uniq = dao.IsUnique(app);
                     DeveloperDAO ddao = new DeveloperDAO();
+                    ImageDAO idao = new ImageDAO();
                     Developer Dev = ddao.SearchById(int.Parse(Session["DevId"].ToString()));
                     if (Dev != null)
                     {
@@ -60,6 +57,56 @@ namespace Myndie.Controllers
                             dao.Add(app);
                             Dev.NumSoft++;
                             ddao.Update();
+
+                            Application appreg = dao.GetDevLastGame(Dev.Id);
+                            try
+                            {
+                                
+                                //Images
+                                int count = 0;
+                                foreach (var img in images)
+                                {
+                                    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                                    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+                                    Image i = new Image();
+                                    i.Url = "../../../media/app/" + filePath;
+                                    i.UserId = int.Parse(Session["Id"].ToString());
+                                    i.ApplicationId = appreg.Id;
+                                    idao.Add(i);
+                                    if (count == 0)
+                                    {
+                                        appreg.ImageUrl = i.Url;
+                                        count++;
+                                        dao.Update();
+                                    }
+                                }
+                                //
+                            }
+                            catch
+                            {
+                                result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                            }
+                            try
+                            {
+                                //File
+                                string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
+                                if (!Directory.Exists(Server.MapPath("~/media/appfiles/" + appreg.Id)))
+                                {
+                                    Directory.CreateDirectory(Server.MapPath("~/media/appfiles/" + appreg.Id));
+                                }
+                                File.SaveAs(Path.Combine(Server.MapPath("~/media/appfiles/" + appreg.Id), filePath2));
+                                appreg.Archive = "../../../media/appfiles/" + appreg.Id + "/" + filePath2;
+                                dao.Update();
+                                //
+                            }
+                            catch
+                            {
+                                result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                            }
+                            
+
+                            
+
                             result = "Successfully Registered";
                             return Json(result, JsonRequestBehavior.AllowGet);
                             //return RedirectToAction("Register");
@@ -90,32 +137,19 @@ namespace Myndie.Controllers
             {
                 ApplicationDAO dao = new ApplicationDAO();
                 DeveloperDAO ddao = new DeveloperDAO();
+                ImageDAO idao = new ImageDAO();
                 Application app = dao.SearchById(id);
                 Developer dev = ddao.SearchById(app.DeveloperId);
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
+                ViewBag.Img = idao.SearchAppImages(id);
+                ViewBag.Similar = dao.ListLast10();
                 return View();
             }
             catch
             {
                 return RedirectToAction("../Home/Index");
             }
-        }
-
-        [HttpPost]
-        public ActionResult AppUploadImages(dynamic json)
-        {
-            json.id = 13;
-            ////dynamic x = json.file;
-            //string x = json.toString();
-            //JavaScriptSerializer serializer = new JavaScriptSerializer();
-            //dynamic result = serializer.DeserializeObject(x);
-            //foreach(var img in result.detail.file)
-            //{
-            //    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
-            //    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
-            //}
-            return Json("Sucesso");
         }
     }
 }

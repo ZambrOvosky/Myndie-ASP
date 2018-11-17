@@ -21,9 +21,10 @@ namespace Myndie.Models {
         public string PublisherName { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
-        [Required, StringLength(255)]
+        [StringLength(255)]
         public string Archive { get; set; }
         public int Approved { get; set; }
+        public string ImageUrl { get; set; }
         //FKs
         public int DeveloperId { get; set; }
         public int TypeAppId { get; set; }

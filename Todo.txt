@@ -1,0 +1,43 @@
+Arrumar JSon
+ 06/11
+Profile Dev e Mod  Done!
+Cadastro Mod       Done!  
+Mod Id p/ o User   Done!
+Pagina da Applcation Done!
+Link do jogo na index com sua Pagina Done!
+Nivel de Acesso nas Paginas de Cadastro   Done!
+Cadastro do User p/ o popup     Done!
+Moderadores n podem se Promover ou Rebaixar Done!
+
+Bugs:
+Tentar entrar na pagina de perfil de user sem estar logado  Done!
+Application ta registrando com id 1          Done!
+-/06/11
+
+Feitos:
+Aumentar num de soft apos reg de App
+Colocar U$ na pagina do jogo
+Pagina Prods
+Upload de Imgs de App()
+Upload de Arquivo no App
+Terminar tela de prod
+
+/Feitos
+
+Foto User
+Formatar o preço com masked TxtBox
+Pegar 10 mais vendidos na tela principal
+CRUD na Admin Page
+Carrinho
+Venda
+Download
+Formatar Release Date //N sei
+Esqueceu a Senha
+Confirmar Senha ao Registrar User
+Text Area para desc
+Pagina de Admin para Moderadores e Devs
+
+
+
+
+../ pode dar erro

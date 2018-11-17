@@ -20,11 +20,18 @@
 <!-- Best Sellers -->
 <h2 class="container h1">Featured <a href="" class="btn pull-right">See More</a></h2>
 <div class="myndie-carousel">
-    @foreach (var app in ViewBag.Apps)
+    @foreach (var app in ViewBag.BApps)
     {
         <a class="angled-img" href="~/Application/Product/@app.Id">
             <div class="img img-offset">
-                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                @if(app.ImageUrl != null)
+                {
+                    <img src="@app.ImageUrl" alt="">
+                }
+                else {
+                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                }           
+                
             </div>
             <div class="bottom-info">
                 <h4>@app.Name</h4>
@@ -51,13 +58,19 @@
 </div>
 <!-- /Best Sellers -->
 <!-- New Apps -->
-<h2 class="container h1">New Apps <a href="#!" class="btn pull-right">See More</a></h2>
+<h2 class="container h1">New Apps <a href="" class="btn pull-right">See More</a></h2>
 <div class="myndie-carousel">
-    @foreach (var app in ViewBag.Apps)
+    @foreach (var app in ViewBag.NApps)
     {
-        <a class="angled-img" href="#!">
+        <a class="angled-img" href="~/Application/Product/@app.Id">
             <div class="img img-offset">
-                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                @if(app.ImageUrl != null)
+                {
+                    <img src="@app.ImageUrl" alt="">
+                }
+                else {
+                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                }
             </div>
             <div class="bottom-info">
                 <h4>@app.Name</h4>

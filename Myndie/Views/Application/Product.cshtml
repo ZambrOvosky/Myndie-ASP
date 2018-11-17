@@ -11,7 +11,7 @@
                 <div class="container">
                     <h1>@ViewBag.App.Name</h1>
                     <br>
-                    <a href="#!" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                    <a href="@ViewBag.App.Archive" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
                     <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>
                 </div>
             </div>
@@ -26,42 +26,16 @@
             </div>
             <i class="entypo-play icon"></i>
         </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-4-1920x1080.jpg">
+        @foreach(var img in ViewBag.Img)
+        {
+        <a class="angled-img" href="@img.Url">
             <div class="img">
-                <img src="~/assets/images/game-bloodborne-4-500x375.jpg" alt="">
+                <img src="@img.Url" alt="">
             </div>
             <i class="entypo-search icon"></i>
         </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-5-1920x1080.jpg">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-5-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-2-1920x1080.jpg">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-2-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-3-1920x1080.jpg">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-3-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-6-1920x1080.jpg">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-6-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
-        <a class="angled-img" href="~/assets/images/game-bloodborne-6-1920x1080.jpg">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-6-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
+        }
+
     </div>
     <!-- /Images With Text -->
 
@@ -409,14 +383,16 @@
     <h2 class="container">Related</h2>
     <br>
     <div class="myndie-carousel">
-        <a class="angled-img" href="#!">
+        @foreach(var sim in ViewBag.Similar)
+        {
+            <a class="angled-img" href="../../Application/Product/@sim.Id">
             <div class="img">
-                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
+                <img src="@sim.ImageUrl" alt="">
             </div>
             <div class="over-info">
                 <div>
                     <div>
-                        <h4>Kingdoms of Amalur: Reckoning</h4>
+                        <h4>@sim.Name</h4>
                         <div class="rating">
                             <i class="entypo-star"></i>
                             <i class="entypo-star"></i>
@@ -428,63 +404,8 @@
                 </div>
             </div>
         </a>
-        <a class="angled-img" href="#!">
-            <div class="img">
-                <img src="~/assets/images/game-the-witcher-500x375.jpg" alt="">
-            </div>
-            <div class="over-info">
-                <div>
-                    <div>
-                        <h4>The Witcher: Rise of the White Wolf</h4>
-                        <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-half-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a class="angled-img" href="#!">
-            <div class="img">
-                <img src="~/assets/images/game-diablo-iii-500x375.jpg" alt="">
-            </div>
-            <div class="over-info">
-                <div>
-                    <div>
-                        <h4>Diablo III: Reaper of Souls</h4>
-                        <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-half-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a class="angled-img" href="#!">
-            <div class="img">
-                <img src="~/assets/images/game-dragons-dogma-500x375.jpg" alt="">
-            </div>
-            <div class="over-info">
-                <div>
-                    <div>
-                        <h4>Dragons Dogma</h4>
-                        <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-half-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
+        }
+        
     </div>
     <!-- /Related -->
 </section>

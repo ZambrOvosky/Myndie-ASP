@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201811061925065_ModeratorUserId.Designer.cs">
       <DependentUpon>201811061925065_ModeratorUserId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811172047331_AppModification.cs" />
+    <Compile Include="Migrations\201811172047331_AppModification.Designer.cs">
+      <DependentUpon>201811172047331_AppModification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\ApplicationGenre.cs" />
@@ -559,6 +563,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811061925065_ModeratorUserId.resx">
       <DependentUpon>201811061925065_ModeratorUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172047331_AppModification.resx">
+      <DependentUpon>201811172047331_AppModification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

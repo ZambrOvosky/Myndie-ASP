@@ -26,6 +26,11 @@ namespace Myndie.DAO
             return context.Applications.ToList();
         }
 
+        public IList<Application> ListLast10()
+        {
+            return (from a in context.Applications select a).OrderByDescending(a => a.Id).Take(10).ToList();
+        }
+
         public Application SearchById(int id)
         {
             return context.Applications.FirstOrDefault(a => a.Id == id);
@@ -45,6 +50,12 @@ namespace Myndie.DAO
         public IList<Application> GetDevGames(int devId)
         {
             return (from a in context.Applications where a.DeveloperId == devId select a).ToList();
+        }
+
+        public Application GetDevLastGame(int devId)
+        {
+            return (from a in context.Applications where a.DeveloperId == devId select a).OrderByDescending(a => a.Id).FirstOrDefault();
+            //return context.Applications.OrderBy(descending).FirstOrDefault(a => a.DeveloperId == devId);
         }
     }
 }
