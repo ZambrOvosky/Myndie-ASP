@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Myndie.Models;
 using Myndie.DAO;
+using System.IO;
 
 namespace Myndie.Controllers
 {
@@ -167,6 +168,24 @@ namespace Myndie.Controllers
             Session["DevId"] = null;
             Session["ModId"] = null;
             return RedirectToAction("../Home/Index");
+        }
+
+        public ActionResult ChangePicture(HttpPostedFileBase Pict)
+        {
+            UserDAO dao = new UserDAO();
+            User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
+            //File
+            if(u.Picture != null && u.Picture != "")
+            {
+                string dir = u.Picture;
+                dir = dir.Replace("../../..", "~");
+                System.IO.File.Delete(Server.MapPath(dir));
+            }
+            string filePath = Guid.NewGuid() + Path.GetExtension(Pict.FileName);
+            Pict.SaveAs(Path.Combine(Server.MapPath("~/media/user"), filePath));
+            u.Picture = "../../../media/user/" + filePath;
+            dao.Update();
+            return RedirectToAction("ProfileView");
         }
     }    
 }
