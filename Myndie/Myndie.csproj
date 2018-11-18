@@ -527,6 +527,9 @@
     <Content Include="Views\Moderator\ProfileView.cshtml" />
     <Content Include="Views\Moderator\Register.cshtml" />
     <Content Include="Views\Application\Product.cshtml" />
+    <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
+    <Content Include="Views\TypeApp\Index.cshtml" />
+    <Content Include="Views\Genre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

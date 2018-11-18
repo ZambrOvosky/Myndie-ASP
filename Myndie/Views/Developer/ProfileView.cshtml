@@ -24,12 +24,25 @@
             <div class="info">
                 <div>
                     <div class="container myndie-user">
-                        <a href="~/assets/images/user-photo.jpg" class="angled-img image-popup">
+                        @if(ViewBag.User.Picture != null && ViewBag.User.Picture != "")
+                        {
+                            <a href="@ViewBag.User.Picture" class="angled-img image-popup">
+                            <div class="img">
+                                <img src="@ViewBag.User.Picture" style="height: 15.6vh" alt="">
+                            </div>
+                            <i class="entypo-search icon"></i>
+                        </a>
+                        }
+                        else
+                        {
+                            <a href="~/assets/images/user-photo.jpg" class="angled-img image-popup">
                             <div class="img">
                                 <img src="~/assets/images/user-avatar.jpg" alt="">
                             </div>
                             <i class="entypo-search icon"></i>
                         </a>
+                        }
+                        
                         <!--
                             -->
 

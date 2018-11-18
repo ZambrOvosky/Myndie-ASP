@@ -21,11 +21,16 @@ Pagina Prods
 Upload de Imgs de App()
 Upload de Arquivo no App
 Terminar tela de prod
+Foto User
 
 /Feitos
 
-Foto User
+Mudar Foto do Developer
+Pesquisa
 Formatar o preço com masked TxtBox
+Arrumar fotos dos jogos na tela inicial, tela do jogo
+Arrumar foto do Perfil na tela de Mod
+Definir Foto padrao de User na user profile e Mod page
 Pegar 10 mais vendidos na tela principal
 CRUD na Admin Page
 Carrinho

@@ -18,13 +18,20 @@ namespace Myndie.Controllers
 
         public ActionResult Register()
         {
-            if (Session["ModId"] != null)
+            try
             {
-                ViewBag.Country = new Country();
-                return View();
+                string x = Session["ModId"].ToString();
+                if (Session["ModId"] != null)
+                {
+                    ViewBag.Country = new Country();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");
-            
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }      
         }
 
         public ActionResult Validate(Country country)

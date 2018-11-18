@@ -35,8 +35,11 @@ namespace Myndie.Controllers
         {
             if(Session["ModId"] != null)
             {
+                UserDAO udao = new UserDAO();
                 ModeratorDAO dao = new ModeratorDAO();
                 ViewBag.Mod = dao.SearchById(int.Parse(Session["ModId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
                 return View();
             }
             else

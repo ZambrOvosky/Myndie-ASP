@@ -11,20 +11,40 @@ namespace Myndie.Controllers
     public class GenreController : Controller
     {
         // GET: Genre
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult Register()
+        //public ActionResult Register()
+        //{
+        //    if (Session["ModId"] != null)
+        //    {
+        //        ViewBag.Genre = new Genre();
+        //        return View();
+        //    }
+        //    return RedirectToAction("../Home/Index");
+            
+        //}
+
+        public ActionResult Index()
         {
             if (Session["ModId"] != null)
             {
+                GenreDAO dao = new GenreDAO();
+                UserDAO udao = new UserDAO();
+                ModeratorDAO mdao = new ModeratorDAO();
+                ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
                 ViewBag.Genre = new Genre();
+                ViewBag.Genres = dao.List();
                 return View();
             }
-            return RedirectToAction("../Home/Index");
-            
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
         }
 
         public ActionResult Validate(Genre genre)
@@ -32,11 +52,15 @@ namespace Myndie.Controllers
             if (ModelState.IsValid)
             {
                 GenreDAO dao = new GenreDAO();
-                dao.Add(genre);
-                return RedirectToAction("Register");
+                if (dao.IsUnique(genre))
+                {
+                    dao.Add(genre);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             ViewBag.Genre= genre;
-            return View("Register");
+            return View("Index");
         }
     }
 }

@@ -36,5 +36,23 @@ namespace Myndie.DAO
             context.Genres.Remove(gen);
             Update();
         }
+
+        public bool IsUnique(Genre gen)
+        {
+            try
+            {
+                Genre gene = context.Genres.FirstOrDefault(g => g.Name == gen.Name);
+                if (gene != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
     }
 }

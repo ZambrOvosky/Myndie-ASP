@@ -11,10 +11,10 @@ namespace Myndie.Controllers
     public class TypeAppController : Controller
     {
         // GET: TypeApp
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Register()
         {
@@ -25,6 +25,23 @@ namespace Myndie.Controllers
                 return View();
             }
             return RedirectToAction("../Home/Index");            
+        }
+
+        public ActionResult Index()
+        {
+            if (Session["ModId"] != null)
+            {
+                UserDAO udao = new UserDAO();
+                ModeratorDAO dao = new ModeratorDAO();
+                ViewBag.Mod = dao.SearchById(int.Parse(Session["ModId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
         }
 
         public ActionResult Validate(TypeApp typeapp)
