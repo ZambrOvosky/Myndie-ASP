@@ -342,17 +342,17 @@
             </div>
             <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
             <ul class="list-unstyled">
-                <li class="active"><a href=""> <i class="icon-home"></i>Home </a></li>
+                <li class="active"><a href="~/Moderator/ProfileView"> <i class="icon-home"></i>Home </a></li>
                 <li>
                     <a href="#CRUDDropdown" aria-expanded="false" data-toggle="collapse">
                         <i class="icon-grid"></i>Tables
                     </a>
                     <ul id="CRUDDropdown" class="collapse list-unstyled ">
-                        <li><a href="">App's Type</a></li>
-                        <li><a href="~/Genre/Index">Categories</a></li>
-                        <li><a href="">Country</a></li>
-                        <li><a href="">Language</a></li>
-                        <li><a href="">Pegi</a></li>                    
+                        <li><a href="~/TypeApp/Index">App's Type</a></li>
+                        <li>@using (Ajax.BeginForm("GenreIndex", null, new AjaxOptions { HttpMethod="Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "DivContent"}, new { id= "GenreForm"})) { <a href="" onClick="document.getElementById('GenreForm').submit();" >Categories</a> }</li>
+                        <li><a href="~/Country/Index">Country</a></li>
+                        <li><a href="~/Language/Index">Language</a></li>
+                        <li><a href="~/Pegi/Index">Pegi</a></li>
                     </ul>
                 </li>
                 <li>
@@ -393,9 +393,11 @@
             </footer>
         </div>
     </div>
-    <script>
 
-    </script>
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        }
+
     <!-- JavaScript files-->
     <script src="~/assets/vendor/jquery/www_subdomain/jquery.min.js"></script>
     <script src="~/assets/vendor/popper.js/umd/www_subdomain/popper.min.js"></script>
@@ -450,6 +452,10 @@
     <script src="~/assets/js/www_subdomain/charts-gauge-sparkline.js"></script>
     <script src="~/assets/js/www_subdomain/front.js"></script>
 
+
+    @*<script>
+        $(function () { Messenger.options = { extraClasses: "messenger-fixed messenger-on-top  messenger-on-right", theme: "flat", messageDefaults: { showCloseButton: !0 } }, Messenger().post({ message: "Hey, how are you?<br>Welcome to the Dark Admin Premium template by Bootstrapious.", type: "success" }) });
+    </script>*@
 </body>
 
 </html>

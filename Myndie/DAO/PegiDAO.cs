@@ -36,5 +36,23 @@ namespace Myndie.DAO
             context.Pegis.Remove(pegi);
             Update();
         }
+
+        public bool IsUnique(Pegi pegi)
+        {
+            try
+            {
+                Pegi peg = context.Pegis.FirstOrDefault(p => p.Age == pegi.Age);
+                if (peg != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

@@ -13,7 +13,17 @@ namespace Myndie.Controllers
         // GET: Pegi
         public ActionResult Index()
         {
-            return View();
+            if (Session["ModId"] != null)
+            {
+                PegiDAO dao = new PegiDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Pegi = new Pegi();
+                ViewBag.Pegis = dao.List();
+                return View();
+            }
+            return RedirectToAction("../Home/Index");
         }
 
         public ActionResult Register()
@@ -32,12 +42,15 @@ namespace Myndie.Controllers
             if (ModelState.IsValid)
             {
                 PegiDAO dao = new PegiDAO();
-                dao.Add(pegi);
-                return RedirectToAction("Register");
+                if (dao.IsUnique(pegi))
+                {
+                    dao.Add(pegi);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
-            ViewBag.Class = "alert alert-danger";
             ViewBag.Pegi = pegi;
-            return View("Register");
+            return View("Index");
         }
     }
 }

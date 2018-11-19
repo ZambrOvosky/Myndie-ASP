@@ -36,5 +36,23 @@ namespace Myndie.DAO
             context.TypeApps.Remove(type);
             Update();
         }
+
+        public bool IsUnique(TypeApp type)
+        {
+            try
+            {
+                TypeApp tp = context.TypeApps.FirstOrDefault(t => t.Name == type.Name);
+                if (tp != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

@@ -467,6 +467,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.filedrop.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -530,6 +532,10 @@
     <Content Include="Views\Shared\_ModeratorLayout.cshtml" />
     <Content Include="Views\TypeApp\Index.cshtml" />
     <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\Moderator\GenreIndex.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Pegi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

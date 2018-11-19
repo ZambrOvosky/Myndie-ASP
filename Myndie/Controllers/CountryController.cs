@@ -11,10 +11,10 @@ namespace Myndie.Controllers
     public class CountryController : Controller
     {
         // GET: Country
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Register()
         {
@@ -34,16 +34,43 @@ namespace Myndie.Controllers
             }      
         }
 
+        public ActionResult Index()
+        {
+            try
+            {
+                string x = Session["ModId"].ToString();
+                if (Session["ModId"] != null)
+                {
+                    CountryDAO dao = new CountryDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Country = new Country();
+                    ViewBag.Countries = dao.List();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
+            }
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }      
+        }
+
         public ActionResult Validate(Country country)
         {
             if (ModelState.IsValid)
             {
                 CountryDAO dao = new CountryDAO();
-                dao.Add(country);
-                return RedirectToAction("Register");
+                if (dao.IsUnique(country))
+                {                    
+                    dao.Add(country);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             ViewBag.Country = country;
-            return View("Register");
+            return View("Index");
         }
     }
 }

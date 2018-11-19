@@ -36,5 +36,23 @@ namespace Myndie.DAO
             context.Countries.Remove(cou);
             Update();
         }
+
+        public bool IsUnique(Country con)
+        {
+            try
+            {
+                Country cont = context.Countries.FirstOrDefault(c => c.Name == con.Name);
+                if (cont != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

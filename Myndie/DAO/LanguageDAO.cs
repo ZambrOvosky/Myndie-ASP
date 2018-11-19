@@ -36,5 +36,23 @@ namespace Myndie.DAO
             context.Languages.Remove(lan);
             Update();
         }
+
+        public bool IsUnique(Language lan)
+        {
+            try
+            {
+                Language lang = context.Languages.FirstOrDefault(l => l.Name == l.Name);
+                if (lang != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
     }
 }

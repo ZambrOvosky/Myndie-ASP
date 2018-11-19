@@ -31,11 +31,14 @@ namespace Myndie.Controllers
         {
             if (Session["ModId"] != null)
             {
+                TypeAppDAO dao = new TypeAppDAO();
                 UserDAO udao = new UserDAO();
-                ModeratorDAO dao = new ModeratorDAO();
-                ViewBag.Mod = dao.SearchById(int.Parse(Session["ModId"].ToString()));
+                ModeratorDAO mdao = new ModeratorDAO();
+                ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
                 User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
                 ViewBag.User = u;
+                ViewBag.Type = new TypeApp();
+                ViewBag.Types = dao.List();
                 return View();
             }
             else
@@ -49,8 +52,12 @@ namespace Myndie.Controllers
             if (ModelState.IsValid)
             {
                 TypeAppDAO dao = new TypeAppDAO();
-                dao.Add(typeapp);
-                return RedirectToAction("Register");
+                if (dao.IsUnique(typeapp))
+                {
+                    dao.Add(typeapp);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             ViewBag.Lang = typeapp;
             return View("Register");

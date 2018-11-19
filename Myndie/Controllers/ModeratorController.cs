@@ -85,5 +85,26 @@ namespace Myndie.Controllers
             }            
             return RedirectToAction("Register");
         }
+
+        public PartialViewResult GenreIndex()
+        {
+            if (Session["ModId"] != null)
+            {
+                GenreDAO dao = new GenreDAO();
+                UserDAO udao = new UserDAO();
+                ModeratorDAO mdao = new ModeratorDAO();
+                ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Genre = new Genre();
+                ViewBag.Genres = dao.List();
+                return PartialView();
+            }
+            else
+            {
+                return PartialView();
+            }
+            
+        }
     }
 }

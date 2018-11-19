@@ -11,10 +11,10 @@ namespace Myndie.Controllers
     public class LanguageController : Controller
     {
         // GET: Language
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public ActionResult Register()
         {
@@ -26,16 +26,35 @@ namespace Myndie.Controllers
             return RedirectToAction("../Home/Index");            
         }
 
+        public ActionResult Index()
+        {
+            if (Session["ModId"] != null)
+            {
+                LanguageDAO dao = new LanguageDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Lang = new Language();
+                ViewBag.Langs = dao.List();
+                return View();
+            }
+            return RedirectToAction("../Home/Index");
+        }
+
         public ActionResult Validate(Language language)
         {
             if (ModelState.IsValid)
             {
                 LanguageDAO dao = new LanguageDAO();
-                dao.Add(language);
-                return RedirectToAction("Register");
+                if (dao.IsUnique(language))
+                {                    
+                    dao.Add(language);
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             ViewBag.Lang = language;
-            return View("Register");
+            return View("Index");
         }
     }
 }
