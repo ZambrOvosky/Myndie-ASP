@@ -151,5 +151,12 @@ namespace Myndie.Controllers
                 return RedirectToAction("../Home/Index");
             }
         }
+
+        public ActionResult Search(string search)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            ViewBag.Apps = dao.Search(search);
+            return View();
+        }
     }
 }

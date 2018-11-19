@@ -25,11 +25,12 @@ Foto User
 Mudar Foto do Developer
 Arrumar fotos dos jogos na tela inicial, tela do jogo
 Arrumar foto do Perfil na tela de Mod
+Pesquisa
 
 /Feitos
 
 
-Pesquisa
+
 Formatar o preço com masked TxtBox
 Definir Foto padrao de User na user profile e Mod page
 Pegar 10 mais vendidos na tela principal

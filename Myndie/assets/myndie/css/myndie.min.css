@@ -4151,7 +4151,11 @@ textarea {
     padding: 15.15px 0
 }
 
-.navbar-myndie.navbar-small .navbar-nav>li>a>.label {
+.navbar-myndie.navbar-small .navbar-nav>li>a>.label, myndie-input input  {
+    display: none
+}
+
+.navbar-myndie.navbar-small #searchIndex {
     display: none
 }
 

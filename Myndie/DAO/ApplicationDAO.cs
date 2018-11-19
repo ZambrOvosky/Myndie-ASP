@@ -57,5 +57,10 @@ namespace Myndie.DAO
             return (from a in context.Applications where a.DeveloperId == devId select a).OrderByDescending(a => a.Id).FirstOrDefault();
             //return context.Applications.OrderBy(descending).FirstOrDefault(a => a.DeveloperId == devId);
         }
+
+        public IList<Application> Search(string s)
+        {
+            return (from a in context.Applications where a.Name.Contains(s) select a).ToList();
+        }
     }
 }
