@@ -536,6 +536,8 @@
     <Content Include="Views\Country\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Pegi\Index.cshtml" />
+    <Content Include="Views\Developer\Moderator.cshtml" />
+    <Content Include="Views\User\Moderator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

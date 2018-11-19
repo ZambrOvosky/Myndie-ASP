@@ -349,7 +349,7 @@
                     </a>
                     <ul id="CRUDDropdown" class="collapse list-unstyled ">
                         <li><a href="~/TypeApp/Index">App's Type</a></li>
-                        <li>@using (Ajax.BeginForm("GenreIndex", null, new AjaxOptions { HttpMethod="Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "DivContent"}, new { id= "GenreForm"})) { <a href="" onClick="document.getElementById('GenreForm').submit();" >Categories</a> }</li>
+                        <li><a href="/Genre/Index">Categories</a></li>
                         <li><a href="~/Country/Index">Country</a></li>
                         <li><a href="~/Language/Index">Language</a></li>
                         <li><a href="~/Pegi/Index">Pegi</a></li>
@@ -360,7 +360,7 @@
                         <i class="fa fa-user"></i>Users
                     </a>
                     <ul id="UsersDropdown" class="collapse list-unstyled ">
-                        <li><a href="">Devs</a></li>
+                        <li><a href="~/Developer/Moderator">Devs</a></li>
                         <li><a href="">Users</a></li>
                     </ul>
                 </li>

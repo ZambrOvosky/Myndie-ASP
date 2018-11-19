@@ -30,7 +30,7 @@
         {
         <a class="angled-img" href="@img.Url">
             <div class="img">
-                <img src="@img.Url" style="height: 350px" alt="">
+                <img src="@img.Url" style="height: 270px" alt="">
             </div>
             <i class="entypo-search icon"></i>
         </a>
@@ -387,7 +387,15 @@
         {
             <a class="angled-img" href="../../Application/Product/@sim.Id">
             <div class="img">
-                <img src="@sim.ImageUrl" alt="">
+                @if(sim.ImageUrl != null && sim.ImageUrl != "")
+                {
+                    <img src="@sim.ImageUrl" style="height: 270px" alt="">
+                }
+                else
+                {
+                    <img src= "~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                }
+
             </div>
             <div class="over-info">
                 <div>

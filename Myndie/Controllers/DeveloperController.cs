@@ -70,5 +70,26 @@ namespace Myndie.Controllers
                 return RedirectToAction("../Home/Index");
             }
         }
+
+        public ActionResult Moderator()
+        {
+            try
+            {
+                if (Session["ModId"] != null)
+                {
+                    DeveloperDAO dao = new DeveloperDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Devs = dao.List();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
+            }
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
     }
 }

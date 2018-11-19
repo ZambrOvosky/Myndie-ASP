@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div id="DivContent">
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="block">
+                <div class="title"><strong>Users</strong></div>
+                <div class="block-body">
+
+                </div>
+                <div class="table-responsive">
+                    <table id="datatable1" style="width: 100%;" class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Register Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var u in ViewBag.Users)
+                            {
+                                <tr>
+                                    <td><a class="text-muted">@u.Id</a></td>
+                                    <td><a class="text-muted">@u.Name</a></td>
+                                    <td>@u.Username</td>
+                                    <td>@u.Email</td>
+                                    <td>@u.CrtDate</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+     </section>
+</div>
