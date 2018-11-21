@@ -59,6 +59,12 @@ namespace Myndie.Controllers
                 Developer dev = dao.SearchById(int.Parse(Session["DevId"].ToString()));
                 User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
 
+                CartDAO cardao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+
                 ViewBag.DevGames = appdao.GetDevGames(dev.Id);
                 ViewBag.Dev = dev;
                 ViewBag.User = u;

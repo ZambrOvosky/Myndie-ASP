@@ -1,0 +1,59 @@
+﻿
+@{
+}
+
+
+<section class="content-wrap">
+    <!-- Banner -->
+    <div class="myndie-banner banner-top myndie-banner-parallax small">
+        <div class="image" style="background-image: url('../../assets/images/banner-blog-bg.jpg')">
+        </div>
+        <div class="info">
+            <div>
+                <div class="container align-center">
+                    <h1>Your games</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Banner -->
+
+    <div class="container myndie-news news-grid">
+        <!-- News List -->
+        <div class="row vertical-gutter multi-columns-row">
+            <!-- Single News Block -->
+            @foreach(var si in ViewBag.UserApps)
+            {
+                foreach(var a in ViewBag.AppsinLib)
+                {
+                    if(a.Id == si.ApplicationId)
+                    {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="news-one">
+                            <a href="~/Application/Product/@a.Id" class="angled-img">
+                                <div class="img img-offset">
+                                    <img style="height : 170px" src="@a.ImageUrl" alt="">
+                                </div>
+                                <div class="bottom-info align-center">
+                                    <h3>@a.Name</h3>
+                                    @foreach(var s in ViewBag.Sells)
+                                    {
+                                        if(s.Id == si.SellId)
+                                        {
+                                            <span class="date"><i class="entypo-calendar"></i> @s.Date.ToString("dd/MM/yyyy")</span><br>
+                                        }
+                                    }
+                                    <a href="@a.Archive" class="btn btn-danger"> <i class="entypo-download"></i> Download</a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    }
+                }
+                
+            }            
+            <!-- /Single News Block -->
+        </div>
+        <!-- /News List -->
+    </div>
+</section>

@@ -10,8 +10,13 @@ namespace Myndie.Controllers {
 	public class HomeController : Controller {
 		public ActionResult Index() {
             ApplicationDAO appdao = new ApplicationDAO();
+            CartDAO cdao = new CartDAO();
             IList<Application> apps = appdao.ListLast10();
             IList<Application> bapps = appdao.ListLast10();
+            if(Session["Id"] != null)
+            {
+                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+            }            
             ViewBag.BApps = apps;
             ViewBag.NApps = apps;
             return View();

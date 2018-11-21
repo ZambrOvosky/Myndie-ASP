@@ -82,9 +82,9 @@
                 <!-- Images With Text -->
                 <div class="myndie-carousel" data-autoplay="5000">
                     @foreach (var app in ViewBag.DevGames) {
-                    <a class="angled-img" href="">
+                    <a class="angled-img" href="~/Application/Product/@app.Id">
                         <div class="img">
-                            <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
+                            <img src="@app.ImageUrl" style="height: 150px;" alt="">
                         </div>
                         <div class="over-info">
                             <div>

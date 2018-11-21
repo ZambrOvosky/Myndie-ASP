@@ -62,5 +62,21 @@ namespace Myndie.DAO
         {
             return (from a in context.Applications where a.Name.Contains(s) select a).ToList();
         }
+
+        public IList<Application> SearchByType(string type)
+        {
+            int id = (from t in context.TypeApps where t.Name == type select t.Id).FirstOrDefault();
+            return (from a in context.Applications where a.TypeAppId == id select a).ToList();
+        }
+
+        public IList<Application> GetAppsInLibrary(IList<SellItem> sis)
+        {
+            IList<Application> Apps = new List<Application>();
+            foreach(var si in sis)
+            {
+                Apps.Add(SearchById(si.ApplicationId));
+            }
+            return Apps;
+        }
     }
 }

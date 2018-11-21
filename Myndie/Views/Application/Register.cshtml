@@ -159,6 +159,9 @@
                     if (result == "Successfully Registered") {
                         window.location.href = "/Application/Register";
                     }
+                    else if (result == "Error on Uploading Images, try later" || result == "Error on Uploading Files, try later") {
+                        window.location.href = "/Developer/ProfileView";
+                    }
                 }
             }
             if ($(formData).attr('enctype') == "multipart/form-data") {

@@ -16,6 +16,7 @@ namespace Myndie.DAO {
 		//https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html  ----> LEVE ISSO PARA VIDA!
 	    public DbSet<Application> Applications { get; set; }
         public DbSet<ApplicationGenre> ApplicationGenres { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Developer> Developers { get; set; }
@@ -39,6 +40,7 @@ namespace Myndie.DAO {
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Application>();
             modelBuilder.Entity<ApplicationGenre>();
+            modelBuilder.Entity<Cart>();
             modelBuilder.Entity<Comment>();
             modelBuilder.Entity<Country>();
             modelBuilder.Entity<Developer>();

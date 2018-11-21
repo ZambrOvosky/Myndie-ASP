@@ -84,6 +84,8 @@ namespace Myndie.Controllers
                             }
                             catch
                             {
+                                appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
+                                dao.Update();
                                 result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
                             }
                             try
@@ -140,6 +142,11 @@ namespace Myndie.Controllers
                 ImageDAO idao = new ImageDAO();
                 Application app = dao.SearchById(id);
                 Developer dev = ddao.SearchById(app.DeveloperId);
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
                 ViewBag.Img = idao.SearchAppImages(id);
@@ -156,7 +163,38 @@ namespace Myndie.Controllers
         {
             ApplicationDAO dao = new ApplicationDAO();
             ViewBag.Apps = dao.Search(search);
+            CartDAO cdao = new CartDAO();
+            if (Session["Id"] != null)
+            {
+                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+            }
             return View();
+        }
+
+        public ActionResult SearchByType(string Type)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            ViewBag.Apps = dao.SearchByType(Type);
+            CartDAO cdao = new CartDAO();
+            if (Session["Id"] != null)
+            {
+                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+            }
+            return View("Search");
+        }
+
+        public string GetAppImage(int id)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            Application a = dao.SearchById(id);
+            return a.ImageUrl;
+        }
+
+        public string GetAppName(int id)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            Application a = dao.SearchById(id);
+            return a.Name;
         }
     }
 }

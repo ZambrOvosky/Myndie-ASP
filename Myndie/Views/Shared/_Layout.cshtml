@@ -107,10 +107,10 @@
                         <div class="dropdown-menu">
                             <ul role="menu">
                                 <li>
-                                    <a href="store-1.html">Apps</a>
+                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "Game"})">Games</a>
                                 </li>
                                 <li>
-                                    <a href="store-1.html">Games</a>
+                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "Software"})">Softwares</a>
                                 </li>
                             </ul>
                         </div>
@@ -130,19 +130,18 @@
                     </li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-center">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <br />
-                        <form action="~/Application/Search" autocomplete="on">
+                        <form action="~/Application/Search" autocomplete="on" id="FormSearch">
                             <div class="myndie-input" id="searchIndex">
                                 <input type="text" name="search" placeholder="Search">
                             </div>
                         </form>
                     </li>
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="search-toggle" href="search.html">
+                        <a onClick="document.getElementById('FormSearch').submit()">
                             <i class="entypo-search"></i>
                         </a>
                     </li>
@@ -199,50 +198,42 @@
 
                         <li class="dropdown dropdown-hover dropdown-cart">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="entypo-basket"></i><span class="badge pull-right bg-primary">2</span>
+                                <i class="entypo-basket"></i><span class="badge pull-right bg-primary"></span>
                             </a>
                             <div class="dropdown-menu" style="width: 300px;">
-                                <div class="row myndie-side-news">
-                                    <div class="col-xs-3 col-md-4">
-                                        <a href="#" class="angled-img">
-                                            <div class="img">
+                                @try {
+                                    foreach(var a in ViewBag.Cart)
+                                    {
+                                    <div class="row myndie-side-news">
+                                        <div class="col-xs-3 col-md-4">
+                                            <a href="#" class="angled-img">
+                                                <div class="img">
+                                                    <img src="@Html.Action("GetAppImage", "Application", new { id = a.ApplicationId})" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-9 col-md-8">
+                                            <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
 
-                                                <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                            </div>
-                                        </a>
+                                            <h4 class="ellipsis"><a href="~/Application/Product/@a.ApplicationId">@Html.Action("GetAppName", "Application", new { id = a.ApplicationId })</a></h4>
+                                            <span class="amount">US$@a.Price</span>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-9 col-md-8">
-                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                        <h4 class="ellipsis"><a href="#">Bloodborne</a></h4>
-                                        <span class="quantity">1 × <span class="amount">$50.00</span></span>
-                                    </div>
-                                </div>
-
-                                <div class="row myndie-side-news">
-                                    <div class="col-xs-3 col-md-4">
-                                        <a href="#" class="angled-img">
-                                            <div class="img">
-
-                                                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-xs-9 col-md-8">
-                                        <a href="#" style="text-decoration: none;" class="pull-right mr-10"><i class="entypo-times"></i></a>
-
-                                        <h4 class="ellipsis"><a href="#">Kingdoms of Amalur</a></h4>
-                                        <span class="quantity">1 × <span class="amount">$20.00</span></span>
-                                    </div>
-                                </div>
-
+                                }
+                                }catch{
+                                }                              
                                 <div class="ml-20 mr-20 pull-right">
-                                    <strong>Subtotal:</strong>  <span class="amount">$70.00</span>
+                                    @try
+                                    {
+                                        <strong>Subtotal:</strong>  <span class="amount">US$ @Html.Action("GetSubtotal", "Cart")</span>
+                                    } catch {
+                                        <strong>Subtotal:</strong>  <span class="amount">US$ 0.00</span>
+                                    }
                                 </div>
 
                                 <div class="btn-group pull-right m-15">
-                                    <a href="#" class="btn btn-default btn-sm">View Cart</a>
-                                    <a href="#" class="btn btn-default btn-sm">Checkout</a>
+                                    <a href="@Url.Action("Cart", "Cart")" class="btn btn-default btn-sm">View Cart</a>
+                                    <a href="@Url.Action("Checkout", "Sell")" class="btn btn-default btn-sm">Checkout</a>
                                 </div>
                             </div>
                         </li>
@@ -253,7 +244,7 @@
                     {
                         <li class="dropdown dropdown-hover">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                @Session["Username"].ToString() <span class="badge bg-default">2</span> <span class="caret"></span> <span class="label">it is you</span>
+                                @Session["Username"].ToString() <span class="badge bg-default">@*2*@</span> <span class="caret"></span> <span class="label">it's you</span>
                             </a>
                             <div class="dropdown-menu">
                                 <ul role="menu">
@@ -261,12 +252,12 @@
                                         <a href="~/User/ProfileView">Profile</a>
                                     </li>
                                     <li>
-                                        <a href="library.html">Library (168)</a>
+                                        <a href="@Url.Action("Library", "User")">Library</a>
                                     </li>
                                     <li class="divider"></li>
 
                                     <li>
-                                        <a href="wishlist.html">Wishlist <span class="badge pull-right bg-primary">13</span></a>
+                                        <a href="">Wishlist <span class="badge pull-right bg-primary">13</span></a>
                                     </li>
 
                                     <li class="divider"></li>

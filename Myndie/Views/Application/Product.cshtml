@@ -11,8 +11,8 @@
                 <div class="container">
                     <h1>@ViewBag.App.Name</h1>
                     <br>
-                    <a href="@ViewBag.App.Archive" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
-                    <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>
+                    <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id})" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                    <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>                 
                 </div>
             </div>
         </div>
@@ -20,12 +20,12 @@
     <!-- /Banner -->
     <!-- Images With Text -->
     <div class="myndie-carousel gallery-popup">
-        <a class="angled-img" href="https://www.youtube.com/watch?v=shesQlPmIvc">
+        @*<a class="angled-img" href="https://www.youtube.com/watch?v=shesQlPmIvc">
             <div class="img">
                 <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
             </div>
             <i class="entypo-play icon"></i>
-        </a>
+        </a>*@
         @foreach(var img in ViewBag.Img)
         {
         <a class="angled-img" href="@img.Url">
@@ -260,17 +260,6 @@
 
         <!-- Right Side -->
         <div class="col-md-3">
-
-            <!-- Side Search -->
-            <div class="side-block">
-                <p>Search by Games:</p>
-                <form action="search.html">
-                    <div class="myndie-input">
-                        <input type="text" name="search" placeholder="enter search term">
-                    </div>
-                </form>
-            </div>
-            <!-- /Side Search -->
             <!-- Side Categories -->
             <div class="side-block">
                 <h4 class="block-title">Categories</h4>

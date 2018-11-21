@@ -36,7 +36,7 @@ namespace Myndie.Controllers
                 if(user.Password.Length > 4)
                 {
                     user.CrtDate = DateTime.Now;
-                    user.Picture = "";
+                    user.Picture = "../../../media/default/default-user.png";
                     UserDAO dao = new UserDAO();
                     dao.Add(user);
                     return RedirectToAction("Register");
@@ -93,6 +93,11 @@ namespace Myndie.Controllers
                 User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
                 CountryDAO cdao = new CountryDAO();
                 LanguageDAO ldao = new LanguageDAO();
+                CartDAO cardao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
                 ViewBag.User = u;
                 ViewBag.Country = cdao.List();
                 ViewBag.Lang = ldao.List();
@@ -131,14 +136,11 @@ namespace Myndie.Controllers
         {
             UserDAO dao = new UserDAO();
             User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
-            //var result = "";
             if (cpsw != null && npsw != null && cpsw != npsw && u.Password == cpsw){
                 if(npsw.Length > 4)
                 {
                     u.Password = npsw;
                     dao.Update();
-                    //result = "Password Changed";
-                    //return Json(result, JsonRequestBehavior.AllowGet);
                     return RedirectToAction("ProfileView");
                 }
                 else
@@ -175,7 +177,7 @@ namespace Myndie.Controllers
             UserDAO dao = new UserDAO();
             User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
             //File
-            if(u.Picture != null && u.Picture != "")
+            if(u.Picture != null && u.Picture != "" && u.Picture != "../../../media/default/default-user.png")
             {
                 string dir = u.Picture;
                 dir = dir.Replace("../../..", "~");
@@ -206,6 +208,24 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("../Home/Index");
             }
+        }
+
+        public ActionResult Library()
+        {
+            if (Session["Id"] != null)
+            {
+                CartDAO cardao = new CartDAO();
+                SellItemDAO sidao = new SellItemDAO();
+                SellDAO sdao = new SellDAO();
+                ApplicationDAO appdao = new ApplicationDAO();
+                IList<SellItem> si = sidao.GetUserApps(int.Parse(Session["Id"].ToString()));
+                ViewBag.UserApps = si;
+                ViewBag.AppsinLib = appdao.GetAppsInLibrary(si);
+                ViewBag.Sells = sdao.GetUserSells(int.Parse(Session["Id"].ToString()));
+                ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                return View();
+            }
+            return RedirectToAction("../Home/Index");
         }
     }    
 }

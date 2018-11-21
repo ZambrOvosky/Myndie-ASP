@@ -170,6 +170,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DeveloperController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
@@ -177,10 +178,12 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\PegiController.cs" />
+    <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Controllers\TypeAppController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAO\ApplicationDAO.cs" />
     <Compile Include="DAO\ApplicationGenreDAO.cs" />
+    <Compile Include="DAO\CartDAO.cs" />
     <Compile Include="DAO\CommentDAO.cs" />
     <Compile Include="DAO\CountryDAO.cs" />
     <Compile Include="DAO\DeveloperDAO.cs" />
@@ -211,9 +214,14 @@
     <Compile Include="Migrations\201811172047331_AppModification.Designer.cs">
       <DependentUpon>201811172047331_AppModification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811201810080_AddCart.cs" />
+    <Compile Include="Migrations\201811201810080_AddCart.Designer.cs">
+      <DependentUpon>201811201810080_AddCart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\ApplicationGenre.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Developer.cs" />
@@ -608,6 +616,9 @@
     <Content Include="Views\Developer\Moderator.cshtml" />
     <Content Include="Views\User\Moderator.cshtml" />
     <Content Include="Views\Application\Search.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Sell\Checkout.cshtml" />
+    <Content Include="Views\User\Library.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -647,6 +658,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811172047331_AppModification.resx">
       <DependentUpon>201811172047331_AppModification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811201810080_AddCart.resx">
+      <DependentUpon>201811201810080_AddCart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

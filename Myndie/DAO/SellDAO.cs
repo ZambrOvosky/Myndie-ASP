@@ -36,5 +36,10 @@ namespace Myndie.DAO
             context.Sells.Remove(sell);
             Update();
         }
+
+        public IList<Sell> GetUserSells(int id)
+        {
+            return (from s in context.Sells where s.UserId == id select s).ToList();
+        }
     }
 }
