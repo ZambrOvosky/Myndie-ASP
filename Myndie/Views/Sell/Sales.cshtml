@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+}
+
+<section class="no-padding-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="bar-chart block no-margin-bottom">
+                    <canvas id="barChartSales1"></canvas>
+                </div>
+                <div class="bar-chart block">
+                    <canvas id="barChartExample2"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="line-cahrt block">
+                    <canvas id="lineCahrt"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="no-padding-top">
+    <div class="container-fluid">
+        <div class="block">
+            <div class="title"><strong>Sales sumary</strong></div>
+            <div class="block-body">
+                <div class="table-responsive">
+                    <table id="datatable1" style="width: 100%;" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                                <th>Orders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="javascript: return(void);" class="text-muted">Nielsen Cobb</a></td>
+                                <td>Memora</td>
+                                <td>nielsencobb@memora.com</td>
+                                <td>+1 (851) 552-2735</td>
+                                <td>Graniteville</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="~/assets/vendor/jquery/www_subdomain/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+    "use strict";
+    Chart.defaults.global.defaultFontColor = "#75787c";
+    var r = !0;
+    $(window).outerWidth() < 576 && (r = !1);
+    var a = $("#barChartSales1"), o = (new Chart(a, {
+        type: "bar", options: {
+            scales: {
+                xAxes: [{
+                    display: !1, gridLines: {
+                        color: "#eee"
+                    }
+                }
+                ], yAxes: [{
+                    display: !1, gridLines: {
+                        color: "#eee"
+                    }
+                }
+                ]
+            }
+        }
+        , data: {
+            labels: ["@ViewBag.User.Name", "February", "March", "April", "May", "June", "July"], datasets: [{
+                label: "Data Set 1", backgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], hoverBackgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], borderColor: ["rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)"], borderWidth: 1, data: [65, 59, 80, 81, 56, 55, 40]
+            }
+                , {
+                label: "Data Set 2", backgroundColor: ["rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)"], hoverBackgroundColor: ["rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)"], borderColor: ["rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)", "rgba(75, 75, 75, 0.7)"], borderWidth: 1, data: [35, 40, 60, 47, 88, 27, 30]
+            }
+            ]
+        }
+    }
+    )
+    )
+})
+</script>

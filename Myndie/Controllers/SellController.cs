@@ -60,5 +60,26 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Sales()
+        {
+            try
+            {
+                if (Session["ModId"] != null)
+                {
+                    SellDAO dao = new SellDAO();
+                    dao.Get7DaysSells();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    return View();
+                }
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
     }
 }
