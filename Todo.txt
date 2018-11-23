@@ -41,6 +41,7 @@ Sale tabela
 
 Sales Grafico
 Approved tela de produtos no dashboard
+Upgrade to Mod
 Confirmar Senha ao Registrar User
 Formatar o preço com masked TxtBox
 Pegar 10 mais vendidos na tela principal
