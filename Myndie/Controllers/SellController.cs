@@ -18,47 +18,69 @@ namespace Myndie.Controllers
 
         public ActionResult Checkout()
         {
-            CartDAO cardao = new CartDAO();
-            IList<Cart> cart = cardao.GetUserCart(int.Parse(Session["Id"].ToString()));
-            if (Session["Id"] != null && cart.Count() != 0)
+            try
             {
-                UserDAO udao = new UserDAO();
-                CountryDAO cdao = new CountryDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.CountryUser = cdao.SearchById(u.CountryId);
-                ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
-                ViewBag.FullCart = cart;
-                return View();
+                CartDAO cardao = new CartDAO();
+                IList<Cart> cart = cardao.GetUserCart(int.Parse(Session["Id"].ToString()));
+                if (Session["Id"] != null && cart.Count() != 0)
+                {
+                    UserDAO udao = new UserDAO();
+                    CountryDAO cdao = new CountryDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.CountryUser = cdao.SearchById(u.CountryId);
+                    ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                    ViewBag.FullCart = cart;
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }
+            
         }
 
         public ActionResult Sell()
         {
-            CartDAO cdao = new CartDAO();
-            IList<Cart> cart = cdao.GetUserCart(int.Parse(Session["Id"].ToString()));
-            if (Session["Id"] != null && cart.Count() != 0)
+            try
             {
-                SellDAO dao = new SellDAO();
-                Sell s = new Sell();
-                s.UserId = int.Parse(Session["Id"].ToString());
-                s.Date = DateTime.Now;
-                s.TotalPrice = cdao.GetSubtotal(s.UserId);
-                dao.Add(s);
-                foreach (var c in cart)
+                CartDAO cdao = new CartDAO();
+                IList<Cart> cart = cdao.GetUserCart(int.Parse(Session["Id"].ToString()));
+                if (Session["Id"] != null && cart.Count() != 0)
                 {
-                    SellItemDAO sidao = new SellItemDAO();
-                    SellItem si = new SellItem();
-                    si.ApplicationId = c.ApplicationId;
-                    si.PriceItem = c.Price;
-                    si.SellId = s.Id;
-                    sidao.Add(si);
-                    cdao.Remove(c);
+                    SellDAO dao = new SellDAO();
+                    Sell s = new Sell();
+                    s.UserId = int.Parse(Session["Id"].ToString());
+                    s.Date = DateTime.Now;
+                    s.TotalPrice = cdao.GetSubtotal(s.UserId);
+                    dao.Add(s);
+                    foreach (var c in cart)
+                    {
+                        SellItemDAO sidao = new SellItemDAO();
+                        SellItem si = new SellItem();
+                        si.ApplicationId = c.ApplicationId;
+                        si.PriceItem = c.Price;
+                        si.SellId = s.Id;
+                        sidao.Add(si);
+                        cdao.Remove(c);
+                    }
+                    return RedirectToAction("Library", "User");
                 }
-                return RedirectToAction("Library", "User");
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }
+            
         }
 
         public ActionResult Sales()
@@ -68,13 +90,20 @@ namespace Myndie.Controllers
                 if (Session["ModId"] != null)
                 {
                     SellDAO dao = new SellDAO();
+                    IList<Sell> s = dao.List();
+                    ViewBag.Sells = dao.List();
                     dao.Get7DaysSells();
                     UserDAO udao = new UserDAO();
-                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));                    
+                   
                     ViewBag.User = u;
                     return View();
                 }
-                return View();
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
+                
             }
             catch
             {

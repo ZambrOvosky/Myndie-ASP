@@ -620,6 +620,12 @@
     <Content Include="Views\Sell\Checkout.cshtml" />
     <Content Include="Views\User\Library.cshtml" />
     <Content Include="Views\Sell\Sales.cshtml" />
+    <Content Include="Views\TypeApp\Edit.cshtml" />
+    <Content Include="Views\Genre\Edit.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Pegi\Edit.cshtml" />
+    <Content Include="Views\Application\Moderator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

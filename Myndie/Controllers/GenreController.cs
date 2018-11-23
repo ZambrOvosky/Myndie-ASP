@@ -62,5 +62,54 @@ namespace Myndie.Controllers
             ViewBag.Genre= genre;
             return View("Index");
         }
+
+
+        public ActionResult Edit(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                GenreDAO dao = new GenreDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Genre = dao.SearchById(id);
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult EditConfirm(Genre genre)
+        {
+            if (Session["ModId"] != null)
+            {
+                GenreDAO dao = new GenreDAO();
+                Genre g = dao.SearchById(genre.Id);
+                g.Name = genre.Name;
+                dao.Update();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                GenreDAO dao = new GenreDAO();
+                Genre g = dao.SearchById(id);
+                dao.Remove(g);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
     }
 }

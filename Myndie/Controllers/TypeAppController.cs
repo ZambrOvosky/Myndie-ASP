@@ -24,7 +24,7 @@ namespace Myndie.Controllers
                 ViewBag.Class = "";
                 return View();
             }
-            return RedirectToAction("../Home/Index");            
+            return RedirectToAction("../Home/Index");
         }
 
         public ActionResult Index()
@@ -61,6 +61,54 @@ namespace Myndie.Controllers
             }
             ViewBag.Lang = typeapp;
             return View("Register");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                TypeAppDAO dao = new TypeAppDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Type = dao.SearchById(id);
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult EditConfirm(TypeApp TypeApp)
+        {
+            if (Session["ModId"] != null)
+            {
+                TypeAppDAO dao = new TypeAppDAO();
+                TypeApp t = dao.SearchById(TypeApp.Id);
+                t.Name = TypeApp.Name;
+                dao.Update();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                TypeAppDAO dao = new TypeAppDAO();
+                TypeApp t = dao.SearchById(id);
+                dao.Remove(t);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
         }
     }
 }

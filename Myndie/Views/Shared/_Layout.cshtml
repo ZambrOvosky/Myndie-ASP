@@ -89,14 +89,14 @@
                         <div class="dropdown-menu">
                             <ul role="menu">
                                 <li>
-                                    <a href="store-1.html">Featured</a>
+                                    <a href="@Url.Action("Search", "Application", new { search= " "})">Featured</a>
                                 </li>
                                 <li>
-                                    <a href="store-1.html">Explore</a>
+                                    <a href="@Url.Action("Search", "Application", new { search= " "})">Explore</a>
                                 </li>
-                                <li>
-                                    <a href="store-1.html">Free</a>
-                                </li>
+                                @*<li>
+                                    <a href="">Free</a>
+                                </li>*@
                             </ul>
                         </div>
                     </li>
@@ -107,10 +107,10 @@
                         <div class="dropdown-menu">
                             <ul role="menu">
                                 <li>
-                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "Game"})">Games</a>
+                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "1"})">Games</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "Software"})">Softwares</a>
+                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "2"})">Softwares</a>
                                 </li>
                             </ul>
                         </div>
@@ -147,7 +147,7 @@
                     </li>
                     @if (Session["Id"] != null)
                     {
-                        <li class="dropdown dropdown-hover dropdown-cart">
+                        @*<li class="dropdown dropdown-hover dropdown-cart">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <i class="entypo-mail"></i><span class="badge pull-right bg-primary">2</span>
                             </a>
@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>*@
 
                         <li class="dropdown dropdown-hover dropdown-cart">
                             <a href="#!" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -253,12 +253,12 @@
                                     </li>
                                     <li>
                                         <a href="@Url.Action("Library", "User")">Library</a>
-                                    </li>
+                                    @*</li>
                                     <li class="divider"></li>
 
                                     <li>
                                         <a href="">Wishlist <span class="badge pull-right bg-primary">13</span></a>
-                                    </li>
+                                    </li>*@
 
                                     <li class="divider"></li>
 

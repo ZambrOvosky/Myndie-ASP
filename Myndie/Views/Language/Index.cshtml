@@ -23,22 +23,6 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-lg-6">
-                    <div class="block">
-                        <div class="title"><strong>Edit Language</strong></div>
-                        <div class="block-body">
-                            <form class="form col-md-12">
-                                <div class="form-group">
-                                    <label class="sr-only">Name</label>
-                                    <input type="text" value="English" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Edit" class="btn btn-primary">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>*@
                 <div class="col-lg-12 block">
                     <div class="title"><strong>Languages</strong></div>
                     <div class="block-body">
@@ -58,7 +42,7 @@
                                         <tr>
                                             <td class="text-center"><a>@l.Id</a></td>
                                             <td class="text-center"><a>@l.Name</a></td>
-                                            <td class="text-center"><a href="#" class="btn sm btn-info ladda-button">Edit</a> <a href="#" class="btn sm btn-primary ladda-button">Remove</a></td>
+                                            <td class="text-center"><a href="@Url.Action("Edit", "Language", new { id = l.Id})" class="btn sm btn-info ladda-button">Edit</a> <a href="@Url.Action("Remove", "Language", new { id = l.Id})" class="btn sm btn-primary ladda-button">Remove</a></td>
                                         </tr>
                                     }
                                     

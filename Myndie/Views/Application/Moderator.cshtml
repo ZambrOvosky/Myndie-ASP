@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+}
+
+<section class="no-padding-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="messages-block block">
+                    <div class="title"><strong>New apps to aprove</strong></div>
+                    <div class="messages">
+                        @foreach(var a in ViewBag.AppsToApprove)
+                        {
+                        <a href="~/Application/Product/@a.Id" class="message d-flex align-items-center">
+                            <div class="profile">
+                                <img src="@a.ImageUrl" class="img-fluid">
+                            </div>
+                            <div class="content">
+                                <strong class="d-block">@a.Name</strong><span class="d-block">
+                                    @*Categories:
+                                    Action, Drama, Indie*@
+                                </span>
+                            </div>
+                        </a>
+                        }                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 block">
+            <div class="title"><strong>Application</strong></div>
+            <div class="block-body">
+                <div class="table-responsive">
+                    <table id="datatable1" style="width: 100%;" class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center"># Dev</th>
+                                <th class="text-center">Dev Name</th>
+                                <th class="text-center">Publisher</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var a in ViewBag.Apps)
+                            {
+                            <tr>
+                                <td class="text-center"><a href="" class="text-muted">@a.Id</a></td>
+                                <td class="text-center"><a class="text-muted">@a.Name</a></td>
+                                <td class="text-center"><a class="text-muted">@a.Price</a></td>
+                                <td class="text-center"><a class="text-muted">@a.DeveloperId</a></td>
+                                @foreach(var d in ViewBag.Devs)
+                                {
+                                    if(d.Id == a.DeveloperId)
+                                    {
+                                        <td class="text-center"><a class="text-muted">@d.Name</a></td>
+                                    }
+                                }
+                                
+                                <td class="text-center"><a class="text-muted">@a.PublisherName</a></td>
+                            </tr>
+                            }                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

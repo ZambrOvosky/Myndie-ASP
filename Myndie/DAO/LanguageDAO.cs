@@ -41,7 +41,7 @@ namespace Myndie.DAO
         {
             try
             {
-                Language lang = context.Languages.FirstOrDefault(l => l.Name == l.Name);
+                Language lang = context.Languages.FirstOrDefault(l => l.Name == lan.Name);
                 if (lang != null)
                 {
                     return false;

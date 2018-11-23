@@ -25,29 +25,28 @@
 <section class="no-padding-top">
     <div class="container-fluid">
         <div class="block">
-            <div class="title"><strong>Sales sumary</strong></div>
+            <div class="title"><strong>Sales Summary</strong></div>
             <div class="block-body">
                 <div class="table-responsive">
                     <table id="datatable1" style="width: 100%;" class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Company</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>City</th>
-                                <th>Orders</th>
+                                <th>#</th>
+                                <th>Total Price</th>
+                                <th>Date</th>
+                                <th># User</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach(var s in ViewBag.Sells)
+                            {
                             <tr>
-                                <td><a href="javascript: return(void);" class="text-muted">Nielsen Cobb</a></td>
-                                <td>Memora</td>
-                                <td>nielsencobb@memora.com</td>
-                                <td>+1 (851) 552-2735</td>
-                                <td>Graniteville</td>
-                                <td>0</td>
+                                <td><a href="javascript: return(void);" class="text-muted">@s.Id</a></td>
+                                <td>@s.TotalPrice</td>
+                                <td>@s.Date</td>
+                                <td>@s.UserId</td>
                             </tr>
+                            }                            
                         </tbody>
                     </table>
                 </div>

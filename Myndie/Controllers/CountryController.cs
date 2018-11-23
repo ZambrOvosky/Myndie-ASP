@@ -72,5 +72,53 @@ namespace Myndie.Controllers
             ViewBag.Country = country;
             return View("Index");
         }
+
+        public ActionResult Edit(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                CountryDAO dao = new CountryDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Country = dao.SearchById(id);
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult EditConfirm(Country country)
+        {
+            if (Session["ModId"] != null)
+            {
+                CountryDAO dao = new CountryDAO();
+                Country g = dao.SearchById(country.Id);
+                g.Name = country.Name;
+                dao.Update();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                CountryDAO dao = new CountryDAO();
+                Country c = dao.SearchById(id);
+                dao.Remove(c);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
     }
 }

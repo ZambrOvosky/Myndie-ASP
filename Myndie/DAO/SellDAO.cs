@@ -52,11 +52,11 @@ namespace Myndie.DAO
             //var period = (from s in context.Sells select s).GroupBy(s => s.Id).OrderBy(s => s.Date).ToList();
 
             var list = (from s in context.Sells where s.Date.Year.Equals(DateTime.Now.Year) && s.Date.Month.Equals(DateTime.Now.Month) && (s.Date.Day >= (DateTime.Now.Day - 7) && s.Date.Day <= DateTime.Now.Day) orderby s.Date descending select s).ToList();
-            foreach(var i in list)
-            {
-                i.Date = i.Date.Date;
-            }
-            var sells = (from s in list select s).GroupBy(s => s.Date).Select(g => new { Date = g.Key, TotalPrice = g.Sum(s => s.TotalPrice), Count = g.Count()}).ToList();
+            //foreach(var i in list)
+            //{
+            //    i.Date = i.Date.Date;
+            //}
+            var sells = (from s in list select s).GroupBy(s => s.Date.Date).Select(g => new { Date = g.Key, TotalPrice = g.Sum(s => s.TotalPrice), Count = g.Count()}).ToList();
             return new List<Sell>();
         }
     }

@@ -33,16 +33,29 @@ Foto Jogos no DevProfile
 Definir Foto padrao de User na user profile e Mod page
 Library
 Erros com imagens = Resolvido
+CRUD na Admin Page
+Pagina de Admin para Moderadores
+Sale tabela
 
 /Feitos
 
-
-
+Sales Grafico
+Approved tela de produtos no dashboard
+Confirmar Senha ao Registrar User
 Formatar o preço com masked TxtBox
 Pegar 10 mais vendidos na tela principal
-CRUD na Admin Page
 Formatar Release Date //N sei
 Esqueceu a Senha
-Confirmar Senha ao Registrar User
 Text Area para desc
-Pagina de Admin para Moderadores e Devs
+Pagina de Admin Devs
+
+//Partes Retiradas Para proxima Versao:
+_layout = Busca feature free, message,wishlist, 
+Index
+Right Side:
+Checkout
+cart 
+Search
+Product
+
+ModeratorProfile

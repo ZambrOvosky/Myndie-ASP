@@ -63,10 +63,14 @@ namespace Myndie.DAO
             return (from a in context.Applications where a.Name.Contains(s) select a).ToList();
         }
 
-        public IList<Application> SearchByType(string type)
+        public IList<Application> SearchByType(int id)
         {
-            int id = (from t in context.TypeApps where t.Name == type select t.Id).FirstOrDefault();
             return (from a in context.Applications where a.TypeAppId == id select a).ToList();
+        }
+
+        public IList<Application> AppsToApprove()
+        {
+            return (from a in context.Applications where a.Approved == 0 select a).ToList();
         }
 
         public IList<Application> GetAppsInLibrary(IList<SellItem> sis)

@@ -56,5 +56,53 @@ namespace Myndie.Controllers
             ViewBag.Lang = language;
             return View("Index");
         }
+
+        public ActionResult Edit(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                LanguageDAO dao = new LanguageDAO();
+                UserDAO udao = new UserDAO();
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Language = dao.SearchById(id);
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult EditConfirm(Language language)
+        {
+            if (Session["ModId"] != null)
+            {
+                LanguageDAO dao = new LanguageDAO();
+                Language l = dao.SearchById(language.Id);
+                l.Name = language.Name;
+                dao.Update();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
+
+        public ActionResult Remove(int id)
+        {
+            if (Session["ModId"] != null)
+            {
+                LanguageDAO dao = new LanguageDAO();
+                Language l = dao.SearchById(id);
+                dao.Remove(l);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("../Home/Index");
+            }
+        }
     }
 }

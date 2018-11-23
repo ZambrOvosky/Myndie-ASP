@@ -92,12 +92,12 @@ namespace Myndie.Controllers
                             {
                                 //File
                                 string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/media/appfiles/" + appreg.Id)))
+                                if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + appreg.Id)))
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/media/appfiles/" + appreg.Id));
+                                    Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + appreg.Id));
                                 }
-                                File.SaveAs(Path.Combine(Server.MapPath("~/media/appfiles/" + appreg.Id), filePath2));
-                                appreg.Archive = "../../../media/appfiles/" + appreg.Id + "/" + filePath2;
+                                File.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + appreg.Id), filePath2));
+                                appreg.Archive = "../../../apps/appfiles/" + appreg.Id + "/" + filePath2;
                                 dao.Update();
                                 //
                             }
@@ -171,7 +171,7 @@ namespace Myndie.Controllers
             return View();
         }
 
-        public ActionResult SearchByType(string Type)
+        public ActionResult SearchByType(int Type)
         {
             ApplicationDAO dao = new ApplicationDAO();
             ViewBag.Apps = dao.SearchByType(Type);
@@ -195,6 +195,33 @@ namespace Myndie.Controllers
             ApplicationDAO dao = new ApplicationDAO();
             Application a = dao.SearchById(id);
             return a.Name;
+        }
+
+        public ActionResult Moderator(int id)
+        {
+            try
+            {
+                if (Session["ModId"] != null)
+                {
+                    ApplicationDAO dao = new ApplicationDAO();
+                    UserDAO udao = new UserDAO();
+                    DeveloperDAO ddao = new DeveloperDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Apps = dao.SearchByType(id);
+                    ViewBag.AppsToApprove = dao.AppsToApprove();
+                    ViewBag.Devs = ddao.List();
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("../Home/Index");
+            }            
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_ModeratorLayout.cshtml";
+}
+
+<div id="DivContent">
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="block">
+                        <div class="title"><strong>Edit Pegi</strong></div>
+                        <div class="block-body">
+                            <form class="form-inline" action="/Pegi/EditConfirm" method="post">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="inlineFormInput" class="sr-only">Id</label>
+                                        <input id="inlineFormInput" type="text" value="@ViewBag.Pegi.Id" readonly name="pegi.Id" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inlineFormInput" class="sr-only">Name</label>
+                                        <input id="inlineFormInput" type="text" value="@ViewBag.Pegi.Age" name="pegi.Age" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="inlineFormInput" class="sr-only">Desc</label>
+                                        <input id="inlineFormInput" type="text" value="@ViewBag.Pegi.Desc" name="pegi.Desc" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inlineFormInput" class="sr-only">Photo Path</label>
+                                        <input id="inlineFormInput" type="text" value="@ViewBag.Pegi.PhotoPath" name="pegi.PhotoPath" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Edit" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
