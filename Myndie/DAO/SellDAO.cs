@@ -43,7 +43,7 @@ namespace Myndie.DAO
             return (from s in context.Sells where s.UserId == id select s).ToList();
         }
 
-        public IList<Sell> Get7DaysSells()
+        public dynamic Get7DaysSells()
         {
             //IList<Sell> a = (from s in context.Sells select s).Count(s => s.Id);
             //var a = context.Sells.OrderBy(s => s.Date).GroupBy(s => s.Date.Date);
@@ -56,8 +56,8 @@ namespace Myndie.DAO
             //{
             //    i.Date = i.Date.Date;
             //}
-            var sells = (from s in list select s).GroupBy(s => s.Date.Date).Select(g => new { Date = g.Key, TotalPrice = g.Sum(s => s.TotalPrice), Count = g.Count()}).ToList();
-            return new List<Sell>();
+            var sells = (from s in list select s).GroupBy(s => s.Date.Date).Select(g => new { Date = g.Key.Day, TotalPrice = g.Sum(s => s.TotalPrice), Count = g.Count()}).ToList();
+            return sells;
         }
     }
 }

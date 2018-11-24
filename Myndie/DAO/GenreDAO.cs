@@ -54,5 +54,10 @@ namespace Myndie.DAO
             }
             
         }
+
+        public IList<Genre> GetTop10()
+        {
+            return (from g in context.Genres select g).Take(10).ToList();
+        }
     }
 }

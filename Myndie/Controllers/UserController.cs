@@ -39,7 +39,7 @@ namespace Myndie.Controllers
                     user.Picture = "../../../media/default/default-user.png";
                     UserDAO dao = new UserDAO();
                     dao.Add(user);
-                    return RedirectToAction("Register");
+                    return RedirectToAction("Index", "Home");
                 }
                 else{ ModelState.AddModelError("user.Password4", "Your password needs to be at least 5 characters");
 

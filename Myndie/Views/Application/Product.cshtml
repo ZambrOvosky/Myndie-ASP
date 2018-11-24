@@ -1,4 +1,4 @@
-﻿  <!-- Main Content -->
+﻿<!-- Main Content -->
 <section class="content-wrap">
 
     <!-- Banner -->
@@ -11,8 +11,8 @@
                 <div class="container">
                     <h1>@ViewBag.App.Name</h1>
                     <br>
-                    <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id})" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
-                    <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>                 
+                    <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id })" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                    <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>
                 </div>
             </div>
         </div>
@@ -21,19 +21,19 @@
     <!-- Images With Text -->
     <div class="myndie-carousel gallery-popup">
         @*<a class="angled-img" href="https://www.youtube.com/watch?v=shesQlPmIvc">
-            <div class="img">
-                <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-            </div>
-            <i class="entypo-play icon"></i>
-        </a>*@
-        @foreach(var img in ViewBag.Img)
+                <div class="img">
+                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
+                </div>
+                <i class="entypo-play icon"></i>
+            </a>*@
+        @foreach (var img in ViewBag.Img)
         {
-        <a class="angled-img" href="@img.Url">
-            <div class="img">
-                <img src="@img.Url" style="height: 270px" alt="">
-            </div>
-            <i class="entypo-search icon"></i>
-        </a>
+            <a class="angled-img" href="@img.Url">
+                <div class="img">
+                    <img src="@img.Url" style="height: 270px" alt="">
+                </div>
+                <i class="entypo-search icon"></i>
+            </a>
         }
 
     </div>
@@ -49,7 +49,7 @@
                 <!-- Description -->
                 <h2 class="mt-0">Description</h2>
                 <div class="description">
-                   @ViewBag.App.Desc
+                    @ViewBag.App.Desc
                 </div>
                 <!-- /Description -->
                 <!-- Post Share -->
@@ -258,151 +258,44 @@
             <!-- /Reviews -->
         </div>
 
-        @*<!-- Right Side -->
-        <div class="col-md-3">
-            <!-- Side Categories -->
-            <div class="side-block">
-                <h4 class="block-title">Categories</h4>
-                <ul class="block-content">
-                    <li>
-                        <a href="#!">All</a>
-                    </li>
-                    <li>
-                        <a href="#!">Action</a>
-                    </li>
-                    <li>
-                        <a href="#!">Adventure</a>
-                    </li>
-                    <li>
-                        <a href="#!">Casual</a>
-                    </li>
-                    <li>
-                        <a href="#!">Indie</a>
-                    </li>
-                    <li>
-                        <a href="#!">Racing</a>
-                    </li>
-                    <li>
-                        <a href="#!">RPG</a>
-                    </li>
-                    <li>
-                        <a href="#!">Simulation</a>
-                    </li>
-                    <li>
-                        <a href="#!">Strategy</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /Side Categories -->
-            <!-- Side Popular News -->
-            <div class="side-block">
-                <h4 class="block-title">Popular Games</h4>
-                <div class="block-content p-0">
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="store-product-1.html" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="store-product-1.html" title="Bloodborne">Bloodborne</a></h4>
-                            <span class="price">$50.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-dark-souls-ii-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Dark Souls II">Dark Souls II</a></h4>
-                            <span class="price">$39.99 <sup><del>$49.99</del></sup></span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Kingdoms of Amalur">Kingdoms of Amalur</a></h4>
-                            <span class="price">$20.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-diablo-iii-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Let's Grind Diablo III">Diablo III</a></h4>
-                            <span class="price">$10.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                </div>
-            </div>
-            <!-- /Side Popular News -->
-
-
-        </div>
-        <!-- /Right Side -->*@
-
+        @Html.Action("_GenreGameRightSide", "Application")
     </div>
 
     <!-- Related -->
     <h2 class="container">Related</h2>
     <br>
     <div class="myndie-carousel">
-        @foreach(var sim in ViewBag.Similar)
+        @foreach (var sim in ViewBag.Similar)
         {
             <a class="angled-img" href="../../Application/Product/@sim.Id">
-            <div class="img">
-                @if(sim.ImageUrl != null && sim.ImageUrl != "")
-                {
-                    <img src="@sim.ImageUrl" style="height: 270px" alt="">
-                }
-                else
-                {
-                    <img src= "~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
-                }
+                <div class="img">
+                    @if (sim.ImageUrl != null && sim.ImageUrl != "")
+                    {
+                        <img src="@sim.ImageUrl" style="height: 270px" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                    }
 
-            </div>
-            <div class="over-info">
-                <div>
+                </div>
+                <div class="over-info">
                     <div>
-                        <h4>@sim.Name</h4>
-                        <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-half-o"></i>
+                        <div>
+                            <h4>@sim.Name</h4>
+                            <div class="rating">
+                                <i class="entypo-star"></i>
+                                <i class="entypo-star"></i>
+                                <i class="entypo-star"></i>
+                                <i class="entypo-star"></i>
+                                <i class="entypo-star-half-o"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
         }
-        
+
     </div>
     <!-- /Related -->
 </section>

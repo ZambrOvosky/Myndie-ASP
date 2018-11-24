@@ -18,17 +18,22 @@ namespace Myndie.Controllers
 
         public ActionResult Register()
         {
-            if (Session["ModId"] != null)
+            try
             {
-                UserDAO udao = new UserDAO();
-                ViewBag.Users = udao.List();
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    UserDAO dao = new UserDAO();
+                    User u = dao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Users = dao.List();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            else
+            catch
             {
                 return RedirectToAction("../Home/Index");
             }
-
         }
 
         public ActionResult ProfileView()

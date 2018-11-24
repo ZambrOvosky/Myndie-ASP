@@ -28,159 +28,55 @@
             <div class="isotope-list">
 
                 @foreach (var a in ViewBag.Apps)
-                {
-                    <!-- Single Product Block -->
-                    <a href="~/Application/Product/@a.Id" class="item angled-bg">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-3 col-xs-4">
-                                <div class="angled-img">
-                                    <div class="img">
-                                        @if (a.ImageUrl != null && a.ImageUrl !="")
-                                        {
-                                            <img src="@a.ImageUrl" style="height: 80px" alt="">
-                                        }
-                                        else
-                                        {
-                                            <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
-                                        }
+            {
+                <!-- Single Product Block -->
+                <a href="~/Application/Product/@a.Id" class="item angled-bg">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-xs-4">
+                            <div class="angled-img">
+                                <div class="img">
+                                    @if (a.ImageUrl != null && a.ImageUrl != "")
+                                {
+                                    <img src="@a.ImageUrl" style="height: 80px" alt="">
+                            }
+                            else
+                            {
+                                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                        }
 
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-10 col-md-9 col-xs-8">
-                                <div class="row">
-                                    <div class="col-xs-6 col-md-9">
-                                        <h4>@a.Name</h4>
-                                        <div class="rating">
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                        </div>
+                        </div>
+                        <div class="col-lg-10 col-md-9 col-xs-8">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-9">
+                                    <h4>@a.Name</h4>
+                                    <div class="rating">
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
                                     </div>
-                                    <div class="col-xs-6 col-md-3 align-right">
-                                        <div class="price">
-                                            US$ @a.Price
-                                        </div>
+                                </div>
+                                <div class="col-xs-6 col-md-3 align-right">
+                                    <div class="price">
+                                        US$ @a.Price
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <!-- /Single Product Block -->
-                }
+                    </div>
+                </a>
+                <!-- /Single Product Block -->
+        }
 
 
             </div>
 
         </div>
         <!-- /Games List -->
-        @*<!-- Left Side -->
-        <div class="col-md-3">
-            <!-- Side Categories -->
-            <div class="side-block">
-                <h4 class="block-title">Categories</h4>
-                <ul class="block-content">
-                    <li>
-                        <a href="#!">All</a>
-                    </li>
-                    <li>
-                        <a href="#!">Action</a>
-                    </li>
-                    <li>
-                        <a href="#!">Adventure</a>
-                    </li>
-                    <li>
-                        <a href="#!">Casual</a>
-                    </li>
-                    <li>
-                        <a href="#!">Indie</a>
-                    </li>
-                    <li>
-                        <a href="#!">Racing</a>
-                    </li>
-                    <li>
-                        <a href="#!">RPG</a>
-                    </li>
-                    <li>
-                        <a href="#!">Simulation</a>
-                    </li>
-                    <li>
-                        <a href="#!">Strategy</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /Side Categories -->
-            <!-- Side Popular News -->
-            <div class="side-block">
-                <h4 class="block-title">Popular Games</h4>
-                <div class="block-content p-0">
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="store-product-1.html" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="store-product-1.html" title="Bloodborne">Bloodborne</a></h4>
-                            <span class="price">$50.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-dark-souls-ii-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Dark Souls II">Dark Souls II</a></h4>
-                            <span class="price">$39.99 <sup><del>$49.99</del></sup></span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Kingdoms of Amalur">Kingdoms of Amalur</a></h4>
-                            <span class="price">$20.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                    <!-- Single News Block -->
-                    <div class="row myndie-side-news">
-                        <div class="col-xs-3 col-md-4">
-                            <a href="#!" class="angled-img">
-                                <div class="img">
-                                    <img src="~/assets/images/game-diablo-iii-500x375.jpg" alt="">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-9 col-md-8">
-                            <h4 class="ellipsis"><a href="#!" title="Let's Grind Diablo III">Diablo III</a></h4>
-                            <span class="price">$10.00</span>
-                        </div>
-                    </div>
-                    <!-- /Single News Block -->
-                </div>
-            </div>
-            <!-- /Side Popular News -->
-        </div>
-        <!-- /Left Side -->*@
+        @Html.Action("_GenreGameRightSide", "Application")
     </div>
 
 

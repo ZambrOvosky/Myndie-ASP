@@ -223,5 +223,16 @@ namespace Myndie.Controllers
                 return RedirectToAction("../Home/Index");
             }            
         }
+
+        public PartialViewResult _GenreGameRightSide()
+        {
+            GenreDAO gdao = new GenreDAO();
+            ApplicationDAO appdao = new ApplicationDAO();
+            IList<Genre> g = gdao.GetTop10();
+            ViewBag.GenreSide = g;
+            IList<Application> a = appdao.GetTop5();
+            ViewBag.AppsSide = a;
+            return PartialView();
+        }
     }
 }

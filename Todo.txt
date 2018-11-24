@@ -36,27 +36,31 @@ Erros com imagens = Resolvido
 CRUD na Admin Page
 Pagina de Admin para Moderadores
 Sale tabela
+Upgrade to Mod
+Weekly Report
+Mudar AppDAO metodo GetTop5 -> Pegar mais vendidos
+Index - Mais Vendidos
+Pegar 10 mais vendidos na tela principal
 
 /Feitos
 
-Sales Grafico
+Montlhy Report
 Approved tela de produtos no dashboard
-Upgrade to Mod
+Botao See More Index
+Fazer Busca por Genero e Linkar com a partial View RightSide
+Fazer Buscas do Menu Superior
+Mudar Apps(Moderador) e Categories(Layout) para pegar o TypeApp
+EditGame
+Link Game e Genre
+WishList
+Index Last News
 Confirmar Senha ao Registrar User
 Formatar o preço com masked TxtBox
-Pegar 10 mais vendidos na tela principal
+
+
 Formatar Release Date //N sei
 Esqueceu a Senha
 Text Area para desc
 Pagina de Admin Devs
 
-//Partes Retiradas Para proxima Versao:
-_layout = Busca feature free, message,wishlist, 
-Index
-Right Side:
-Checkout
-cart 
-Search
-Product
 
-ModeratorProfile

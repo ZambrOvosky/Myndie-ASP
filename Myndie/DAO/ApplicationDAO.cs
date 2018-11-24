@@ -31,6 +31,17 @@ namespace Myndie.DAO
             return (from a in context.Applications select a).OrderByDescending(a => a.Id).Take(10).ToList();
         }
 
+        public IList<Application> ListTop10()
+        {
+            var si = (from s in context.SellItems select s).GroupBy(s => s.ApplicationId).Select(s => new { Count = s.Count(), Id = s.Key }).OrderByDescending(s => s.Count).Take(10).ToList();
+            IList<Application> apps = new List<Application>();
+            foreach (var s in si)
+            {
+                apps.Add(SearchById(s.Id));
+            }
+            return apps;
+        }
+
         public Application SearchById(int id)
         {
             return context.Applications.FirstOrDefault(a => a.Id == id);
@@ -81,6 +92,17 @@ namespace Myndie.DAO
                 Apps.Add(SearchById(si.ApplicationId));
             }
             return Apps;
+        }
+
+        public IList<Application> GetTop5()
+        {
+            var si = (from s in context.SellItems select s).GroupBy(s => s.ApplicationId).Select(s => new { Count = s.Count(), Id = s.Key }).OrderByDescending(s => s.Count).Take(5).ToList();
+            IList <Application> apps = new List<Application>();
+            foreach (var s in si)
+            {
+                apps.Add(SearchById(s.Id));
+            }
+            return apps;
         }
     }
 }
