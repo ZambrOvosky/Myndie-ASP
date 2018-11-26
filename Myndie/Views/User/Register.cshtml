@@ -19,7 +19,7 @@
     </div>
     <!-- /Banner -->
 
-    <form class="needs-validation" novalidate method="post" action="/User/Validate">
+    <form class="needs-validation" method="post" action="/User/Validate">
         <div class="container myndie-content">
 
             <div class="container myndie-content m-0">
@@ -47,14 +47,15 @@
                         <div class="col-md-6">
                             <p>Password:</p>
                             <div class="myndie-input">
-                                <input type="password" class="form-control" id="Password" value="@ViewBag.User.Password" placeholder="Password" required name="user.Password" />
+                                <input type="password" class="form-control" id="Password" placeholder="Password" required name="user.Password" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <p>Confirm Password:</p>
                             <div class="myndie-input">
-                                <input type="password" name="confpass" placeholder="Confirm Password">
+                                <input type="password" id="ConfirmPassword" name="confpass" placeholder="Confirm Password">
                             </div>
+                            <small class="mt-0"></small>
                         </div>
                     </div>
 
@@ -148,6 +149,19 @@
         }, false);
     })();
 </script>
+
 <script>
-    $("form").validate();
+    var password = document.getElementById("Password")
+        , confirm_password = document.getElementById("ConfirmPassword");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Password does not match!!");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
 </script>

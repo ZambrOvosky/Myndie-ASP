@@ -41,6 +41,7 @@ Weekly Report
 Mudar AppDAO metodo GetTop5 -> Pegar mais vendidos
 Index - Mais Vendidos
 Pegar 10 mais vendidos na tela principal
+Confirmar Senha ao Registrar User
 
 /Feitos
 
@@ -54,7 +55,7 @@ EditGame
 Link Game e Genre
 WishList
 Index Last News
-Confirmar Senha ao Registrar User
+
 Formatar o preço com masked TxtBox
 
 

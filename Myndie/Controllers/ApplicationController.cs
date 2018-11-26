@@ -234,5 +234,27 @@ namespace Myndie.Controllers
             ViewBag.AppsSide = a;
             return PartialView();
         }
+
+        public ActionResult EditGame(int id)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application App = dao.SearchById(id);
+                if (App.DeveloperId == int.Parse(Session["DevId"].ToString()) || Session["ModId"] != null)
+                {
+                    ImageDAO idao = new ImageDAO();
+                    ViewBag.Imgs = idao.SearchAppImages(App.Id);
+                    ViewBag.App = App;
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+        }
     }
 }

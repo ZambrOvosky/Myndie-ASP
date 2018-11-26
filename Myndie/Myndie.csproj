@@ -627,6 +627,7 @@
     <Content Include="Views\Pegi\Edit.cshtml" />
     <Content Include="Views\Application\Moderator.cshtml" />
     <Content Include="Views\Application\_GenreGameRightSide.cshtml" />
+    <Content Include="Views\Application\EditGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
