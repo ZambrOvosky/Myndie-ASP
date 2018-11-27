@@ -233,5 +233,22 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("../Home/Index");
         }
+
+        public ActionResult RegisterMobile()
+        {
+            bool b = true;
+            if (b)
+            {
+                UserDAO dao = new UserDAO();
+                CountryDAO cdao = new CountryDAO();
+                LanguageDAO ldao = new LanguageDAO();
+                ViewBag.Class = "";
+                ViewBag.User = new User();
+                ViewBag.Country = cdao.List();
+                ViewBag.Lang = ldao.List();
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }    
 }

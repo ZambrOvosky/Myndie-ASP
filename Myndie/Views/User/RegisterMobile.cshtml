@@ -1,0 +1,280 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Myndie</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="/assets/images/icon.png">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/font-awesome/css/font-awesome.min.css" />
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+
+    <!-- myndie -->
+    <link rel="stylesheet" type="text/css" href="/assets/myndie/css/myndie.min.css" />
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/magnific-popup/dist/magnific-popup.css" />
+
+    <!-- entypo font -->
+    <link rel="stylesheet" href="/assets/css/entypo/css/entypo.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+
+    <!-- Social Likes -->
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/social-likes/dist/social-likes_flat.css" />
+
+    <!-- FilePond -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
+
+
+    <!-- RTL (uncomment this to enable RTL support) -->
+    <!-- <link rel="stylesheet" type="text/css" href="~/assets/myndie/css/myndie-rtl.css" /> -->
+
+</head>
+
+
+<body>
+
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <!-- Main Content -->
+    <section class="content-wrap">
+
+
+        <!-- Main Content -->
+        <section class="content-wrap">
+
+            <!-- Banner -->
+            <div class="myndie-banner banner-top myndie-banner-parallax small">
+                <div class="image" style="background-image: url('../assets/images/banner-blog-bg.jpg')">
+                </div>
+
+                <div class="info">
+                    <div>
+                        <div class="container align-center">
+                            <h1>REGISTER</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Banner -->
+
+            <form class="needs-validation" method="post" action="/User/Validate">
+                <div class="container myndie-content">
+
+                    <div class="container myndie-content m-0">
+
+                        <div class="col-md-9">
+                            <!-- register Information -->
+                            <h2 class="mt-0">User Details</h2>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Name:</p>
+                                    <div class="myndie-input">
+                                        <input type="text" class="form-control" id="Name" placeholder="Name" required name="user.Name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Username:</p>
+                                    <div class="myndie-input">
+                                        <input type="text" class="form-control" id="Username" placeholder="Username" required name="user.Username" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Password:</p>
+                                    <div class="myndie-input">
+                                        <input type="password" class="form-control" id="Password" placeholder="Password" required name="user.Password" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Confirm Password:</p>
+                                    <div class="myndie-input">
+                                        <input type="password" id="ConfirmPassword" name="confpass" placeholder="Confirm Password">
+                                    </div>
+                                    <small class="mt-0"></small>
+                                </div>
+                            </div>
+
+                            <!-- Country -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Country:</p>
+                                    <label class="myndie-select">
+                                        <select class="custom-select" required id="user.CountryId" name="user.CountryId">
+                                            <option value="1"> Brazil</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <p>Language:</p>
+                                    <label class="myndie-select">
+                                        <select class="custom-select" required id="user.LanguageId" name="user.LanguageId">
+                                            <option value="1"> Portugu&#234;s</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Email:</p>
+                                    <div class="myndie-input">
+                                        <input type="email" class="form-control" id="Email" placeholder="Email" required name="user.Email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Date of birth:</p>
+                                    <div class="myndie-input">
+                                        <input type="date" class="form-control" id="DateofBirth" value="1/1/0001 12:00:00 AM" placeholder="Date of Birth" required name="user.BirthDate" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /register Information -->
+
+                            <div class="" style="width:80%;" role="alert">
+                                <span class="field-validation-valid" data-valmsg-for="User.Name" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.Email" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.Username" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.Password" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.Password4" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.BirthDate" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.BirthNA" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.CountryId" data-valmsg-replace="true"></span><br />
+                                <span class="field-validation-valid" data-valmsg-for="User.LanguageId" data-valmsg-replace="true"></span><br />
+                            </div>
+
+                            <!-- Order Button -->
+                            <div class="align-right">
+                                <button type="submit" class="btn btn-lg">Register</button>
+                            </div>
+                            <!-- /Order Button -->
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- /Main Content -->
+
+        <script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+        </script>
+
+        <script>
+    var password = document.getElementById("Password")
+        , confirm_password = document.getElementById("ConfirmPassword");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Password does not match!!");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+        </script>
+
+    </section>
+    <!-- /Main Content -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.filedrop.js"></script>
+
+    <!-- include FilePond library -->
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+    <!-- include FilePond plugins -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+    <!-- include FilePond jQuery adapter -->
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
+
+    <!-- Hexagon Progress -->
+    <script type="text/javascript" src="/assets/bower_components/HexagonProgress/jquery.hexagonprogress.min.js"></script>
+
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Jarallax -->
+    <script type="text/javascript" src="/assets/bower_components/jarallax/dist/jarallax.min.js"></script>
+
+    <!-- Smooth Scroll -->
+    <script type="text/javascript" src="/assets/bower_components/smoothscroll-for-websites/SmoothScroll.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="/assets/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+    <!-- Countdown -->
+    <script type="text/javascript" src="/assets/bower_components/jquery.countdown/dist/jquery.countdown.min.js"></script>
+    <!-- myndie -->
+    <script type="text/javascript" src="/assets/myndie/js/myndie.min.js"></script>
+
+    <!-- Jarallax -->
+    <script type="text/javascript" src="/assets/bower_components/jarallax/dist/jarallax.min.js"></script>
+
+    <!-- Magnific Popup -->
+    <script type="text/javascript" src="/assets/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+
+    <!-- Social Likes -->
+    <script type="text/javascript" src="/assets/bower_components/social-likes/dist/social-likes.min.js"></script>
+
+
+    <!-- init myndie -->
+</body>
+
+</html>

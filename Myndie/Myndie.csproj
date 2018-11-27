@@ -630,6 +630,7 @@
     <Content Include="Views\Application\EditGame.cshtml" />
     <Content Include="Views\TypeApp\TypesAppBar.cshtml" />
     <Content Include="Views\Shared\_DeveloperLayout.cshtml" />
+    <Content Include="Views\User\RegisterMobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
