@@ -13,7 +13,7 @@
                 </div>
                 <div class="bar-chart block">
                     <h3>Monthly Report</h3>
-                    <canvas id="barChartExample2"></canvas>
+                    <canvas id="barChartSales2"></canvas>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -59,11 +59,14 @@
 
 
 <script src="~/assets/vendor/jquery/www_subdomain/jquery.min.js"></script>
+
 <script>
+    //Grafico 1
     $(document).ready(function () {
     "use strict";
     Chart.defaults.global.defaultFontColor = "#75787c";
         var Graph1 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Graph1) as String);
+        var r = !0;
         for (var i = 0; i <= 6; i++){
             if (Graph1[i] == null) {
                 var obj = { Date: Graph1[0].Date - i, TotalPrice: 0, Count: 0};
@@ -73,6 +76,60 @@
         var TotalPrice = [Graph1[6].TotalPrice, Graph1[5].TotalPrice, Graph1[4].TotalPrice, Graph1[3].TotalPrice, Graph1[2].TotalPrice, Graph1[1].TotalPrice, Graph1[0].TotalPrice];
     $(window).outerWidth() < 576 && (r = !1);        
     var a = $("#barChartSales1"), o = (new Chart(a, {
+        type: "bar", options: {
+            scales: {
+                xAxes: [{
+                    display: !1, gridLines: {
+                        color: "#eee",
+                        ticks: { beginAtZero: true, max: 100, min: 0 },
+
+                    }
+                }
+                ], yAxes: [{
+                    display: !1, ticks: { beginAtZero: true}, gridLines: {
+                        color: "#eee"
+                    }
+                }
+                ]
+            }
+        }
+        , data: {
+            labels: [Graph1[6].Date, Graph1[5].Date, Graph1[4].Date, Graph1[3].Date, Graph1[2].Date, Graph1[1].Date, Graph1[0].Date], datasets: [{
+                label: "Total Price", data: [Graph1[6].TotalPrice, Graph1[5].TotalPrice, Graph1[4].TotalPrice, Graph1[3].TotalPrice, Graph1[2].TotalPrice, Graph1[1].TotalPrice, Graph1[0].TotalPrice], backgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], hoverBackgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], borderColor: ["rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)"], borderWidth: 1
+            }
+            , {
+                label: "Sales Count", data: [Graph1[6].Count, Graph1[5].Count, Graph1[4].Count, Graph1[3].Count, Graph1[2].Count, Graph1[1].Count, Graph1[0].Count],backgroundColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], hoverBackgroundColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], borderColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], borderWidth: 1
+            }
+            ]
+        }
+    }
+    )
+    )
+})
+</script>
+<script>
+    //Grafico 2
+    $(document).ready(function () {
+    "use strict";
+    Chart.defaults.global.defaultFontColor = "#75787c";
+        var Graph2 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Graph2) as String);
+        console.log(Graph2);
+        for (var i = 0; i <= 11; i++) {
+            if (Graph2[i] == null) {
+                var obj = { Date: Graph2[0].Date - i, TotalPrice: 0 };
+                Graph2[i] = obj;
+            }
+        }
+        var r = !0;
+        var months = [Graph2[11].Date, Graph2[10].Date, Graph2[9].Date, Graph2[8].Date, Graph2[7].Date, Graph2[6].Date, Graph2[5].Date, Graph2[4].Date, Graph2[3].Date, Graph2[2].Date, Graph2[1].Date, Graph2[0].Date];
+        //var months = [12,1,2,3,4,5,6,7,8,9,10,11];
+        var mname = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        months.forEach(function (element, index, array) {
+            months[index] = mname[element - 1];
+        });
+        console.log(months)
+    $(window).outerWidth() < 576 && (r = !1);
+    var b = $("#barChartSales2"), o = (new Chart(b, {
         type: "bar", options: {
             scales: {
                 xAxes: [{
@@ -91,11 +148,8 @@
             }
         }
         , data: {
-            labels: [Graph1[6].Date, Graph1[5].Date, Graph1[4].Date, Graph1[3].Date, Graph1[2].Date, Graph1[1].Date, Graph1[0].Date], datasets: [{
-                label: "Total Price", data: [Graph1[6].TotalPrice, Graph1[5].TotalPrice, Graph1[4].TotalPrice, Graph1[3].TotalPrice, Graph1[2].TotalPrice, Graph1[1].TotalPrice, Graph1[0].TotalPrice], backgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], hoverBackgroundColor: ["rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)", "rgba(134, 77, 217, 0.57)"], borderColor: ["rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)", "rgba(134, 77, 217, 1)"], borderWidth: 1
-            }
-            , {
-                label: "Sale Count", data: [Graph1[6].Count, Graph1[5].Count, Graph1[4].Count, Graph1[3].Count, Graph1[2].Count, Graph1[1].Count, Graph1[0].Count],backgroundColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], hoverBackgroundColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], borderColor: ["rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)", "rgba(175, 175, 175, 0.7)"], borderWidth: 1
+            labels: [months[0], months[1], months[2], months[3], months[4], months[5], months[6], months[7], months[8], months[9], months[10], months[11], ], datasets: [{
+                label: "This Year", data: [Graph2[11].TotalPrice, Graph2[10].TotalPrice, Graph2[9].TotalPrice, Graph2[8].TotalPrice, Graph2[7].TotalPrice, Graph2[6].TotalPrice, Graph2[5].TotalPrice, Graph2[4].TotalPrice, Graph2[3].TotalPrice, Graph2[2].TotalPrice, Graph2[1].TotalPrice, Graph2[0].TotalPrice], backgroundColor: ["rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)"], hoverBackgroundColor: ["rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)", "rgba(238, 139, 152, 0.7)"], borderColor: ["rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)", "rgba(238, 139, 152, 1)"], borderWidth: 1
             }
             ]
         }

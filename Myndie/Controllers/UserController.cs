@@ -35,14 +35,20 @@ namespace Myndie.Controllers
             {
                 if(user.Password.Length > 4)
                 {
-                    user.CrtDate = DateTime.Now;
-                    user.Picture = "../../../media/default/default-user.png";
-                    UserDAO dao = new UserDAO();
-                    dao.Add(user);
-                    return RedirectToAction("Index", "Home");
+                    if (user.BirthDate <= DateTime.Now && user.BirthDate.Year >= 1900)
+                    {
+                        user.CrtDate = DateTime.Now;
+                        user.Picture = "../../../media/default/default-user.png";
+                        UserDAO dao = new UserDAO();
+                        dao.Add(user);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("user.BirthNA", "Your birth Date is not acceptable");
+                    }
                 }
                 else{ ModelState.AddModelError("user.Password4", "Your password needs to be at least 5 characters");
-
                 }
                  
             }

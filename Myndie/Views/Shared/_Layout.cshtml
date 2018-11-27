@@ -105,14 +105,7 @@
                             Categories <span class="caret"></span> <span class="label">Select a category</span>
                         </a>
                         <div class="dropdown-menu">
-                            <ul role="menu">
-                                <li>
-                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "1"})">Games</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("SearchByType", "Application", new { Type = "2"})">Softwares</a>
-                                </li>
-                            </ul>
+                            @Html.Action("TypesAppBar", "TypeApp", new { id = 1})
                         </div>
                     </li>
                     <!--<li class="dropdown dropdown-hover ">

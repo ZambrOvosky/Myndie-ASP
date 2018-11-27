@@ -50,71 +50,74 @@ namespace Myndie.Controllers
                     Developer Dev = ddao.SearchById(int.Parse(Session["DevId"].ToString()));
                     if (Dev != null)
                     {
-                        if (uniq == null)
+                        if(app.ReleaseDate.Year >= 1000 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
                         {
-                            app.DeveloperId = Dev.Id;
-                            dao = new ApplicationDAO();
-                            dao.Add(app);
-                            Dev.NumSoft++;
-                            ddao.Update();
-
-                            Application appreg = dao.GetDevLastGame(Dev.Id);
-                            try
+                            if (uniq == null)
                             {
-                                
-                                //Images
-                                int count = 0;
-                                foreach (var img in images)
+                                app.DeveloperId = Dev.Id;
+                                dao = new ApplicationDAO();
+                                dao.Add(app);
+                                Dev.NumSoft++;
+                                ddao.Update();
+
+                                Application appreg = dao.GetDevLastGame(Dev.Id);
+                                try
                                 {
-                                    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
-                                    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
-                                    Image i = new Image();
-                                    i.Url = "../../../media/app/" + filePath;
-                                    i.UserId = int.Parse(Session["Id"].ToString());
-                                    i.ApplicationId = appreg.Id;
-                                    idao.Add(i);
-                                    if (count == 0)
+
+                                    //Images
+                                    int count = 0;
+                                    foreach (var img in images)
                                     {
-                                        appreg.ImageUrl = i.Url;
-                                        count++;
-                                        dao.Update();
+                                        string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                                        img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+                                        Image i = new Image();
+                                        i.Url = "../../../media/app/" + filePath;
+                                        i.UserId = int.Parse(Session["Id"].ToString());
+                                        i.ApplicationId = appreg.Id;
+                                        idao.Add(i);
+                                        if (count == 0)
+                                        {
+                                            appreg.ImageUrl = i.Url;
+                                            count++;
+                                            dao.Update();
+                                        }
                                     }
+                                    //
                                 }
-                                //
-                            }
-                            catch
-                            {
-                                appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
-                                dao.Update();
-                                result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
-                            }
-                            try
-                            {
-                                //File
-                                string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
-                                if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + appreg.Id)))
+                                catch
                                 {
-                                    Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + appreg.Id));
+                                    appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
+                                    dao.Update();
+                                    result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
                                 }
-                                File.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + appreg.Id), filePath2));
-                                appreg.Archive = "../../../apps/appfiles/" + appreg.Id + "/" + filePath2;
-                                dao.Update();
-                                //
-                            }
-                            catch
-                            {
-                                result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
-                            }
-                            
+                                try
+                                {
+                                    //File
+                                    string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
+                                    if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + appreg.Id)))
+                                    {
+                                        Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + appreg.Id));
+                                    }
+                                    File.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + appreg.Id), filePath2));
+                                    appreg.Archive = "../../../apps/appfiles/" + appreg.Id + "/" + filePath2;
+                                    dao.Update();
+                                    //
+                                }
+                                catch
+                                {
+                                    result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                                }
 
-                            
 
-                            result = "Successfully Registered";
-                            return Json(result, JsonRequestBehavior.AllowGet);
-                            //return RedirectToAction("Register");
+
+
+                                result = "Successfully Registered";
+                                return Json(result, JsonRequestBehavior.AllowGet);
+                                //return RedirectToAction("Register");
+                            }
+                            else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
                         }
-                        else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
-
+                        else { result = "The release date is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }
                     }
                     else { result = "You are not a Developer"; return Json(result, JsonRequestBehavior.AllowGet); }
                 }
@@ -140,13 +143,16 @@ namespace Myndie.Controllers
                 ApplicationDAO dao = new ApplicationDAO();
                 DeveloperDAO ddao = new DeveloperDAO();
                 ImageDAO idao = new ImageDAO();
+                SellItemDAO sidao = new SellItemDAO();
                 Application app = dao.SearchById(id);
                 Developer dev = ddao.SearchById(app.DeveloperId);
                 CartDAO cdao = new CartDAO();
+                ViewBag.SellItem = false;
                 if (Session["Id"] != null)
                 {
                     ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
-                }
+                    ViewBag.SellItem = sidao.SearchUserApp(int.Parse(Session["Id"].ToString()), id);
+                }               
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
                 ViewBag.Img = idao.SearchAppImages(id);
@@ -241,11 +247,17 @@ namespace Myndie.Controllers
             {
                 ApplicationDAO dao = new ApplicationDAO();
                 Application App = dao.SearchById(id);
-                if (App.DeveloperId == int.Parse(Session["DevId"].ToString()) || Session["ModId"] != null)
+                UserDAO udao = new UserDAO();
+                TypeAppDAO tdao = new TypeAppDAO();
+                PegiDAO pdao = new PegiDAO();
+                if (Session["ModId"] != null ||  App.DeveloperId == int.Parse(Session["DevId"].ToString()))
                 {
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
                     ImageDAO idao = new ImageDAO();
                     ViewBag.Imgs = idao.SearchAppImages(App.Id);
                     ViewBag.App = App;
+                    ViewBag.Types = tdao.List();
+                    ViewBag.Pegis = pdao.List();
                     return View();
                 }
                 return RedirectToAction("Index", "Home");
@@ -254,6 +266,23 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            
+        }
+
+        public ActionResult UpdateInfo(Application app)
+        {
+            if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString())) {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(app.Id);
+                a.Name = app.Name;
+                a.Desc = app.Desc;
+                a.Price = app.Price;
+                a.TypeAppId = app.TypeAppId;
+                a.PegiId = app.PegiId;
+                dao.Update();
+                return RedirectToAction("EditGame", "Application", new { id=app.Id});
+            }
+            return RedirectToAction("Index", "Home");
             
         }
     }

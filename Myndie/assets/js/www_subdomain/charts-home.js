@@ -40,7 +40,8 @@ $(document).ready(function () {
             scales: {
                 xAxes: [{
                     display: !1, gridLines: {
-                        color: "#eee"
+                        color: "#eee",
+                        max: 60, min: 10
                     }
                 }
                 ], yAxes: [{
@@ -216,7 +217,7 @@ $(document).ready(function () {
             ]
         }
     }
-    )
+    );
 }
 
 );

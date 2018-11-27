@@ -110,5 +110,13 @@ namespace Myndie.Controllers
                 return RedirectToAction("../Home/Index");
             }
         }
+
+        public PartialViewResult TypesAppBar(int id)
+        {
+            TypeAppDAO dao = new TypeAppDAO();
+            ViewBag.Id = id;
+            ViewBag.TypesBar = dao.List();
+            return PartialView();
+        }
     }
 }

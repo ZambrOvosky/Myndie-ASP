@@ -1,0 +1,22 @@
+﻿@if (ViewBag.Id == 1)
+{
+    <ul role="menu">
+
+        @foreach (var t in ViewBag.TypesBar)
+        {
+            <li>
+                <a href="@Url.Action("SearchByType", "Application", new { Type = t.Id})">@t.Name</a>
+            </li>
+        }
+    </ul>
+
+}
+@if(ViewBag.Id == 2)
+{
+    <ul id="AppsDropdown" class="collapse list-unstyled ">
+        @foreach(var t in ViewBag.TypesBar)
+        {
+            <li><a href="@Url.Action("Moderator", "Application", new { id = t.Id})">@t.Name</a></li>
+        }
+    </ul>
+}

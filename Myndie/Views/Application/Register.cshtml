@@ -57,10 +57,15 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <p>Files:</p>
-                        <div class="myndie-input">
-                            <input type="file" class="form-control" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
-                        </div>
+                        <p>Pegi:</p>
+                        <label class="myndie-select">
+                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
+                                @foreach (var p in ViewBag.Pegi)
+                                {
+                                    <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
+                                }
+                            </select>
+                        </label>
                     </div>
                 </div>
                 <div class="row">
@@ -85,31 +90,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Pegi:</p>
-                        <label class="myndie-select">
-                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
-                                @foreach (var p in ViewBag.Pegi)
-                                {
-                                    <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
-                                }
-                            </select>
-                        </label>
+                        <p>File:</p>
+                        <div class="myndie-input">
+                            <input type="file" class="form-control" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Images:</p>
+                        <div class="myndie-input">
+                            <input type="file"
+                                   class="my-pond"
+                                   name="images"
+                                   multiple
+                                   id="my-pond"
+                                   data-max-file-size="3MB"
+                                   data-max-files="3"
+                                   accept="image/*">
+                        </div>
                     </div>
                 </div>
                 <br /><br />
 
-                <div class="row col-md-6 align-self-center" >
-                    <p>Images:</p>
-                    <input type="file"
-                            class="my-pond"
-                            name="images"
-                            multiple
-                            id="my-pond"
-                            data-max-file-size="3MB"
-                            data-max-files="3"
-                           >
-                    <br />
-                </div>
+                
                 <br /><br />
 
                 <div class="align-center">
@@ -150,6 +152,7 @@
     </script>
     <script>
         function AjaxPostRegisterApp(formData) {
+            alert("Wait... Uploading...")
             var ajaxConfig = {
                 type: "post",
                 url: "/Application/Validate",

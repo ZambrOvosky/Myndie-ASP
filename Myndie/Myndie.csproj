@@ -628,6 +628,8 @@
     <Content Include="Views\Application\Moderator.cshtml" />
     <Content Include="Views\Application\_GenreGameRightSide.cshtml" />
     <Content Include="Views\Application\EditGame.cshtml" />
+    <Content Include="Views\TypeApp\TypesAppBar.cshtml" />
+    <Content Include="Views\Shared\_DeveloperLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

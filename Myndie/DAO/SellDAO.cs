@@ -59,5 +59,19 @@ namespace Myndie.DAO
             var sells = (from s in list select s).GroupBy(s => s.Date.Date).Select(g => new { Date = g.Key.Day, TotalPrice = g.Sum(s => s.TotalPrice), Count = g.Count()}).ToList();
             return sells;
         }
+
+        public dynamic GetMonthlySells()
+        {
+            var list = (from s in context.Sells where (s.Date.Month <= (DateTime.Now.Month) && s.Date.Year.Equals(DateTime.Now.Year)) || (s.Date.Month >= DateTime.Now.Month && s.Date.Year.Equals(DateTime.Now.Year - 1)) orderby s.Date descending select s).ToList();
+            var sells = (from s in list select s).GroupBy(s => s.Date.Month).Select(g => new { Date = g.Key, TotalPrice = g.Sum(s => s.TotalPrice)}).ToList();
+            return sells;
+        }
+
+        public dynamic GetMonthlySellsLY()
+        {
+            var list = (from s in context.Sells where (s.Date.Month <= (DateTime.Now.Month) && s.Date.Year.Equals(DateTime.Now.Year-1)) || (s.Date.Month >= DateTime.Now.Month && s.Date.Year.Equals(DateTime.Now.Year - 2)) orderby s.Date descending select s).ToList();
+            var sells = (from s in list select s).GroupBy(s => s.Date.Month).Select(g => new { Date = g.Key, TotalPrice = g.Sum(s => s.TotalPrice) }).ToList();
+            return sells;
+        }
     }
 }

@@ -42,25 +42,27 @@ Mudar AppDAO metodo GetTop5 -> Pegar mais vendidos
 Index - Mais Vendidos
 Pegar 10 mais vendidos na tela principal
 Confirmar Senha ao Registrar User
+Mudar Apps(Moderador) e Categories(Layout) para pegar o TypeApp
+Montlhy Report
+Impedir 2 compras
 
 /Feitos
 
-Montlhy Report
-Approved tela de produtos no dashboard
+Terminar DevLayout e Edit Game
 Botao See More Index
-Fazer Busca por Genero e Linkar com a partial View RightSide
 Fazer Buscas do Menu Superior
-Mudar Apps(Moderador) e Categories(Layout) para pegar o TypeApp
-EditGame
-Link Game e Genre
 WishList
 Index Last News
-
+Esqueceu a Senha
 Formatar o preço com masked TxtBox
-
+EditGame
+Link Game e Genre
+Approved tela de produtos no dashboard
+Fazer Busca por Genero e Linkar com a partial View RightSide
+Ultimo Grafico
 
 Formatar Release Date //N sei
-Esqueceu a Senha
+
 Text Area para desc
 Pagina de Admin Devs
 
