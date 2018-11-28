@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_DeveloperLayout.cshtml";
+}
+
+<section class="no-padding-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 block">
+                <div class="title"><strong>Your Apps</strong></div>
+                <div class="block-body">
+                    <div class="table-responsive">
+                        <table id="datatable1" style="width: 100%;" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Version</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Approved</th>
+                                    <th class="text-center">Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var a in ViewBag.Apps)
+                                {
+                                    <tr>
+                                        <td class="text-center"><a>@a.Id</a></td>
+                                        <td class="text-center"><a>@a.Name</a></td>
+                                        <td class="text-center">@a.Version</td>
+                                        <td class="text-center">@a.Price</td>
+                                        @if (a.Approved == 1)
+                                        {
+                                            <td class="text-center">True</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center">False</td>
+                                        }
+                                        <td class="text-center"><a href="@Url.Action("EditGame", "Application", new { id = a.Id})" class="btn sm btn-info ladda-button">Edit</a> <a href="@Url.Action("Remove", "Application", new { id = a.Id})" class="btn sm btn-primary ladda-button">Remove</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

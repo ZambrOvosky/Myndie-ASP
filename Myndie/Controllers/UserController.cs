@@ -256,6 +256,7 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
         public ActionResult Wishlist()
         {
             if (Session["Id"] != null)
@@ -265,30 +266,58 @@ namespace Myndie.Controllers
 
                 int UserId = int.Parse(Session["Id"].ToString());
 
-                ViewBag.WishApps = wdao.GetUserList(UserId);
-                ViewBag.Apps = adao.List();
+                IList<Wishlist> wishs = wdao.GetUserList(UserId);
+                IList<Application> apps = new List<Application>();
+                foreach(var w in wishs)
+                {
+                    apps.Add(adao.SearchById(w.ApplicationId));
+                }
+                ViewBag.WishApps = wishs;
+                ViewBag.Apps = apps;
                 return View();
             }
             return RedirectToAction("Index", "Home");
         }
+
         public ActionResult AddToWishlist(int ApplicationId, int UserId)
         {
-            WishlistDAO wdao = new WishlistDAO();
-            w.ApplicationId = ApplicationId;
-            w.UserId = UserId;
-            return RedirectToAction("Index", "Home");
-        }
-        public ActionResult RemoveOFWishlist(int ApplicationId, int UserId)
-        {
-            WishlistDAO wdao = new WishlistDAO();
-            Wishlist w = new Wishlist
+            if (Session["Id"] != null)
             {
-                ApplicationId = ApplicationId,
-                UserId = UserId
-            };
-            wdao.Remove(w);
+                WishlistDAO wdao = new WishlistDAO();
+                Wishlist w = new Wishlist();
+                w.ApplicationId = ApplicationId;
+                w.UserId = UserId;
+                wdao.Add(w);
+                return RedirectToAction("Product", "Application", new { id = ApplicationId});
+            }
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult RemoveFromWishlist(int ApplicationId, int UserId, string loc)
+        {
+            try
+            {
+                if (Session["Id"] != null)
+                {
+                    WishlistDAO wdao = new WishlistDAO();
+                    Wishlist w = wdao.GetWishItem(UserId, ApplicationId);
+                    wdao.Remove(w);
+                    if (loc.Equals("Product"))
+                    {
+                        return RedirectToAction("Product", "Application", new { id = ApplicationId });
+                    }
+                    else if (loc.Equals("Wishlist"))
+                    {
+                        return RedirectToAction("Wishlist", "User");
+                    }
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+        }
     }
 }

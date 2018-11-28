@@ -640,6 +640,7 @@
     <Content Include="Views\User\RegisterMobile.cshtml" />
     <Content Include="Views\Review\_ListReview.cshtml" />
     <Content Include="Views\User\Wishlist.cshtml" />
+	<Content Include="Views\Developer\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

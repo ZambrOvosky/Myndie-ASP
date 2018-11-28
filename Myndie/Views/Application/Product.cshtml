@@ -20,9 +20,19 @@
                     }
                     @if (Session["Id"] != null)
                     {
-                        <a href="@Url.Action("AddtoWishlist", "User", new { ApplicationId = ViewBag.App.Id })?UserId=@int.Parse(Session["Id"].ToString())" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                        if (ViewBag.IsInWish)
+                        {
+                            <a href="@Url.Action("RemoveFromWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()), loc = "Product" })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="entypo-heart"></i></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("AddtoWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()) })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                        }
+
                     }
-                    
+                    else {
+                        <a href="@Url.Action("Register", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                    }
                 </div>
             </div>
         </div>

@@ -48,18 +48,19 @@ Impedir 2 compras
 Sistema de Review
 Resolvido Bug com Compras
 Terminar DevLayout
+WishList
+Arrumar Upload de nova foto no EditGame
 
 /Feitos
 
-Edit Game
+
+Edit Game botao remove
 Botao See More Index
 Fazer Buscas do Menu Superior
-WishList
 Tela Produto colocar info do dev
 Index Last News
 Esqueceu a Senha
 Formatar o preço com masked TxtBox
-EditGame
 Link Game e Genre
 Approved tela de produtos no dashboard
 Fazer Busca por Genero e Linkar com a partial View RightSide

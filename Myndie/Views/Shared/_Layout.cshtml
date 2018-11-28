@@ -196,7 +196,7 @@
                                         <div class="col-xs-3 col-md-4">
                                             <a href="#" class="angled-img">
                                                 <div class="img">
-                                                    <img src="@Html.Action("GetAppImage", "Application", new { id = a.ApplicationId})" alt="">
+                                                    <img src="@Html.Action("GetAppImage", "Application", new { id = a.ApplicationId})" style="height: 45px" alt="">
                                                 </div>
                                             </a>
                                         </div>
@@ -245,7 +245,7 @@
                                     <li class="divider"></li>
 
                                     <li>
-                                        <a href="">Wishlist <span class="badge pull-right bg-primary">13</span></a>
+                                        <a href="@Url.Action("Wishlist", "User")">Wishlist <span class="badge pull-right bg-primary"></span></a>
                                     </li>
 
                                     <li class="divider"></li>
@@ -462,7 +462,9 @@
                 url: "../../../User/Login",
                 data: new FormData(formData),
                 success: function (result) {
-                    alert(result);
+                    if (result != 'Logged In') {
+                        alert(result);
+                    }                    
                     window.location.href = "/Home/Index"
                 }
             }

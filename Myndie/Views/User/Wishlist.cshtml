@@ -13,7 +13,7 @@
         <div class="info">
             <div>
                 <div class="container align-center">
-                    <h1>Search</h1>
+                    <h1>Wishlist</h1>
                 </div>
             </div>
         </div>
@@ -26,56 +26,64 @@
         <div class="col-md-9">
 
             <div class="isotope-list">
-                @foreach (var w in ViewBag.WishApps)
+                @if (ViewBag.WishApps.Count == 0)
                 {
-                    foreach (var a in ViewBag.Apps)
-                    {
-                        if (w.ApplicationId == a.Id)
-                        {
-                            <!-- Single Product Block -->
-                            <a href="~/Application/Product/@a.Id" class="item angled-bg">
-                                <div class="row">
-                                    <div class="col-lg-2 col-md-3 col-xs-4">
-                                        <div class="angled-img">
-                                            <div class="img">
-                                                @if (a.ImageUrl != null && a.ImageUrl != "")
-                                                {
-                                                    <img src="@a.ImageUrl" style="height: 80px" alt="">
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
-                                                }
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-10 col-md-9 col-xs-8">
-                                        <div class="row">
-                                            <div class="col-xs-6 col-md-9">
-                                                <h4>@a.Name</h4>
-                                                <div class="rating">
-                                                    <i class="entypo-star"></i>
-                                                    <i class="entypo-star"></i>
-                                                    <i class="entypo-star"></i>
-                                                    <i class="entypo-star"></i>
-                                                    <i class="entypo-star"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-md-3 align-right">
-                                                <div class="price">
-                                                    US$ @a.Price
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /Single Product Block -->
-                        }
-
-                    }
+                    <strong> You don't have any apps in your Wishlist</strong>
                 }
+                else
+                {
+                    foreach (var w in ViewBag.WishApps)
+                    {
+                        foreach (var a in ViewBag.Apps)
+                        {
+                            if (w.ApplicationId == a.Id)
+                            {
+                                <!-- Single Product Block -->
+                                <a href="~/Application/Product/@a.Id" class="item angled-bg">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3 col-xs-4">
+                                            <div class="angled-img">
+                                                <div class="img">
+                                                    @if (a.ImageUrl != null && a.ImageUrl != "")
+                                                    {
+                                                        <img src="@a.ImageUrl" style="height: 80px" alt="">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10 col-md-9 col-xs-8">
+                                            <div class="row">
+                                                <div class="col-xs-6 col-md-9">
+                                                    <h4>@a.Name</h4>
+                                                    <div class="rating">
+                                                        <i class="entypo-star"></i>
+                                                        <i class="entypo-star"></i>
+                                                        <i class="entypo-star"></i>
+                                                        <i class="entypo-star"></i>
+                                                        <i class="entypo-star"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-md-3 align-right">
+                                                    <div class="price">
+                                                        US$ @a.Price
+                                                    </div>
+                                                    <div onclick="location.href='@Url.Action("RemoveFromWishlist", "User", new { ApplicationId = a.Id, UserId = int.Parse(Session["Id"].ToString()), loc = "Wishlist" })'" class="remove entypo-cancel"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- /Single Product Block -->
+                            }
+
+                        }
+                    }
+            }
 
 
 

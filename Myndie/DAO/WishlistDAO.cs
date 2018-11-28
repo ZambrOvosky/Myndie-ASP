@@ -15,23 +15,41 @@ namespace Myndie.DAO
             context.SaveChanges();
         }
 
-        public void Add(Wishlist w)
+        public void Add(Wishlist wish)
         {
-            context.Wishlists.Add(w);
+            context.Wishlists.Add(wish);
             Update();
         }
+
         public IList<Wishlist> List()
         {
             return context.Wishlists.ToList();
         }
-        public void Remove(Wishlist app)
+
+        public void Remove(Wishlist wish)
         {
-            context.Wishlists.Remove(app);
+            context.Wishlists.Remove(wish);
             Update();
         }
+
         public IList<Wishlist> GetUserList(int UserID)
         {
             return (from a in context.Wishlists where a.UserId == UserID select a).ToList();
+        }
+
+        public bool IsInWishList(int UserId, int AppId)
+        {
+            IList<Wishlist> wishs = (from w in context.Wishlists where w.UserId == UserId && w.ApplicationId == AppId select w).ToList();
+            bool b = false;
+            if (wishs.Count > 0)
+            {
+                b = true;
+            }
+            return b;
+        }
+        public Wishlist GetWishItem(int UserId, int AppId)
+        {
+            return (from w in context.Wishlists where w.UserId == UserId && w.ApplicationId == AppId select w).FirstOrDefault();
         }
     }
 }

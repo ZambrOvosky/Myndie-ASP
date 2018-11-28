@@ -19,7 +19,7 @@ namespace Myndie.Controllers
         }
 
         public ActionResult Register()
-        {          
+        {
             if (Session["DevId"] != null)
             {
                 TypeAppDAO tdao = new TypeAppDAO();
@@ -33,7 +33,7 @@ namespace Myndie.Controllers
                 return View();
             }
             return RedirectToAction("../Home/Index");
-            
+
         }
 
         public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File)
@@ -52,7 +52,7 @@ namespace Myndie.Controllers
                     Developer Dev = ddao.SearchById(int.Parse(Session["DevId"].ToString()));
                     if (Dev != null)
                     {
-                        if(app.ReleaseDate.Year >= 1000 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
+                        if (app.ReleaseDate.Year >= 1900 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
                         {
                             if (uniq == null)
                             {
@@ -138,7 +138,7 @@ namespace Myndie.Controllers
             //return View("Register");
         }
 
-        public ActionResult Product (int id)
+        public ActionResult Product(int id)
         {
             try
             {
@@ -154,7 +154,9 @@ namespace Myndie.Controllers
                 {
                     ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
                     ViewBag.SellItem = sidao.SearchUserApp(int.Parse(Session["Id"].ToString()), id);
-                }               
+                    WishlistDAO wdao = new WishlistDAO();
+                    ViewBag.IsInWish = wdao.IsInWishList(int.Parse(Session["Id"].ToString()), id);
+                }
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
                 ViewBag.Img = idao.SearchAppImages(id);
@@ -229,7 +231,7 @@ namespace Myndie.Controllers
             catch
             {
                 return RedirectToAction("../Home/Index");
-            }            
+            }
         }
 
         public PartialViewResult _GenreGameRightSide()
@@ -252,7 +254,7 @@ namespace Myndie.Controllers
                 UserDAO udao = new UserDAO();
                 TypeAppDAO tdao = new TypeAppDAO();
                 PegiDAO pdao = new PegiDAO();
-                if (Session["ModId"] != null ||  App.DeveloperId == int.Parse(Session["DevId"].ToString()))
+                if (Session["ModId"] != null || App.DeveloperId == int.Parse(Session["DevId"].ToString()))
                 {
                     ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
                     ImageDAO idao = new ImageDAO();
@@ -268,12 +270,13 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         public ActionResult UpdateInfo(Application app)
         {
-            if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString())) {
+            if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString()))
+            {
                 ApplicationDAO dao = new ApplicationDAO();
                 Application a = dao.SearchById(app.Id);
                 a.Name = app.Name;
@@ -282,10 +285,150 @@ namespace Myndie.Controllers
                 a.TypeAppId = app.TypeAppId;
                 a.PegiId = app.PegiId;
                 dao.Update();
-                return RedirectToAction("EditGame", "Application", new { id=app.Id});
+                return RedirectToAction("EditGame", "Application", new { id = app.Id });
             }
             return RedirectToAction("Index", "Home");
-            
+
         }
+
+        public ActionResult Remove(int id)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                ImageDAO idao = new ImageDAO();
+                Application a = dao.SearchById(id);
+                if (Session["ModId"] != null || int.Parse(Session["DevId"].ToString()) == a.DeveloperId)
+                {
+                    try
+                    {
+                        IList<Image> imgs = idao.SearchAppImages(a.Id);
+                        foreach (var i in imgs)
+                        {
+                            string p = i.Url;
+                            p = p.Replace("../../..", "../..");
+                            string fullPath = Request.MapPath(p);
+                            idao.Remove(i);
+                            if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                            }
+                        }
+
+                    }
+                    catch { }
+                    try
+                    {
+                        string pa = a.Archive;
+                        pa = pa.Replace("../../..", "../..");
+                        string fullPathArch = Request.MapPath(pa);
+                        if (System.IO.File.Exists(fullPathArch))
+                        {
+                            System.IO.File.Delete(fullPathArch);
+                        }
+                        
+                    }
+                    catch { }
+                    dao.Remove(a);
+                    return RedirectToAction("Summary", "Developer");
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult EditPhoto(int id, int PhotoId, HttpPostedFileBase img)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(id);
+                if (Session["ModId"] != null || int.Parse(Session["DevId"].ToString()) == a.DeveloperId)
+                {
+                    ImageDAO idao = new ImageDAO();
+
+                    Image i = idao.SearchById(PhotoId);
+                    bool b = false;
+                    if (a.ImageUrl == i.Url)
+                    {
+                        b = true;
+                    }
+                    //Delete Photo in Server
+                    string p = i.Url;
+                    p = p.Replace("../../..", "..");
+                    string fullPath = Request.MapPath(p);
+                    idao.Remove(i);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                    }
+                    //Upload
+                    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+                    Image im = new Image();
+                    im.Url = "../../../media/app/" + filePath;
+                    im.UserId = int.Parse(Session["Id"].ToString());
+                    im.ApplicationId = a.Id;
+                    idao.Add(im);
+
+                    if (b)
+                    {
+                        a.ImageUrl = im.Url;
+                        dao.Update();
+                    }
+
+                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch { return RedirectToAction("Index", "Home"); }
+        }
+
+        public ActionResult TurntoMain(int id, int AppId)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(AppId);
+                if (Session["ModId"] != null || int.Parse(Session["DevId"].ToString()) == a.DeveloperId)
+                {
+                    ImageDAO idao = new ImageDAO();
+                    Image i = idao.SearchById(id);
+                    a.ImageUrl = i.Url;
+                    dao.Update();
+                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch { return RedirectToAction("Index", "Home"); }
+        }
+
+        public ActionResult NewPhoto(int id, HttpPostedFileBase img)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(id);
+                if (Session["ModId"] != null || int.Parse(Session["DevId"].ToString()) == a.DeveloperId)
+                {
+                    ImageDAO idao = new ImageDAO();
+                    string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                    img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+                    Image im = new Image();
+                    im.Url = "../../../media/app/" + filePath;
+                    im.UserId = int.Parse(Session["Id"].ToString());
+                    im.ApplicationId = a.Id;
+                    idao.Add(im);
+                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch { return RedirectToAction("Index", "Home"); }
+        }
+
+        //public ActionResult 
     }
 }

@@ -76,89 +76,71 @@
                     <div class="block-body">
                         <div class="container-fluid">
                             <div class="row">
+                                @*MAIN IMAGE*@
+                                @foreach(var img in ViewBag.Imgs)
+                                {
                                 <div class="col-md-6 col-xl-6">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="media align-items-center">
-                                                <span style="background-image: url(../../../../assets/img/www_subdomain/avatar-0.jpg)"
+                                                <span style="background-image: url(@img.Url)"
                                                       class="avatar avatar-xl mr-3"></span>
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="card-text mb-0">Main Image</h5>
-                                                    <p class="card-text">
-                                                        <div class="form-group">
-                                                            <input type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected" multiple />
-                                                            <label for="upload" class="m-3"><span>Change</span></label>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                        </div>
-                                                    </p>
+                                                    <h5 class="card-text mb-0">Image</h5>
+                                                    <form action="/Application/EditPhoto" method="post"  enctype="multipart/form-data">
+                                                        <p class="card-text">
+                                                            <input type="hidden" value="@ViewBag.App.Id" name="id" />
+                                                            <input type="hidden" value="@img.Id" name="PhotoId" />
+                                                            <div class="form-group">
+                                                                <input type="file" class="hide inputfile" name="img" id="upload + @img.Id" accept="image/*"/>
+                                                                <label for="upload" class="m-3"><span>Change</span></label>
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("TurntoMain", "Application", new { id = img.Id, AppId = ViewBag.App.Id})'">Turn to Main</button>
+                                                            </div>
+                                                        </p>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="block">
+                    <div class="title"><strong>Add New Image</strong></div>
+                    <div class="block-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                @if (ViewBag.Imgs.Count < 5)
+                                {
                                 <div class="col-md-6 col-xl-6">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="media align-items-center">
-                                                <span style="background-image: url(../../../../assets/img/www_subdomain/avatar-0.jpg)"
-                                                      class="avatar avatar-xl mr-3"></span>
                                                 <div class="media-body overflow-hidden">
-                                                    <h5 class="card-text mb-0">Main Image</h5>
-                                                    <p class="card-text">
-                                                        <div class="form-group">
-                                                            <input type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected"
-                                                                   multiple />
-                                                            <label for="upload" class="m-3"><span>Change</span></label>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                        </div>
-                                                    </p>
+                                                    <h5 class="card-text mb-0">New Image</h5>
+                                                    <form action="/Application/NewPhoto" method="post"  enctype="multipart/form-data">
+                                                        <p class="card-text">
+                                                            <input type="hidden" value="@ViewBag.App.Id" name="id" />
+                                                            <div class="form-group">
+                                                                <input type="file" class="hide inputfile" name="img" id="upload" accept="image/*"/>
+                                                                <label for="upload" class="m-3"><span>Upload</span></label>
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </p>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-xl-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="media align-items-center">
-                                                <span style="background-image: url(../../../../assets/img/www_subdomain/avatar-0.jpg)"
-                                                      class="avatar avatar-xl mr-3"></span>
-                                                <div class="media-body overflow-hidden">
-                                                    <h5 class="card-text mb-0">Main Image</h5>
-                                                    <p class="card-text">
-                                                        <div class="form-group">
-                                                            <input type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected"
-                                                                   multiple />
-                                                            <label for="upload" class="m-3"><span>Change</span></label>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                        </div>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xl-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="media align-items-center">
-                                                <span style="background-image: url(../../../../assets/img/www_subdomain/avatar-0.jpg)"
-                                                      class="avatar avatar-xl mr-3"></span>
-                                                <div class="media-body overflow-hidden">
-                                                    <h5 class="card-text mb-0">Main Image</h5>
-                                                    <p class="card-text">
-                                                        <div class="form-group">
-                                                            <input type="file" class="hide inputfile" id="upload" data-multiple-caption="{count} files selected"
-                                                                   multiple />
-                                                            <label for="upload" class="m-3"><span>Change</span></label>
-                                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                                        </div>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+                                else { <strong>You have the maximum amount of images</strong>}
                             </div>
                         </div>
                     </div>
@@ -169,7 +151,7 @@
 </section>
 <script>
     var inputs = document.querySelectorAll('.inputfile');
-    Array.prototype.forEach.call(inputs, function (input) {
+    inputs.forEach.call(inputs, function (input) {
         var label = input.nextElementSibling,
             labelVal = label.innerHTML;
 

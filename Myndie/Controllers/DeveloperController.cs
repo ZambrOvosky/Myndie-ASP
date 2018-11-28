@@ -41,7 +41,7 @@ namespace Myndie.Controllers
                 u.DeveloperId = devel.Id;
                 udao.Update();
                 Session["DevId"] = u.DeveloperId;
-                return RedirectToAction("Register");
+                return RedirectToAction("ProfileView", "Developer");
             }
             ViewBag.Class = "alert alert-danger";
             ViewBag.Dev = dev;
@@ -98,9 +98,20 @@ namespace Myndie.Controllers
             }
         }
 
-        public ActionResult ViewGames()
+        public ActionResult Summary()
         {
-            return View();
+            if (Session["DevId"] != null)
+            {
+                DeveloperDAO dao = new DeveloperDAO();
+                UserDAO udao = new UserDAO();
+                ApplicationDAO adao = new ApplicationDAO();
+                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                ViewBag.Apps = adao.GetDevGames(d.Id);
+                ViewBag.Dev = d;
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
