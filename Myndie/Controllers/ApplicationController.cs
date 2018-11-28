@@ -429,6 +429,52 @@ namespace Myndie.Controllers
             catch { return RedirectToAction("Index", "Home"); }
         }
 
-        //public ActionResult 
+        public ActionResult Explore(string type)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            CartDAO cdao = new CartDAO();
+            if (Session["Id"] != null)
+            {
+                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+            }
+            if (type.Equals("Featured"))
+            {
+                ViewBag.Apps = dao.GetTopApps();  
+            }
+            else if (type.Equals("Explore"))
+            {
+                ViewBag.Apps = dao.List();
+            }
+            else if (type.Equals("Free"))
+            {
+                ViewBag.Apps = dao.GetFreeApps();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View("Search");
+        }
+
+        public ActionResult RemoveImage(int id, int AppId)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(id);
+                if (Session["ModId"] != null || int.Parse(Session["DevId"].ToString()) == a.DeveloperId)
+                {
+                    ImageDAO idao = new ImageDAO();
+                    Image i = idao.SearchById(id);
+                    idao.Remove(i);
+                    return RedirectToAction("EditGame", "Application", new { id = AppId});
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }            
+        }
     }
 }

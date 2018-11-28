@@ -84,13 +84,13 @@
                         <div class="dropdown-menu">
                             <ul role="menu">
                                 <li>
-                                    <a href="@Url.Action("Search", "Application", new { search= " "})">Featured</a>
+                                    <a href="@Url.Action("Explore", "Application", new { type= "Featured"})">Featured</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Search", "Application", new { search= " "})">Explore</a>
+                                    <a href="@Url.Action("Explore", "Application", new { type= "Explore"})">Explore</a>
                                 </li>
                                 <li>
-                                    <a href="">Free</a>
+                                    <a href="@Url.Action("Explore", "Application", new { type = "Free"})">Free</a>
                                 </li>
                             </ul>
                         </div>

@@ -104,5 +104,21 @@ namespace Myndie.DAO
             }
             return apps;
         }
+
+        public IList<Application> GetTopApps()
+        {
+            var si = (from s in context.SellItems select s).GroupBy(s => s.ApplicationId).Select(s => new { Count = s.Count(), Id = s.Key }).OrderByDescending(s => s.Count).ToList();
+            IList<Application> apps = new List<Application>();
+            foreach (var s in si)
+            {
+                apps.Add(SearchById(s.Id));
+            }
+            return apps;
+        }
+
+        public IList<Application> GetFreeApps()
+        {
+            return (from a in context.Applications where a.Price == 0 select a).ToList();
+        }
     }
 }

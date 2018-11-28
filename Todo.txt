@@ -50,13 +50,13 @@ Resolvido Bug com Compras
 Terminar DevLayout
 WishList
 Arrumar Upload de nova foto no EditGame
+Botao See More Index
+Fazer Buscas do Menu Superior
 
 /Feitos
 
 
 Edit Game botao remove
-Botao See More Index
-Fazer Buscas do Menu Superior
 Tela Produto colocar info do dev
 Index Last News
 Esqueceu a Senha

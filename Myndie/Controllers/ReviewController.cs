@@ -37,6 +37,7 @@ namespace Myndie.Controllers
             bool b = false;
             foreach (var r in list)
             {
+                b = false;
                 foreach (var u in users)
                 {
                     if (u.Id == r.UserId)
