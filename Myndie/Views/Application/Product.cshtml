@@ -18,7 +18,11 @@
                     else {
                         <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id })" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
                     }
-                    <a href="#!" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="entypo-heart-empty"></i></a>
+                    @if (Session["Id"] != null)
+                    {
+                        <a href="@Url.Action("AddtoWishlist", "User", new { ApplicationId = ViewBag.App.Id })?UserId=@int.Parse(Session["Id"].ToString())" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                    }
+                    
                 </div>
             </div>
         </div>

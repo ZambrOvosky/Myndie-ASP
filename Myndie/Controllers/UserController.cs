@@ -256,6 +256,39 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Wishlist()
+        {
+            if (Session["Id"] != null)
+            {
+                WishlistDAO wdao = new WishlistDAO();
+                ApplicationDAO adao = new ApplicationDAO();
 
-    }    
+                int UserId = int.Parse(Session["Id"].ToString());
+
+                ViewBag.WishApps = wdao.GetUserList(UserId);
+                ViewBag.Apps = adao.List();
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult AddToWishlist(int ApplicationId, int UserId)
+        {
+            WishlistDAO wdao = new WishlistDAO();
+            w.ApplicationId = ApplicationId;
+            w.UserId = UserId;
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult RemoveOFWishlist(int ApplicationId, int UserId)
+        {
+            WishlistDAO wdao = new WishlistDAO();
+            Wishlist w = new Wishlist
+            {
+                ApplicationId = ApplicationId,
+                UserId = UserId
+            };
+            wdao.Remove(w);
+            return RedirectToAction("Index", "Home");
+        }
+
+    }
 }

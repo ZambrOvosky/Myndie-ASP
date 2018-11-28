@@ -200,6 +200,7 @@
     <Compile Include="DAO\TypeAppDAO.cs" />
     <Compile Include="DAO\UpdateNotesDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DAO\WishlistDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -638,6 +639,7 @@
     <Content Include="Views\Shared\_DeveloperLayout.cshtml" />
     <Content Include="Views\User\RegisterMobile.cshtml" />
     <Content Include="Views\Review\_ListReview.cshtml" />
+    <Content Include="Views\User\Wishlist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
