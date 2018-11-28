@@ -45,6 +45,8 @@ Confirmar Senha ao Registrar User
 Mudar Apps(Moderador) e Categories(Layout) para pegar o TypeApp
 Montlhy Report
 Impedir 2 compras
+Sistema de Review
+Resolvido Bug com Compras
 
 /Feitos
 
@@ -52,6 +54,7 @@ Terminar DevLayout e Edit Game
 Botao See More Index
 Fazer Buscas do Menu Superior
 WishList
+Tela Produto colocar info do dev
 Index Last News
 Esqueceu a Senha
 Formatar o preço com masked TxtBox

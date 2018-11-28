@@ -85,97 +85,104 @@
             </div>
             <!-- /Banner -->
 
-            <form class="needs-validation" method="post" action="/User/Validate">
-                <div class="container myndie-content">
+<form class="needs-validation" method="post" action="/User/Validate">
+        <div class="container myndie-content">
 
-                    <div class="container myndie-content m-0">
+            <div class="container myndie-content m-0">
 
-                        <div class="col-md-9">
-                            <!-- register Information -->
-                            <h2 class="mt-0">User Details</h2>
+                <div class="col-md-9">
+                    <!-- register Information -->
+                    <h2 class="mt-0">User Details</h2>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Name:</p>
-                                    <div class="myndie-input">
-                                        <input type="text" class="form-control" id="Name" placeholder="Name" required name="user.Name" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Username:</p>
-                                    <div class="myndie-input">
-                                        <input type="text" class="form-control" id="Username" placeholder="Username" required name="user.Username" />
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Name:</p>
+                            <div class="myndie-input">
+                                <input type="text" class="form-control" id="Name" value="@ViewBag.User.Name" placeholder="Name" required name="user.Name" />
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Password:</p>
-                                    <div class="myndie-input">
-                                        <input type="password" class="form-control" id="Password" placeholder="Password" required name="user.Password" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Confirm Password:</p>
-                                    <div class="myndie-input">
-                                        <input type="password" id="ConfirmPassword" name="confpass" placeholder="Confirm Password">
-                                    </div>
-                                    <small class="mt-0"></small>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Username:</p>
+                            <div class="myndie-input">
+                                <input type="text" class="form-control" id="Username" value="@ViewBag.User.Username" placeholder="Username" required name="user.Username" />
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Country -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Country:</p>
-                                    <label class="myndie-select">
-                                        <select class="custom-select" required id="user.CountryId" name="user.CountryId">
-                                            <option value="1"> Brazil</option>
-                                        </select>
-                                    </label>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <p>Language:</p>
-                                    <label class="myndie-select">
-                                        <select class="custom-select" required id="user.LanguageId" name="user.LanguageId">
-                                            <option value="1"> Portugu&#234;s</option>
-                                        </select>
-                                    </label>
-                                </div>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Password:</p>
+                            <div class="myndie-input">
+                                <input type="password" class="form-control" id="Password" placeholder="Password" required name="user.Password" />
                             </div>
-
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Email:</p>
-                                    <div class="myndie-input">
-                                        <input type="email" class="form-control" id="Email" placeholder="Email" required name="user.Email" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Date of birth:</p>
-                                    <div class="myndie-input">
-                                        <input type="date" class="form-control" id="DateofBirth" value="1/1/0001 12:00:00 AM" placeholder="Date of Birth" required name="user.BirthDate" />
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Confirm Password:</p>
+                            <div class="myndie-input">
+                                <input type="password" id="ConfirmPassword" name="confpass" placeholder="Confirm Password">
                             </div>
+                            <small class="mt-0"></small>
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Country:</p>
+                            <label class="myndie-select">
+                                <select class="custom-select" required id="user.CountryId" name="user.CountryId">
+                                    @foreach (var c in ViewBag.Country)
+                        {
+                            <option value="@c.Id" selected="@c.Id.Equals(ViewBag.User.CountryId)"> @c.Name</option>
+            }
+                                </select>
+                            </label>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <p>Language:</p>
+                            <label class="myndie-select">
+                                <select class="custom-select" required id="user.LanguageId" name="user.LanguageId">
+                                    @foreach (var l in ViewBag.Lang)
+                        {
+                            <option value="@l.Id" selected="@l.Id.Equals(ViewBag.User.LanguageId)"> @l.Name</option>
+            }
+                                </select>
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Email:</p>
+                            <div class="myndie-input">
+                                <input type="email" class="form-control" id="Email" value="@ViewBag.User.Email" placeholder="Email" required name="user.Email" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Date of birth:</p>
+                            <div class="myndie-input">
+                                <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.User.BirthDate" placeholder="Date of Birth" required name="user.BirthDate" />
+                            </div>
+                        </div>
+                    </div>
 
                             <!-- /register Information -->
 
-                            <div class="" style="width:80%;" role="alert">
-                                <span class="field-validation-valid" data-valmsg-for="User.Name" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.Email" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.Username" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.Password" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.Password4" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.BirthDate" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.BirthNA" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.CountryId" data-valmsg-replace="true"></span><br />
-                                <span class="field-validation-valid" data-valmsg-for="User.LanguageId" data-valmsg-replace="true"></span><br />
+                            <div class="@ViewBag.Class" style="width:80%;" role="alert">
+                                @Html.ValidationMessage("User.Name")<br />
+                                @Html.ValidationMessage("User.Email")<br />
+                                @Html.ValidationMessage("User.Username")<br />
+                                @Html.ValidationMessage("User.Password")<br />
+                                @Html.ValidationMessage("User.Password4")<br />
+                                @Html.ValidationMessage("User.BirthDate")<br />
+                                @Html.ValidationMessage("User.BirthNA")<br />
+                                @Html.ValidationMessage("User.CountryId")<br />
+                                @Html.ValidationMessage("User.LanguageId")<br />
+                                @Html.ValidationMessage("User.NotUniq")<br />
                             </div>
 
                             <!-- Order Button -->

@@ -37,11 +37,17 @@ namespace Myndie.Controllers
                 {
                     if (user.BirthDate <= DateTime.Now && user.BirthDate.Year >= 1900)
                     {
-                        user.CrtDate = DateTime.Now;
-                        user.Picture = "../../../media/default/default-user.png";
                         UserDAO dao = new UserDAO();
-                        dao.Add(user);
-                        return RedirectToAction("Index", "Home");
+                        if (dao.IsUnique(user))
+                        {
+
+                            user.CrtDate = DateTime.Now;
+                            user.Picture = "../../../media/default/default-user.png";
+
+                            dao.Add(user);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        ModelState.AddModelError("user.NotUniq", "Username Already been used");
                     }
                     else
                     {

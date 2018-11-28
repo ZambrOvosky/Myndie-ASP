@@ -1,0 +1,50 @@
+﻿<ul class="reviews-list">
+    @foreach (var r in ViewBag.Revs)
+    {
+        <li>
+            <article>
+                    @foreach(var u in ViewBag.UserRevs)
+                    {
+                        if(r.UserId == u.Id){
+                            <div class="review-avatar pull-left">
+                            <img src="@u.Picture" alt="">
+                            </div>
+                            
+                            <a class="review-author h4" href="">@u.Name</a>
+                        }
+                    }
+                    <div class="review-cont clearfix">
+                    <div class="rating pull-right">
+                        @if(r.Value >= 1)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if(r.Value >= 2)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if(r.Value >= 3)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if(r.Value >= 4)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if(r.Value >= 5)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                    </div>
+                    <div class="date"><i class="entypo-calendar"></i> @r.Date</div>
+                    <div class="version"><small>Version: @r.Version</small></div>
+                    <div class="review-text">
+                        <p>
+                            @r.Desc
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </li>
+    }
+</ul>

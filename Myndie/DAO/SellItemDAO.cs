@@ -54,9 +54,9 @@ namespace Myndie.DAO
 
         public bool SearchUserApp(int Uid, int Aid)
         {
-            dynamic x = (from si in context.SellItems join sell in context.Sells on si.SellId equals sell.Id where si.ApplicationId == Aid && sell.UserId == Uid select new { Id = si.Id, PriceItem = si.PriceItem, ApplicationId = si.ApplicationId, SellId = si.SellId});
+            dynamic x = (from si in context.SellItems join sell in context.Sells on si.SellId equals sell.Id where si.ApplicationId == Aid && sell.UserId == Uid select new { Id = si.Id, PriceItem = si.PriceItem, ApplicationId = si.ApplicationId, SellId = si.SellId}).ToList();
             bool r = false;
-            if (x != null)
+            if (x.Count != 0)
                  r = true;
             return r;
 

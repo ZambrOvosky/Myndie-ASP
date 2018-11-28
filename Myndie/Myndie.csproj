@@ -178,6 +178,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\PegiController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Controllers\TypeAppController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -631,6 +632,7 @@
     <Content Include="Views\TypeApp\TypesAppBar.cshtml" />
     <Content Include="Views\Shared\_DeveloperLayout.cshtml" />
     <Content Include="Views\User\RegisterMobile.cshtml" />
+    <Content Include="Views\Review\_ListReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

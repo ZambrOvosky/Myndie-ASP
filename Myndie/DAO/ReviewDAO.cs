@@ -36,5 +36,10 @@ namespace Myndie.DAO
             context.Reviews.Remove(review);
             Update();
         }
+
+        public IList<Review> SearchByAppId(int AppId)
+        {
+            return (from r in context.Reviews where r.ApplicationId == AppId select r).ToList();
+        }
     }
 }

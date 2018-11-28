@@ -42,5 +42,15 @@ namespace Myndie.DAO
             User us = context.Users.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
             return us;
         }
+
+        public bool IsUnique(User user)
+        {
+            User us = context.Users.FirstOrDefault(u => u.Username == user.Username);
+            User us2 = context.Users.FirstOrDefault(u => u.Email == user.Email);
+            bool b = false;
+            if (us != null || us2 != null)
+                b = true;
+            return b;
+        }
     }
 }
