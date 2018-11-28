@@ -38,7 +38,7 @@ namespace Myndie.Controllers
                     if (user.BirthDate <= DateTime.Now && user.BirthDate.Year >= 1900)
                     {
                         UserDAO dao = new UserDAO();
-                        if (dao.IsUnique(user))
+                        if (!dao.IsUnique(user))
                         {
 
                             user.CrtDate = DateTime.Now;
@@ -256,5 +256,6 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
     }    
 }
