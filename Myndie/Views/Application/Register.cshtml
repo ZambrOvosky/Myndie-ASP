@@ -1,220 +1,150 @@
-﻿@{
+﻿
+@{
+    Layout = "~/Views/Shared/_DeveloperLayout.cshtml";
 }
-<!-- Main Content -->
-<section class="content-wrap">
 
-    <!-- Banner -->
-    <div class="myndie-banner banner-top myndie-banner-parallax small">
-        <div class="image" style="background-image: url('../assets/images/banner-blog-bg.jpg')">
-        </div>
+<div id="DivContent">
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="block">
+                        <div class="title"><strong>Add Pegi</strong></div>
+                        <div class="block-body">
+                            <form id="RegisterApp" class="needs-validation" method="post" enctype="multipart/form-data" onsubmit="return AjaxPostRegisterApp(this)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Name:</p>
+                                        <div class="myndie-input">
+                                            <input type="text" class="form-control" id="Name" value="@ViewBag.App.Name" placeholder="Name" required name="app.Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Description:</p>
+                                        <div class="myndie-input">
+                                            <input type="text" class="form-control" id="Desc" value="@ViewBag.App.Desc" placeholder="Description" required name="app.Desc" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Price:</p>
+                                        <div class="myndie-input">
+                                            <input type="number" class="form-control" id="Price" value="@ViewBag.App.Price" placeholder="Price" required name="app.Price" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Version:</p>
+                                        <div class="myndie-input">
+                                            <input type="text" class="form-control" id="Version" value="@ViewBag.App.Version" placeholder="Version" required name="app.Version" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Publisher Name:</p>
+                                        <div class="myndie-input">
+                                            <input type="text" class="form-control" id="PublisherName" value="@ViewBag.App.PublisherName" placeholder="Publisher Name" required name="app.PublisherName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Pegi:</p>
+                                        <label class="myndie-select">
+                                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
+                                                @foreach (var p in ViewBag.Pegi)
+                                                {
+                                                    <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
+                                                }
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Release Date:</p>
+                                        <div class="myndie-input">
+                                            <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.App.ReleaseDate" placeholder="" required name="app.ReleaseDate" />
+                                        </div>
+                                    </div>
 
-        <div class="info">
-            <div>
-                <div class="container align-center">
-                    <h1>Upload an Application</h1>
+                                    <div class="col-md-6">
+                                        <p>Type:</p>
+                                        <label class="myndie-select">
+                                            <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
+                                                @foreach (var t in ViewBag.Type)
+                                                {
+                                                    <option value="@t.Id" selected="@t.Id.Equals(ViewBag.App.TypeAppId)"> @t.Name</option>
+                                                }
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>File:</p>
+                                        <div class="myndie-input">
+                                            <input type="file" class="" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Images:</p>
+                                        <div class="myndie-input">
+                                            <input type="file"
+                                                   class="my-pond"
+                                                   name="images"
+                                                   multiple
+                                                   id="my-pond"
+                                                   data-max-file-size="3MB"
+                                                   data-max-files="3"
+                                                   accept="image/*">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br /><br />
+
+
+                                <br /><br />
+                                <input type="submit" value="Add" class="btn btn-primary">
+                            </form>
+                            <br />
+                            <div class="@ViewBag.Class" style="width:80%;" role="alert">
+                                @Html.ValidationMessage("Application.Name")<br />
+                                @Html.ValidationMessage("Application.Desc")<br />
+                                @Html.ValidationMessage("Application.Version")<br />
+                                @Html.ValidationMessage("Application.Price")<br />
+                                @Html.ValidationMessage("Application.PublisherName")<br />
+                                @Html.ValidationMessage("Application.ReleaseDate")<br />
+                                @Html.ValidationMessage("Application.Archive")<br />
+                            </div>
+                        </div>
+                        <script>
+                            function AjaxPostRegisterApp(formData) {
+                                alert("Wait... Uploading...")
+                                var ajaxConfig = {
+                                    type: "post",
+                                    url: "/Application/Validate",
+                                    data: new FormData(formData),
+                                    success: function (result) {
+                                        alert(result);
+                                        if (result == "Successfully Registered") {
+                                            window.location.href = "/Developer/ProfileView";
+                                        }
+                                        else if (result == "Error on Uploading Images, try later" || result == "Error on Uploading Files, try later") {
+                                            window.location.href = "/Developer/ProfileView";
+                                        }
+                                    }
+                                }
+                                if ($(formData).attr('enctype') == "multipart/form-data") {
+                                    ajaxConfig["contentType"] = false;
+                                    ajaxConfig["processData"] = false;
+                                }
+                                $.ajax(ajaxConfig);
+                                return false;
+                            };
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /Banner -->
-
-    <div class="container myndie-content">
-        <center>
-            <form id="RegisterApp" class="needs-validation" novalidate method="post" enctype="multipart/form-data" onsubmit="return AjaxPostRegisterApp(this)">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Name:</p>
-                        <div class="myndie-input">
-                            <input type="text" class="form-control" id="Name" value="@ViewBag.App.Name" placeholder="Name" required name="app.Name" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Description:</p>
-                        <div class="myndie-input">
-                            <input type="text" class="form-control" id="Desc" value="@ViewBag.App.Desc" placeholder="Description" required name="app.Desc" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Price:</p>
-                        <div class="myndie-input">
-                            <input type="text" class="form-control" id="Price" value="@ViewBag.App.Price" placeholder="Price" required name="app.Price" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Version:</p>
-                        <div class="myndie-input">
-                            <input type="text" class="form-control" id="Version" value="@ViewBag.App.Version" placeholder="Version" required name="app.Version" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Publisher Name:</p>
-                        <div class="myndie-input">
-                            <input type="text" class="form-control" id="PublisherName" value="@ViewBag.App.PublisherName" placeholder="Publisher Name" required name="app.PublisherName" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Pegi:</p>
-                        <label class="myndie-select">
-                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
-                                @foreach (var p in ViewBag.Pegi)
-                                {
-                                    <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
-                                }
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Release Date:</p>
-                        <div class="myndie-input">
-                            <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.App.ReleaseDate" placeholder="" required name="app.ReleaseDate" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <p>Type:</p>
-                        <label class="myndie-select">
-                            <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
-                                @foreach (var t in ViewBag.Type)
-                                {
-                                    <option value="@t.Id" selected="@t.Id.Equals(ViewBag.App.TypeAppId)"> @t.Name</option>
-                                }
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>File:</p>
-                        <div class="myndie-input">
-                            <input type="file" class="form-control" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>Images:</p>
-                        <div class="myndie-input">
-                            <input type="file"
-                                   class="my-pond"
-                                   name="images"
-                                   multiple
-                                   id="my-pond"
-                                   data-max-file-size="3MB"
-                                   data-max-files="3"
-                                   accept="image/*">
-                        </div>
-                    </div>
-                </div>
-                <br /><br />
-
-                
-                <br /><br />
-
-                <div class="align-center">
-                    <button type="submit" class="btn btn-lg">Register</button>
-                </div>
-            </form>
-            <br />
-            <div class="@ViewBag.Class" style="width:80%;" role="alert">
-                @Html.ValidationMessage("Application.Name")<br />
-                @Html.ValidationMessage("Application.Desc")<br />
-                @Html.ValidationMessage("Application.Version")<br />
-                @Html.ValidationMessage("Application.Price")<br />
-                @Html.ValidationMessage("Application.PublisherName")<br />
-                @Html.ValidationMessage("Application.ReleaseDate")<br />
-                @Html.ValidationMessage("Application.Archive")<br />
-            </div>
-        </center>
-    </div>
-
-    <script>
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
-    <script>
-        function AjaxPostRegisterApp(formData) {
-            alert("Wait... Uploading...")
-            var ajaxConfig = {
-                type: "post",
-                url: "/Application/Validate",
-                data: new FormData(formData),
-                success: function (result) {
-                    alert(result);
-                    if (result == "Successfully Registered") {
-                        window.location.href = "/Developer/ProfileView";
-                    }
-                    else if (result == "Error on Uploading Images, try later" || result == "Error on Uploading Files, try later") {
-                        window.location.href = "/Developer/ProfileView";
-                    }
-                }
-            }
-            if ($(formData).attr('enctype') == "multipart/form-data") {
-                ajaxConfig["contentType"] = false;
-                ajaxConfig["processData"] = false;
-            }
-            $.ajax(ajaxConfig);
-            return false;
-        };
-    </script>
-    @*<script>
-        (function () {
-            $('#dropzone').filedrop({
-                url: '@Url.Action("AppUploadImages")',
-                allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif'],
-                allowedfileextensions: ['.jpg', '.jpeg', '.png', '.gif'],
-                paramname: 'images',
-                maxfiles: 5,
-                maxfilesize: 20, //MBs
-                dragOver: function () {
-                    $('#dropzone').addClass('active-drop');
-                },
-                dragLeave: function () {
-                    $('#dropzone').removeClass('active-drop');
-                },
-                drop: function () {
-                    $('#dropzone').removeClass('active-drop');
-                },
-                afterAll: function (e) {
-                    $('#dropzone').html('Files Uploaded');
-                },
-                uploadFinished: function (i, file, response, time) {
-                    $('#uploadlist').append('<li>' + file.name + '</li>');
-                }
-            })
-        })
-    </script>*@
-    @*FILEPOND*@
-
-    <script>
-
-
-
-        
-
-        
-
-        //// Select the file input and use create() to turn it into a pond
-        //FilePond.create(
-        //    document.querySelector('input')
-        //);
-    </script>
-</section>
+    </section>
+</div>

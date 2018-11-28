@@ -19,15 +19,17 @@ namespace Myndie.Controllers
         }
 
         public ActionResult Register()
-        {
-            if(Session["DevId"] != null)
+        {          
+            if (Session["DevId"] != null)
             {
                 TypeAppDAO tdao = new TypeAppDAO();
                 PegiDAO pdao = new PegiDAO();
+                UserDAO udao = new UserDAO();
                 ViewBag.Class = "";
                 ViewBag.Type = tdao.List();
                 ViewBag.Pegi = pdao.List();
                 ViewBag.App = new Application();
+                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
                 return View();
             }
             return RedirectToAction("../Home/Index");

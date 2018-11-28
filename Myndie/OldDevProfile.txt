@@ -1,0 +1,148 @@
+
+@{
+}
+
+<!-- Main Content -->
+<section class="content-wrap">
+    <!-- Banner -->
+    <div class="myndie-banner banner-top myndie-banner-parallax small">
+        <div class="image" style="background-image: url('../../assets/images/game-diablo-iii-1400x656.jpg')">
+        </div>
+        <div class="myndie-user-navigation">
+            <div class="container">
+                <ul>
+                    <li class="active">
+                        <a href="user-activity.html">Apps</a>
+                    </li>
+                    <li>
+                        <a href="~/Application/Register">Add New Game</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="align-center">
+            <div class="info">
+                <div>
+                    <div class="container myndie-user">
+                        @if (ViewBag.User.Picture != null && ViewBag.User.Picture != "")
+                        {
+                            <a href="@ViewBag.User.Picture" class="angled-img image-popup">
+                            <div class="img">
+                                <img src="@ViewBag.User.Picture" style="height: 150px" alt="">
+                            </div>
+                            <i class="entypo-search icon"></i>
+                        </a>
+                        }
+                        else
+                        {
+                            <a href="~/assets/images/user-photo.jpg" class="angled-img image-popup">
+                            <div class="img">
+                                <img src="~/assets/images/user-avatar.jpg" alt="">
+                            </div>
+                            <i class="entypo-search icon"></i>
+                        </a>
+                        }
+                        
+                        <!--
+                            -->
+
+                        <div class="user-data">
+                            <h2>@ViewBag.Dev.Name</h2>
+                            <div class="location"><i class="entypo-map-marker"></i> @ViewBag.CountryUser.Name</div>
+                            <div class="activity">
+                                @*<div>
+                                    <div class="num">69</div>
+                                    <div class="title">Posts</div>
+                                </div>*@
+                                <div>
+                                    <div class="num">@ViewBag.Dev.NumSoft</div>
+                                    <div class="title">Games</div>
+                                </div>
+                                @*<div>
+                                    <div class="num">689</div>
+                                    <div class="title">Followers</div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="container mt-20">
+                        <a href="#!" class="btn btn-sm btn-default ml-0">Follow</a>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Banner -->
+    <div class="container myndie-content">
+        <div class="row">
+            <div class="col-md-9">
+                <h2 class="mt-0">Lastest Uploads</h2>
+                <!-- Images With Text -->
+                <div class="myndie-carousel" data-autoplay="5000">
+                    @foreach (var app in ViewBag.DevGames) {
+                    <a class="angled-img" href="~/Application/Product/@app.Id">
+                        <div class="img">
+                            <img src="@app.ImageUrl" style="height: 150px;" alt="">
+                        </div>
+                        <div class="over-info">
+                            <div>
+                                <div>
+                                    <h4>@app.Name</h4>
+                                    <div class="rating">
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                        <i class="entypo-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    }
+                    
+                </div>
+                <!-- /Images With Text -->
+                <!-- Skills -->
+                <h2>Skills</h2>
+                JS:
+                <div class="progress myndie-progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                </div>
+                CSS:
+                <div class="progress myndie-progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                        <span class="sr-only">20% Complete</span>
+                    </div>
+                </div>
+                PHP:
+                <div class="progress myndie-progress">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                        <span class="sr-only">60% Complete (warning)</span>
+                    </div>
+                </div>
+                Photoshop:
+                <div class="progress myndie-progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                </div>
+                <!-- /Skills -->
+            </div>
+            <!-- Right Side -->
+            <div class="col-md-3">
+                <div class="side-block">
+                    <h4 class="block-title">About</h4>
+                    <div class="block-content">
+                        @ViewBag.Dev.Info
+                    </div>
+                </div>
+            </div>
+            <!-- Right Side -->
+        </div>
+    </div>
+</section>

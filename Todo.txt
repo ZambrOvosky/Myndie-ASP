@@ -47,10 +47,11 @@ Montlhy Report
 Impedir 2 compras
 Sistema de Review
 Resolvido Bug com Compras
+Terminar DevLayout
 
 /Feitos
 
-Terminar DevLayout e Edit Game
+Edit Game
 Botao See More Index
 Fazer Buscas do Menu Superior
 WishList
@@ -63,6 +64,9 @@ Link Game e Genre
 Approved tela de produtos no dashboard
 Fazer Busca por Genero e Linkar com a partial View RightSide
 Ultimo Grafico
+Profile de User p/ outros
+Linkar esse profile na _ListReview
+Revisar Registers -> Crashs
 
 Formatar Release Date //N sei
 
