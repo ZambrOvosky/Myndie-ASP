@@ -31,6 +31,7 @@ namespace Myndie.DAO {
         public DbSet<TypeApp> TypeApps { get; set; }
         public DbSet<UpdateNotes> Updates { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
 
 
         public EntityContext() : base("dbMyndie") { }
@@ -55,6 +56,7 @@ namespace Myndie.DAO {
             modelBuilder.Entity<TypeApp>();
             modelBuilder.Entity<UpdateNotes>();
             modelBuilder.Entity<User>();
+            modelBuilder.Entity<Wishlist>();
             //Optionals
             modelBuilder.Entity<Application>().Property(a => a.ModeratorId).IsOptional();
             modelBuilder.Entity<User>().Property(u => u.DeveloperId).IsOptional();

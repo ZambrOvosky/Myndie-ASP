@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201811201810080_AddCart.Designer.cs">
       <DependentUpon>201811201810080_AddCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811281541199_WishList.cs" />
+    <Compile Include="Migrations\201811281541199_WishList.Designer.cs">
+      <DependentUpon>201811281541199_WishList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\ApplicationGenre.cs" />
@@ -237,6 +241,7 @@
     <Compile Include="Models\TypeApp.cs" />
     <Compile Include="Models\UpdateNotes.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -675,6 +680,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811201810080_AddCart.resx">
       <DependentUpon>201811201810080_AddCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281541199_WishList.resx">
+      <DependentUpon>201811281541199_WishList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

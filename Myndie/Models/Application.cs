@@ -25,6 +25,7 @@ namespace Myndie.Models {
         public string Archive { get; set; }
         public int Approved { get; set; }
         public string ImageUrl { get; set; }
+        public int Value { get; set; }
         //FKs
         public int DeveloperId { get; set; }
         public int TypeAppId { get; set; }

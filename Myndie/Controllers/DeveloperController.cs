@@ -97,5 +97,10 @@ namespace Myndie.Controllers
                 return RedirectToAction("../Home/Index");
             }
         }
+
+        public ActionResult ViewGames()
+        {
+            return View();
+        }
     }
 }
