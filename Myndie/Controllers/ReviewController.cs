@@ -34,9 +34,21 @@ namespace Myndie.Controllers
             UserDAO udao = new UserDAO();
             IList<Review> list = dao.SearchByAppId(AppId);
             IList<User> users = new List<User>();
+            bool b = false;
             foreach (var r in list)
             {
-                users.Add(udao.SearchById(r.UserId));
+                foreach (var u in users)
+                {
+                    if (u.Id == r.UserId)
+                    {
+                        b = true;
+                    }
+                }
+                if (!b)
+                {
+                    users.Add(udao.SearchById(r.UserId));
+                }
+                
             }
             ViewBag.Revs = list;
             ViewBag.UserRevs = users;
