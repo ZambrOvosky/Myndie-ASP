@@ -56,6 +56,10 @@ Edit Game botao remove
 
 /Feitos
 
+Dev Profile
+EditGame Buttons
+EditGame Att
+AddGame Erro no Upload
 Tela Produto colocar info do dev
 Index Last News
 Esqueceu a Senha
