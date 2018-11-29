@@ -408,5 +408,27 @@ namespace Myndie.Controllers
             ViewBag.User = dao.SearchById(int.Parse(Session["Id"].ToString()));
             return PartialView();
         }
+
+        public ActionResult ChatMobile()
+        {
+            return View();
+        }
+
+        public ActionResult MobileChatLogin(string Username, string Password)
+        {
+            UserDAO dao = new UserDAO();
+            User user = new User();
+            user.Username = Username;
+            user.Password = Password;
+            User u = dao.Login(user);
+            if (u != null)
+            {
+                Session["Id"] = u.Id;
+                Session["Username"] = u.Username;
+
+                return RedirectToAction("ChatMobile", "User");
+            }
+            return RedirectToAction("../Home/Index");
+        }
     }
 }
