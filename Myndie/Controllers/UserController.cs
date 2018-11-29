@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Myndie.Models;
 using Myndie.DAO;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 
 namespace Myndie.Controllers
 {
@@ -316,6 +319,46 @@ namespace Myndie.Controllers
             catch
             {
                 return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult FortgotYourPassword()
+        {
+            return View();
+        }
+
+        public JsonResult SendEmailToUser()
+        {
+            bool result = false;
+            //result = SendEmail("","teste da aplicação", "<p>Hello, you forgot your password?</p>");
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public bool SendEmail(string toEmail, string subject, string emailBody)
+        {
+            try
+            {
+                string senderEmail = System.Configuration.ConfigurationManager.AppSettings["SenderEmail"].ToString();
+                string senderPassword = System.Configuration.ConfigurationManager.AppSettings["SenderPassword"].ToString();
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
+                client.Timeout = 100000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(senderEmail, senderPassword);
+
+                MailMessage mailMessage = new MailMessage(senderEmail, toEmail, subject, emailBody);
+                mailMessage.IsBodyHtml = true;
+                mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+
+                client.Send(mailMessage);
+
+                return true;
+            }
+            catch
+            {
+                return false;
             }
             
         }
