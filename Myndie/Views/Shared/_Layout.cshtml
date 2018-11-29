@@ -281,11 +281,7 @@
     <!-- /Navbar -->
     <!-- Main Content -->
     <section class="content-wrap">
-        @RenderBody()
-        @if(Session["Id"] != null)
-        {
-            @Html.Action("_UserChat", "User");
-        }        
+        @RenderBody()     
         <!-- Footer -->
         <footer class="myndie-footer-parallax">
             <div class="wrapper" style="background-image: url('../../../assets/images/footer-bg.jpg')">
@@ -335,6 +331,10 @@
             </div>
         </footer>
         <!-- /Footer -->
+        @if(Session["Id"] != null)
+        {
+            @Html.Action("_UserChat", "User");
+        }   
 
     </section>
     <!-- /Main Content -->
