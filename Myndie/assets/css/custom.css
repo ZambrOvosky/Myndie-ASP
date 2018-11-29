@@ -126,7 +126,8 @@ label[for="upload"]:hover {
 
 .conteudo {
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .chat-content.active {
