@@ -3,7 +3,7 @@ $('.owl-carousel').owlCarousel({
   loop: true,
   nav: true,
   items: 5,
-  navText: ['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
+  navText: ['<i class="entypo-left-open-big"></i>','<i class="entypo-right-open-big"></i>'],
   responsive:{
     0:{
       items: 2,
