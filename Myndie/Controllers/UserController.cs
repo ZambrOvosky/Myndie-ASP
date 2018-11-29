@@ -76,7 +76,6 @@ namespace Myndie.Controllers
             {
                 Session["Id"] = u.Id;
                 Session["Username"] = u.Username;                
-                Session["Img"] = u.Picture;                
                 if (u.DeveloperId != null)
                 {
                     DeveloperDAO ddao = new DeveloperDAO();
@@ -182,7 +181,6 @@ namespace Myndie.Controllers
             Session["Username"] = null;
             Session["DevId"] = null;
             Session["ModId"] = null;
-            Session["Img"] = null;
             return RedirectToAction("../Home/Index");
         }
 
@@ -319,23 +317,7 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-        }
-
-        public string GetUsername()
-        {
-            if (Session["Id"] != null)
-            {
-                return Session["Username"].ToString();
-            }
-            return "";
-        }
-        public string GetImage()
-        {
-            if (Session["Id"] != null)
-            {
-                return Session["Img"].ToString();
-            }
-            return "";
+            
         }
     }
 }
