@@ -322,19 +322,28 @@ namespace Myndie.Controllers
             }
         }
 
-        public ActionResult FortgotYourPassword()
+        public ActionResult ForgotYourPassword()
         {
             return View();
         }
 
-        public JsonResult SendEmailToUser()
+        public JsonResult SendEmailToUser(string Email)
         {
-            bool result = false;
-            //result = SendEmail("","teste da aplicação", "<p>Hello, you forgot your password?</p>");
+            string result = "";
+            UserDAO dao = new UserDAO();
+            User u = dao.SearchByEmail(Email);
+            if(u != null)
+            {
+                result = SendEmail(u.Email, "Myndie - Forgot Your Password?", "<div><p>Hey, do you forgot your password?</p><br /><p>If you do, please change your password right here: <a href='myndie.azurewebsites.net/User/ForgotPasswordChange'>link</a></p></div>");
+            }
+            else
+            {
+                result = "No User found with this Email";
+            }            
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public bool SendEmail(string toEmail, string subject, string emailBody)
+        public string SendEmail(string toEmail, string subject, string emailBody)
         {
             try
             {
@@ -354,13 +363,43 @@ namespace Myndie.Controllers
 
                 client.Send(mailMessage);
 
-                return true;
+                return "Email Sent";
             }
             catch
             {
-                return false;
+                return "Problems on sending email, try later";
             }
             
+        }
+
+        public ActionResult ForgotPasswordChange()
+        {
+            if(Session["Id"] == null)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public JsonResult ChangePassFP(string Email, string Password, string ConfirmPassword)
+        {
+            var result = "";
+            UserDAO dao = new UserDAO();
+            User u = dao.SearchByEmail(Email);
+            if(Password.Length < 5)
+            {
+                result = "Password need to have 5 or more characters";
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            if(u != null)
+            {
+                u.Password = Password;
+                dao.Update();
+                result = "Password Changed";
+            }
+            else { result = "No user found with this Email"; }
+            
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult _UserChat()
