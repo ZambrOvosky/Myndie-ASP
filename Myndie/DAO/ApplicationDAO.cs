@@ -120,5 +120,23 @@ namespace Myndie.DAO
         {
             return (from a in context.Applications where a.Price == 0 select a).ToList();
         }
+
+        public IList<Application> GetGamesMonth()
+        {
+            var type = (from t in context.TypeApps where t.Name == "Game" select t).FirstOrDefault();
+            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+        }
+
+        public IList<Application> GetSoftwareMonth()
+        {
+            var type = (from t in context.TypeApps where t.Name == "Software" select t).FirstOrDefault();
+            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+        }
+
+        public IList<Application> GetMobileMonth()
+        {
+            var type = (from t in context.TypeApps where t.Name == "Mobile" select t).FirstOrDefault();
+            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+        }
     }
 }

@@ -62,5 +62,10 @@ namespace Myndie.DAO
         {
             return (from u in context.Users where u.DeveloperId == Id select u).FirstOrDefault();
         }
+
+        public IList<User> GetMonthUsers()
+        {
+            return (from u in context.Users where u.CrtDate.Year.Equals(DateTime.Now.Year) && u.CrtDate.Month.Equals(DateTime.Now.Month) select u).ToList();
+        }
     }
 }
