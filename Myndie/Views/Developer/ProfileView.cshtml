@@ -4,39 +4,44 @@
 }
 
 
-    
-    <link href="~/assets/css/entypo/css/entypo.css" rel="stylesheet" />
 
-    <link href="~/assets/css/cavalo.css" rel="stylesheet" />
+<link href="~/assets/css/entypo/css/entypo.css" rel="stylesheet" />
 
-    <link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/assets/css/cavalo.css" rel="stylesheet" />
+
+<link href="~/Content/style.css" rel="stylesheet" />
 
 
-    <div id="carrousel">
-        <div class="container">
-            <div class="title col-md-12 text-center"> Your last uploads</div>
-            <div class="col-md-12">
-                <div class="owl-carousel owl-theme">
-                    @foreach (var app in ViewBag.DevGames)
-                    {
-                        <a href="~/Application/EditGame/@app.Id">
-                            <img src="https://myndie.azurewebsites.net/media/user/e51a21c2-f2c4-41b4-b5a6-82af1f184a70.jpg" alt="@App.Name">
-                        </a>
-                    }
-                </div>
-            </div>
-            <div class="text-center">
-                <div class="status">Click To edit</div>
+<div id="carrousel">
+    <div class="container">
+        <div class="title col-md-12 text-center"> Your last uploads</div>
+        <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+                @foreach (var app in ViewBag.DevGames)
+                {
+                    <a href="~/Application/EditGame/@app.Id">
+                        <img src="https://myndie.azurewebsites.net/media/user/e51a21c2-f2c4-41b4-b5a6-82af1f184a70.jpg" alt="@App.Name">
+                    </a>
+                }
             </div>
         </div>
+        <div class="text-center">
+            <div class="status">Click To edit</div>
+        </div>
     </div>
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    
-    <script src="~/Scripts/cavalo1.js"></script>
-    <script src="~/Scripts/cavalo2.js"></script>
-    <script src="~/Scripts/index.js"></script>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-    
+<script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Owl Carousel -->
+<script type="text/javascript" src="~/assets/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<script src="~/Scripts/cavalo1.js"></script>
+<script src="~/Scripts/cavalo2.js"></script>
+<script src="~/Scripts/index.js"></script>
+
+
 
 
 
