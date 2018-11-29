@@ -289,6 +289,7 @@
     <Content Include="assets\bower_components\smoothscroll-for-websites\SmoothScroll.js" />
     <Content Include="assets\bower_components\social-likes\dist\social-likes.min.js" />
     <Content Include="assets\bower_components\social-likes\dist\social-likes_flat.css" />
+    <Content Include="assets\css\cavalo.css" />
     <Content Include="assets\css\chatmobile.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\dropzone\dropzone.css" />
@@ -418,7 +419,10 @@
     <Content Include="assets\myndie\css\myndie-shooter.min.css" />
     <Content Include="assets\myndie\css\myndie.min.css" />
     <Content Include="assets\myndie\js\bootstrap3-typeahead.min.js" />
+    <Content Include="assets\myndie\js\cavalo1.js" />
+    <Content Include="assets\myndie\js\cavalo2.js" />
     <Content Include="assets\myndie\js\forms-autocomplete.js" />
+    <Content Include="assets\myndie\js\index.js" />
     <Content Include="assets\myndie\js\myndie.min.js" />
     <Content Include="assets\plugins\slider-revolution\examples&amp;source\rs-plugin\assets\arrowleft.png" />
     <Content Include="assets\plugins\slider-revolution\examples&amp;source\rs-plugin\assets\arrowright.png" />
@@ -571,7 +575,6 @@
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\index.js" />
-    <Content Include="Scripts\chatmobile.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

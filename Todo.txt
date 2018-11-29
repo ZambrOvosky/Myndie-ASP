@@ -55,7 +55,6 @@ Fazer Buscas do Menu Superior
 Edit Game botao
 Esqueceu a Senha 
 Tela Produto colocar info do dev
-Fazer tela de esqueci a senha exclusiva para o Android
 
 /Feitos
 
@@ -66,6 +65,7 @@ AddGame Erro no Upload
 Index Last News
 
 Formatar o preço com masked TxtBox
+Fazer tela de esqueci a senha exclusiva para o Android
 
 Link Game e Genre
 Fazer Busca por Genero e Linkar com a partial View RightSide
