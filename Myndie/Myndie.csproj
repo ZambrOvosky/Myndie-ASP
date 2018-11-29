@@ -516,6 +516,7 @@
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\solid.css" />
     <Content Include="Content\solid.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
@@ -568,6 +569,7 @@
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.ttf" />
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -671,6 +673,7 @@
     <Content Include="Views\User\_UserChat.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ForgotPasswordChange.cshtml" />
+    <Content Include="Views\User\ChatMobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
