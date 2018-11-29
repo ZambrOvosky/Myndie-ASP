@@ -53,8 +53,8 @@
 
                             <div class="line"></div>
                             <div class="form-group row">
-                                <div class="col-sm-9 ml-4 ">
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                <div class="col-sm-12 m-1 ml-0">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Save changes</button>
                                 </div>
                             </div>
                         </form>
@@ -88,15 +88,27 @@
                                                 <div class="media-body overflow-hidden">
                                                     <h5 class="card-text mb-0">Image</h5>
                                                     <form action="/Application/EditPhoto" method="post"  enctype="multipart/form-data">
+                                                        <input type="hidden" value="@ViewBag.App.Id" name="id" />
+                                                        <input type="hidden" value="@img.Id" name="PhotoId" />
                                                         <p class="card-text">
-                                                            <input type="hidden" value="@ViewBag.App.Id" name="id" />
-                                                            <input type="hidden" value="@img.Id" name="PhotoId" />
+                                                            
                                                             <div class="form-group">
-                                                                <input type="file" class="hide inputfile" name="img" id="upload + @img.Id" accept="image/*"/>
-                                                                <label for="upload" class="m-3"><span>Change</span></label>
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("TurntoMain", "Application", new { id = img.Id, AppId = ViewBag.App.Id})'">Turn to Main</button>
-                                                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("RemoveImage", "Application", new { id = img.Id, AppId = ViewBag.App.Id})'">Remove</button>
+                                                                <div class="col-md-12 float-left">
+                                                                    <input type="file" class="hide inputfile" name="img" id="upload + @img.Id" accept="image/*" />
+                                                                    <label for="upload" class="btn btn-block m-3"><span>Change</span></label>
+                                                                </div>
+                                                                     
+                                                                
+                                                                <div class="col-md-6 float-left">
+                                                                    <button type="button" class="btn btn-secondary btn-block mt-1 mb-1 ml-3 mr-3" onclick="location.href='@Url.Action("TurntoMain", "Application", new { id = img.Id, AppId = ViewBag.App.Id})'">Turn to Main</button>
+                                                                </div>
+                                                                <div class="col-md-6 float-left">
+                                                                    <button type="button" class="btn btn-secondary btn-block mt-1 mb-1 ml-3 mr-3" onclick="location.href='@Url.Action("RemoveImage", "Application", new { id = img.Id, AppId = ViewBag.App.Id})'">Remove</button>
+                                                                </div>
+                                                                <div class="col-md-12 float-left">
+                                                                    <button type="submit" class="btn btn-primary btn-block m-3">Save changes</button>
+                                                                </div> 
+                                                                                                                            
                                                             </div>
                                                         </p>
                                                     </form>
@@ -119,7 +131,7 @@
                             <div class="row">
                                 @if (ViewBag.Imgs.Count < 5)
                                 {
-                                <div class="col-md-6 col-xl-6">
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="media align-items-center">
@@ -129,9 +141,13 @@
                                                         <p class="card-text">
                                                             <input type="hidden" value="@ViewBag.App.Id" name="id" />
                                                             <div class="form-group">
-                                                                <input type="file" class="hide inputfile" name="img" id="upload" accept="image/*"/>
-                                                                <label for="upload" class="m-3"><span>Upload</span></label>
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                <div class="col-md-12">
+                                                                    <input type="file" class="hide inputfile" name="img" id="upload" accept="image/*" />
+                                                                    <label for="upload" class="m-3 btn btn-secondary btn-lg btn-block"><span>Upload</span></label>
+                                                                </div>
+                                                                <div class="col-md-12 float-left">
+                                                                    <button type="submit" class="btn btn-primary btn-lg btn-block m-3">Save changes</button>
+                                                                </div>
                                                             </div>
                                                         </p>
                                                     </form>

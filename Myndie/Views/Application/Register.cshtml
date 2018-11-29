@@ -14,13 +14,13 @@
                             <form id="RegisterApp" class="needs-validation" method="post" enctype="multipart/form-data" onsubmit="return AjaxPostRegisterApp(this)">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>Name:</p>
+                                        <p class="mb-1 mt-2">Name:</p>
                                         <div class="myndie-input">
                                             <input type="text" class="form-control" id="Name" value="@ViewBag.App.Name" placeholder="Name" required name="app.Name" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Description:</p>
+                                        <p class="mb-1 mt-2">Description:</p>
                                         <div class="myndie-input">
                                             <input type="text" class="form-control" id="Desc" value="@ViewBag.App.Desc" placeholder="Description" required name="app.Desc" />
                                         </div>
@@ -28,13 +28,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>Price:</p>
+                                        <p class="mb-1 mt-2">Price:</p>
                                         <div class="myndie-input">
                                             <input type="number" class="form-control" id="Price" value="@ViewBag.App.Price" placeholder="Price" required name="app.Price" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Version:</p>
+                                        <p class="mb-1 mt-2">Version:</p>
                                         <div class="myndie-input">
                                             <input type="text" class="form-control" id="Version" value="@ViewBag.App.Version" placeholder="Version" required name="app.Version" />
                                         </div>
@@ -42,52 +42,49 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>Publisher Name:</p>
+                                        <p class="mb-1 mt-2">Publisher Name:</p>
                                         <div class="myndie-input">
                                             <input type="text" class="form-control" id="PublisherName" value="@ViewBag.App.PublisherName" placeholder="Publisher Name" required name="app.PublisherName" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Pegi:</p>
-                                        <label class="myndie-select">
-                                            <select class="custom-select" required id="app.PegiId" name="app.PegiId">
-                                                @foreach (var p in ViewBag.Pegi)
-                                                {
-                                                    <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
-                                                }
-                                            </select>
-                                        </label>
+                                        <p class="mb-1 mt-2">Pegi:</p>
+                                        <select class="custom-select" required id="app.PegiId" name="app.PegiId">
+                                            @foreach (var p in ViewBag.Pegi)
+                                            {
+                                                <option value="@p.Id" selected="@p.Id.Equals(ViewBag.App.PegiId)"> @p.Desc</option>
+                                            }
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>Release Date:</p>
+                                        <p class="mb-1 mt-2">Release Date:</p>
                                         <div class="myndie-input">
                                             <input type="date" class="form-control" id="DateofBirth" value="@ViewBag.App.ReleaseDate" placeholder="" required name="app.ReleaseDate" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <p>Type:</p>
-                                        <label class="myndie-select">
-                                            <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
-                                                @foreach (var t in ViewBag.Type)
-                                                {
-                                                    <option value="@t.Id" selected="@t.Id.Equals(ViewBag.App.TypeAppId)"> @t.Name</option>
-                                                }
-                                            </select>
-                                        </label>
+                                        <p class="mb-1 mt-2">Type:</p>                                        
+                                        <select class="custom-select" required id="app.TypeAppId" name="app.TypeAppId">
+                                            @foreach (var t in ViewBag.Type)
+                                            {
+                                                <option value="@t.Id" selected="@t.Id.Equals(ViewBag.App.TypeAppId)"> @t.Name</option>
+                                            }
+                                        </select>
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>File:</p>
+                                        <p class="mb-1 mt-2">File:</p>
                                         <div class="myndie-input">
                                             <input type="file" class="" id="File" value="@ViewBag.App.Archive" placeholder="Files" required name="File" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>Images:</p>
+                                        <p class="mb-1 mt-2">Images:</p>
                                         <div class="myndie-input">
                                             <input type="file"
                                                    class="my-pond"
