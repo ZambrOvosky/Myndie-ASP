@@ -52,5 +52,10 @@ namespace Myndie.DAO
                 b = true;
             return b;
         }
+
+        public User SearchByEmail(string Email)
+        {
+            return (from u in context.Users where u.Email == Email select u).FirstOrDefault();
+        }
     }
 }

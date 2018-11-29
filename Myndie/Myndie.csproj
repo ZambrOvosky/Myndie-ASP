@@ -667,8 +667,9 @@
     <Content Include="Views\Review\_ListReview.cshtml" />
     <Content Include="Views\User\Wishlist.cshtml" />
     <Content Include="Views\Developer\Summary.cshtml" />
-    <Content Include="Views\User\FortgotYourPassword.cshtml" />
+    <Content Include="Views\User\ForgotYourPassword.cshtml" />
     <Content Include="Views\User\_UserChat.cshtml" />
+    <Content Include="Views\User\ForgotPasswordChange.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
