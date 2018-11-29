@@ -38,7 +38,7 @@
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
                 // Add the message to the page.
-                $('#discussion').append('<h4><span class="a">' + htmlEncode(name) + ' :</span><span class="label label-default" class="a">' + htmlEncode(message) + '</span></h4><br>');
+                $('#discussion').append('<h4 class="mb-0"><span class="a">' + htmlEncode(name) + ' : </span><span class="label label-default a" class="a">' + htmlEncode(message) + '</span></h4><br>');
                 var number = parseInt($('#smgs').text());
                 if (isNaN(number)) {
                     number = 0;
@@ -52,16 +52,14 @@
             // Set initial focus to message input box.
             $('#message').focus();
             // Start the connection.
+            let x = 50;
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     $('#smgs').text("");
                         // Call the Send method on the hub.
                     chat.server.send($('#displayname').val(), $('#message').val());
-                    let x = 50;
-                    $("button").click(function () {
                         $("conteudo").scrollTop(x);
                         x = x + 50;
-                    });
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                     });
