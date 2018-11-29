@@ -668,6 +668,7 @@
     <Content Include="Views\User\Wishlist.cshtml" />
     <Content Include="Views\Developer\Summary.cshtml" />
     <Content Include="Views\User\FortgotYourPassword.cshtml" />
+    <Content Include="Views\User\_UserChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

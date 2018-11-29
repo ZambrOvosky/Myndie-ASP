@@ -362,5 +362,12 @@ namespace Myndie.Controllers
             }
             
         }
+
+        public PartialViewResult _UserChat()
+        {
+            UserDAO dao = new UserDAO();
+            ViewBag.User = dao.SearchById(int.Parse(Session["Id"].ToString()));
+            return PartialView();
+        }
     }
 }
