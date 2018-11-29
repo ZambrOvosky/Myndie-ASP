@@ -145,6 +145,7 @@ namespace Myndie.Controllers
                 ApplicationDAO dao = new ApplicationDAO();
                 DeveloperDAO ddao = new DeveloperDAO();
                 ImageDAO idao = new ImageDAO();
+                UserDAO udao = new UserDAO();
                 SellItemDAO sidao = new SellItemDAO();
                 Application app = dao.SearchById(id);
                 Developer dev = ddao.SearchById(app.DeveloperId);
@@ -159,6 +160,7 @@ namespace Myndie.Controllers
                 }
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
+                ViewBag.DevUser = udao.SearchByDev(dev.Id);
                 ViewBag.Img = idao.SearchAppImages(id);
                 ViewBag.Similar = dao.ListLast10();
                 return View();

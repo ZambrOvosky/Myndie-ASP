@@ -57,5 +57,10 @@ namespace Myndie.DAO
         {
             return (from u in context.Users where u.Email == Email select u).FirstOrDefault();
         }
+
+        public User SearchByDev(int Id)
+        {
+            return (from u in context.Users where u.DeveloperId == Id select u).FirstOrDefault();
+        }
     }
 }

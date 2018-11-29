@@ -122,25 +122,19 @@
             <!-- /Information -->
             <!-- developer -->
             <div class="reviews-block mb-0">
+                <h2>Developer</h2>
                 <article>
                     <div class="review-avatar pull-left">
-                        <img src="~/assets/images/clan-virtus-pro.jpg" alt="">
+                        <img src="@ViewBag.DevUser.Picture" alt="">
                     </div>
                     <div class="review-cont clearfix">
-                        <a class="review-author h4" href="">Vortex</a>
+                        <a class="review-author h4">@ViewBag.Dev.Name</a>
                         <div class="date">
-                            <i class="entypo-calendar"></i> june 3, 2018
+                            <i class="entypo-calendar"></i>@ViewBag.App.ReleaseDate
                         </div>
                         <div class="review-text">
                             <p>
-                                Quod satis pecuniae sempiternum. Ut sciat oportet motum. Nunquam invenies eum. Hic de tabula. Ego vivere, ut debui, et nunc
-                                fiant. Istuc quod opus non est. Lorem ipsum occurrebat pragmaticam semper ut, si quis ita velim tibi bene recognoscere.
-                                Quorum duo te mihi videtur.
-                            </p>
-                            <p>
-                                Mauris a nunc occideritis me rectum. Videtur quod Ive facillimum, qui fecit vos. Potes me interficere, sine testibus et tunc
-                                manere in pauci weeks vel mensis vestigia Isai Pinkman et vos quoque illum occidere. Exercitium inutili option A.
-                                Videtur mihi quod autem est.
+                               @ViewBag.Dev.Info
                             </p>
                         </div>
                     </div>
