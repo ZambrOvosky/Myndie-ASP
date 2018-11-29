@@ -2,41 +2,40 @@
 @{
     Layout = "~/Views/Shared/_DeveloperLayout.cshtml";
 }
-<link rel="stylesheet" href="~/assets/css/entypo/css/entypo.css">
-<!-- Main Content -->
-<section class="content-wrap">
-    <div class="container myndie-content">
-        <div class="row">
-            <div class="col-md-9">
-                <h2 class="mt-0">Lastest Uploads</h2>
-                <!-- Images With Text -->
-                <div class="myndie-carousel" data-autoplay="5000">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+
+    <div id="carrousel">
+        <div class="container">
+            <div class="title col-md-12 text-center"> Your last uploads</div>
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
                     @foreach (var app in ViewBag.DevGames)
                     {
-                        <a class="angled-img" href="~/Application/Product/@app.Id">
-                            <div class="img">
-                                <img src="@app.ImageUrl" style="height: 150px;" alt="">
-                            </div>
-                            <div class="over-info">
-                                <div>
-                                    <div>
-                                        <h4>@app.Name</h4>
-                                        <div class="rating">
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                            <i class="entypo-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <a href="~/Application/EditGame/@app.Id">
+                            <img src="@app.ImageUrl" alt="@App.Name">
                         </a>
                     }
-
                 </div>
-                <!-- /Images With Text -->
+            </div>
+            <div class="text-center">
+                <div class="status">Click To edit</div>
             </div>
         </div>
     </div>
-</section>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+    <script src="~/Scripts/index.js"></script>
+
+
+
+
+
+
