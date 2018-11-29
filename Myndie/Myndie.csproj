@@ -574,7 +574,6 @@
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.ttf" />
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
