@@ -451,12 +451,10 @@
         $(function () {
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.chatHub;
-            var Username = '@Html.Action("GetUsername", "User")';
-            var Img = '@Html.Action("GetImage", "User")';
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message, img) {
                 // Add the message to the page.
-                $('#discussion').append('<img src="`${Img}`" width="50px" class="float-left"/> <small class="a">' + htmlEncode(name) + ' :</small><span class="label label-default" class="a">' + htmlEncode(message) + '</span><br>');
+                $('#discussion').append('<img src="https://images.vexels.com/media/users/3/143426/isolated/preview/b9b84ffc510491704ecd0c5838a56271-lightning-bolt-yellow-symbol-by-vexels.png" width="50px" class="float-left"/> <small class="a">' + htmlEncode(name) + ' :</small><span class="label label-default" class="a">' + htmlEncode(message) + '</span><br>');
 
                 var number = parseInt($('#smgs').text());
                 if (isNaN(number)) {
@@ -468,7 +466,7 @@
 
             };
             // Get the user name and store it to prepend to messages.
-            $('#displayname').val(Username);
+            $('#displayname').val(@if (Session["username"] != null) { Session["username"].ToString(); });
             // Set initial focus to message input box.
             $('#message').focus();
             // Start the connection.
