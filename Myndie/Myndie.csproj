@@ -669,6 +669,7 @@
     <Content Include="Views\Developer\Summary.cshtml" />
     <Content Include="Views\User\ForgotYourPassword.cshtml" />
     <Content Include="Views\User\_UserChat.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ForgotPasswordChange.cshtml" />
   </ItemGroup>
   <ItemGroup>
