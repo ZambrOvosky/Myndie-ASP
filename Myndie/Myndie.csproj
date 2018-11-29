@@ -289,6 +289,7 @@
     <Content Include="assets\bower_components\smoothscroll-for-websites\SmoothScroll.js" />
     <Content Include="assets\bower_components\social-likes\dist\social-likes.min.js" />
     <Content Include="assets\bower_components\social-likes\dist\social-likes_flat.css" />
+    <Content Include="assets\css\chatmobile.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\dropzone\dropzone.css" />
     <Content Include="assets\css\dropzone\dropzone.js" />
@@ -570,6 +571,7 @@
     <Content Include="assets\vendor\summernote\www_subdomain\d19m59y37dris4.cloudfront.net\dark-admin-premium\1-4-4\vendor\summernote\font\www_subdomain\summernote.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\chatmobile.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
