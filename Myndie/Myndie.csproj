@@ -685,6 +685,7 @@
     <Content Include="Views\User\ForgotPasswordChange.cshtml" />
     <Content Include="Views\User\ChatMobile.cshtml" />
     <Content Include="Views\Application\UpdateApp.cshtml" />
+    <Content Include="Views\User\_UserChatMobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
