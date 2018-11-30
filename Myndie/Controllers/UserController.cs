@@ -409,6 +409,13 @@ namespace Myndie.Controllers
             return PartialView();
         }
 
+        public PartialViewResult _UserChatMobile()
+        {
+            UserDAO dao = new UserDAO();
+            ViewBag.User = dao.SearchById(int.Parse(Session["Id"].ToString()));
+            return PartialView();
+        }
+
         public ActionResult ChatMobile()
         {
             return View();
