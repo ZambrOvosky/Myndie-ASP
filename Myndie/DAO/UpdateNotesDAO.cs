@@ -10,9 +10,9 @@ namespace Myndie.DAO
     {
         private EntityContext context = new EntityContext();
 
-        public void Add(SellItem sellit)
+        public void Add(UpdateNotes update)
         {
-            context.SellItems.Add(sellit);
+            context.Updates.Add(update);
             Update();
         }
 
@@ -21,19 +21,19 @@ namespace Myndie.DAO
             context.SaveChanges();
         }
 
-        public IList<SellItem> List()
+        public IList<UpdateNotes> List()
         {
-            return context.SellItems.ToList();
+            return context.Updates.ToList();
         }
 
-        public SellItem SearchById(int id)
+        public UpdateNotes SearchById(int id)
         {
-            return context.SellItems.FirstOrDefault(p => p.Id == id);
+            return context.Updates.FirstOrDefault(up => up.Id == id);
         }
 
-        public void Remove(SellItem sellit)
+        public void Remove(UpdateNotes update)
         {
-            context.SellItems.Remove(sellit);
+            context.Updates.Remove(update);
             Update();
         }
     }

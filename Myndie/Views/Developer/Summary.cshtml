@@ -38,7 +38,11 @@
                                         {
                                             <td class="text-center">False</td>
                                         }
-                                        <td class="text-center"><a href="@Url.Action("EditGame", "Application", new { id = a.Id})" class="btn sm btn-info ladda-button">Edit</a> <a href="@Url.Action("Remove", "Application", new { id = a.Id})" class="btn sm btn-primary ladda-button">Remove</a></td>
+                                            <td class="text-center">
+                                                <a href="@Url.Action("UpdateApp", "Application", new { id = a.Id})" class="btn sm btn-success ladda-button">Update</a>
+                                                <a href="@Url.Action("EditApp", "Application", new { id = a.Id})" class="btn sm btn-info ladda-button">Edit</a>
+                                                <a href="@Url.Action("Remove", "Application", new { id = a.Id})" class="btn sm btn-primary ladda-button">Remove</a>
+                                            </td>
                                     </tr>
                                 }
                             </tbody>

@@ -58,12 +58,13 @@ Tela Produto colocar info do dev
 Fazer tela de esqueci a senha exclusiva para o Android
 Dev Profile
 EditGame Buttons
+EditGame Att
+Erro Preco negativo
 
 /Feitos
 
 AddGame Erro no Upload
 
-EditGame Att
 Index Last News
 
 Formatar o preço com masked TxtBox

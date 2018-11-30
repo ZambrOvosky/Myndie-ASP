@@ -672,7 +672,7 @@
     <Content Include="Views\Pegi\Edit.cshtml" />
     <Content Include="Views\Application\Moderator.cshtml" />
     <Content Include="Views\Application\_GenreGameRightSide.cshtml" />
-    <Content Include="Views\Application\EditGame.cshtml" />
+    <Content Include="Views\Application\EditApp.cshtml" />
     <Content Include="Views\TypeApp\TypesAppBar.cshtml" />
     <Content Include="Views\Shared\_DeveloperLayout.cshtml" />
     <Content Include="Views\User\RegisterMobile.cshtml" />
@@ -684,6 +684,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ForgotPasswordChange.cshtml" />
     <Content Include="Views\User\ChatMobile.cshtml" />
+    <Content Include="Views\Application\UpdateApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

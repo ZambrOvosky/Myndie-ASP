@@ -19,8 +19,8 @@
             <div class="owl-carousel owl-theme">
                 @foreach (var app in ViewBag.DevGames)
                 {
-                    <a href="~/Application/EditGame/@app.Id">
-                        <img src="https://myndie.azurewebsites.net/media/user/e51a21c2-f2c4-41b4-b5a6-82af1f184a70.jpg" alt="@App.Name">
+                    <a href="~/Application/EditApp/@app.Id">
+                        <img src="@app.ImageUrl" alt="@App.Name">
                     </a>
                 }
             </div>

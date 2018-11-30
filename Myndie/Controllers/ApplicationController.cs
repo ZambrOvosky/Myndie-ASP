@@ -54,70 +54,74 @@ namespace Myndie.Controllers
                     {
                         if (app.ReleaseDate.Year >= 1900 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
                         {
-                            if (uniq == null)
+                            if(app.Price >= 0 && app.Price <= 1000)
                             {
-                                app.DeveloperId = Dev.Id;
-                                dao = new ApplicationDAO();
-                                dao.Add(app);
-                                Dev.NumSoft++;
-                                ddao.Update();
-
-                                Application appreg = dao.GetDevLastGame(Dev.Id);
-                                try
+                                if (uniq == null)
                                 {
+                                    app.DeveloperId = Dev.Id;
+                                    dao = new ApplicationDAO();
+                                    dao.Add(app);
+                                    Dev.NumSoft++;
+                                    ddao.Update();
 
-                                    //Images
-                                    int count = 0;
-                                    foreach (var img in images)
+                                    Application appreg = dao.GetDevLastGame(Dev.Id);
+                                    try
                                     {
-                                        string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
-                                        img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
-                                        Image i = new Image();
-                                        i.Url = "../../../media/app/" + filePath;
-                                        i.UserId = int.Parse(Session["Id"].ToString());
-                                        i.ApplicationId = appreg.Id;
-                                        idao.Add(i);
-                                        if (count == 0)
+
+                                        //Images
+                                        int count = 0;
+                                        foreach (var img in images)
                                         {
-                                            appreg.ImageUrl = i.Url;
-                                            count++;
-                                            dao.Update();
+                                            string filePath = Guid.NewGuid() + Path.GetExtension(img.FileName);
+                                            img.SaveAs(Path.Combine(Server.MapPath("~/media/app"), filePath));
+                                            Image i = new Image();
+                                            i.Url = "../../../media/app/" + filePath;
+                                            i.UserId = int.Parse(Session["Id"].ToString());
+                                            i.ApplicationId = appreg.Id;
+                                            idao.Add(i);
+                                            if (count == 0)
+                                            {
+                                                appreg.ImageUrl = i.Url;
+                                                count++;
+                                                dao.Update();
+                                            }
                                         }
+                                        //
                                     }
-                                    //
-                                }
-                                catch
-                                {
-                                    appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
-                                    dao.Update();
-                                    result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
-                                }
-                                try
-                                {
-                                    //File
-                                    string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
-                                    if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + appreg.Id)))
+                                    catch
                                     {
-                                        Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + appreg.Id));
+                                        appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
+                                        dao.Update();
+                                        result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
                                     }
-                                    File.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + appreg.Id), filePath2));
-                                    appreg.Archive = "../../../apps/appfiles/" + appreg.Id + "/" + filePath2;
-                                    dao.Update();
-                                    //
+                                    try
+                                    {
+                                        //File
+                                        string filePath2 = Guid.NewGuid() + Path.GetExtension(File.FileName);
+                                        if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + appreg.Id)))
+                                        {
+                                            Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + appreg.Id));
+                                        }
+                                        File.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + appreg.Id), filePath2));
+                                        appreg.Archive = "../../../apps/appfiles/" + appreg.Id + "/" + filePath2;
+                                        dao.Update();
+                                        //
+                                    }
+                                    catch
+                                    {
+                                        result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                                    }
+
+
+
+
+                                    result = "Successfully Registered";
+                                    return Json(result, JsonRequestBehavior.AllowGet);
+                                    //return RedirectToAction("Register");
                                 }
-                                catch
-                                {
-                                    result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
-                                }
-
-
-
-
-                                result = "Successfully Registered";
-                                return Json(result, JsonRequestBehavior.AllowGet);
-                                //return RedirectToAction("Register");
+                                else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
                             }
-                            else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
+                            else { result = "Application Price is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }                            
                         }
                         else { result = "The release date is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }
                     }
@@ -247,7 +251,7 @@ namespace Myndie.Controllers
             return PartialView();
         }
 
-        public ActionResult EditGame(int id)
+        public ActionResult EditApp(int id)
         {
             try
             {
@@ -477,6 +481,68 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }            
+        }
+
+        public ActionResult UpdateApp(int id)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                UserDAO udao = new UserDAO();
+                Application app = dao.SearchById(id);
+                if (int.Parse(Session["DevId"].ToString()) == app.DeveloperId)
+                {
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.App = app;
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult UpdateAppData(UpdateNotes update, HttpPostedFileBase file)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                UpdateNotesDAO updao = new UpdateNotesDAO();
+                Application app = dao.SearchById(update.ApplicationId);
+                if (int.Parse(Session["DevId"].ToString()) == app.DeveloperId && update.Value != null)
+                {
+                    updao.Add(update);
+
+                    //Delete File in Server
+                    string p = app.Archive;
+                    p = p.Replace("../../..", "..");
+                    string fullPath = Request.MapPath(p);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                    }
+
+                    //File
+                    string filePath2 = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    if (!Directory.Exists(Server.MapPath("~/apps/appfiles/" + app.Id)))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/apps/appfiles/" + app.Id));
+                    }
+                    file.SaveAs(Path.Combine(Server.MapPath("~/apps/appfiles/" + app.Id), filePath2));
+                    app.Archive = "../../../apps/appfiles/" + app.Id + "/" + filePath2;
+                    dao.Update();
+                    //
+                    return RedirectToAction("Summary", "Developer");
+                }
+                return RedirectToAction("Index", "Home");
+            }             
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
     }
 }
