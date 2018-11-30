@@ -291,7 +291,9 @@
     <Content Include="assets\bower_components\social-likes\dist\social-likes_flat.css" />
     <Content Include="assets\css\cavalo.css" />
     <Content Include="assets\css\chatmobile.css" />
+    <Content Include="assets\css\component.css" />
     <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\dropzone\dropzone.css" />
     <Content Include="assets\css\dropzone\dropzone.js" />
     <Content Include="assets\css\dropzone\min\dropzone-min.js" />
@@ -307,6 +309,7 @@
     <Content Include="assets\css\entypo\index.html" />
     <Content Include="assets\css\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="assets\css\glyphicons\index.html" />
+    <Content Include="assets\css\normalize.css" />
     <Content Include="assets\images\avatar-user-1.png" />
     <Content Include="assets\images\avatar-user-2.png" />
     <Content Include="assets\images\avatar-user-3.png" />
@@ -421,8 +424,11 @@
     <Content Include="assets\myndie\js\bootstrap3-typeahead.min.js" />
     <Content Include="assets\myndie\js\cavalo1.js" />
     <Content Include="assets\myndie\js\cavalo2.js" />
+    <Content Include="assets\myndie\js\custom-file-input.js" />
     <Content Include="assets\myndie\js\forms-autocomplete.js" />
     <Content Include="assets\myndie\js\index.js" />
+    <Content Include="assets\myndie\js\jquery-v1.min.js" />
+    <Content Include="assets\myndie\js\jquery.custom-file-input.js" />
     <Content Include="assets\myndie\js\myndie.min.js" />
     <Content Include="assets\plugins\slider-revolution\examples&amp;source\rs-plugin\assets\arrowleft.png" />
     <Content Include="assets\plugins\slider-revolution\examples&amp;source\rs-plugin\assets\arrowright.png" />
