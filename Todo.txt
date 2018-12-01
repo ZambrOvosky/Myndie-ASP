@@ -60,12 +60,12 @@ Dev Profile
 EditGame Buttons
 EditGame Att
 Erro Preco negativo
+Index Last News
 
 /Feitos
 
 AddGame Erro no Upload
 
-Index Last News
 Developer dashboard
 
 Formatar o preço com masked TxtBox

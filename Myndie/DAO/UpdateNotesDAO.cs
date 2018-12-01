@@ -36,5 +36,10 @@ namespace Myndie.DAO
             context.Updates.Remove(update);
             Update();
         }
+
+        public IList<UpdateNotes> GetLast3()
+        {
+            return (from u in context.Updates orderby u.Id descending select u).Take(3).ToList();
+        }
     }
 }
