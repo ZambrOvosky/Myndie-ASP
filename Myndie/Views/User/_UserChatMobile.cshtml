@@ -98,7 +98,7 @@
 
                     $('#smgs').text("");
                         // Call the Send method on the hub.
-                    if ($('#message').val() != "") {
+                    if ($('#message').val() != "" && $('#message').val() != " ") {
                         chat.server.send($('#displayname').val(), $('#message').val());
                     }
 
