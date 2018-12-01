@@ -1,5 +1,5 @@
 ﻿.body {
-    background: #232930;
+    background: #232930 ;
 }
 
 
@@ -17,7 +17,6 @@
 .chat-box {
     width: 100%;
     /*   border-radius: 3px; */
-    box-shadow: -10px 10px 50px -10px rgba(0,0,0,0.4);
     background: #fff;
     overflow: hidden;
 }
