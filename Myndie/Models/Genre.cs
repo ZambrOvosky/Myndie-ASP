@@ -13,5 +13,7 @@ namespace Myndie.Models
         [Required, StringLength(50)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+        [NotMapped]
+        public virtual bool IsChecked { get; set; }
     }
 }

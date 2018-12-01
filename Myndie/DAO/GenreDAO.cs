@@ -59,5 +59,10 @@ namespace Myndie.DAO
         {
             return (from g in context.Genres select g).Take(10).ToList();
         }
+
+        public IList<Genre> ListId()
+        {
+            return (from g in context.Genres orderby g.Id select g).ToList();
+        }
     }
 }

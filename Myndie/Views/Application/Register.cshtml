@@ -107,6 +107,21 @@
                                     </div>
                                 </div>
                                 <br /><br />
+                                <hr />
+                                <h4>Genres</h4>
+                                <div class="col-md-12">
+
+                                @for(int i = 0; i < ViewBag.Genres.Count; i++)
+                                {
+                                    <label class="checkbox-inline col-md-2">
+                                        <input class="m-2" type="checkbox" name="genres[@i].IsChecked" value="true"/><span class="h4">@ViewBag.Genres[i].Name</span>
+                                        <input type="hidden" name="genres[@i].Id" value="@ViewBag.Genres[i].Id" />
+                                        <input type="hidden" name="genres[@i].Name" value="@ViewBag.Genres[i].Name" />
+                                    </label>
+                                }
+                                </div>
+
+                                <br /><br />
 
 
                                 <br /><br />
@@ -125,6 +140,7 @@
                         </div>
                         <script>
                             function AjaxPostRegisterApp(formData) {
+                                console.log(formData);
                                 alert("Wait... Uploading...")
                                 var ajaxConfig = {
                                     type: "post",

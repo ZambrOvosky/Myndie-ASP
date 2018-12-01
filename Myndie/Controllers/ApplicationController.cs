@@ -25,10 +25,12 @@ namespace Myndie.Controllers
                 TypeAppDAO tdao = new TypeAppDAO();
                 PegiDAO pdao = new PegiDAO();
                 UserDAO udao = new UserDAO();
+                GenreDAO gdao = new GenreDAO();
                 ViewBag.Class = "";
                 ViewBag.Type = tdao.List();
                 ViewBag.Pegi = pdao.List();
                 ViewBag.App = new Application();
+                ViewBag.Genres = gdao.ListId();
                 ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
                 return View();
             }
@@ -36,9 +38,16 @@ namespace Myndie.Controllers
 
         }
 
-        public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File)
+        public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File, IList<Genre> genres)
         {
             var result = "";
+            //foreach(var g in genres)
+            //{
+            //    Genre ge = new Genre();
+            //    ge.Id = g.Id;
+            //    ge.IsChecked = g.IsChecked;
+            //    gens.Add(ge);
+            //}
 
             if (ModelState.IsValid)
             {
