@@ -75,10 +75,15 @@
             <article>
 
                 <!-- Description -->
-                <h2 class="mt-0">Description</h2>
+                <h2 class="mt-0">Description                          
+                <div class="date">
+                    <i class="entypo-calendar"></i>Release Date: @ViewBag.App.ReleaseDate
+                </div>
+                </h2>
                 <div class="description">
                     @ViewBag.App.Desc
                 </div>
+                
                 <!-- /Description -->
                 <!-- Post Share -->
                 <div class="btn-group social-list social-likes" data-counters="no">
@@ -129,9 +134,6 @@
                     </div>
                     <div class="review-cont clearfix">
                         <a class="review-author h4">@ViewBag.Dev.Name</a>
-                        <div class="date">
-                            <i class="entypo-calendar"></i>@ViewBag.App.ReleaseDate
-                        </div>
                         <div class="review-text">
                             <p>
                                @ViewBag.Dev.Info

@@ -55,5 +55,29 @@ namespace Myndie.Controllers
             ViewBag.UserRevs = users;
             return PartialView();
         }
+
+        public ActionResult YourReviews()
+        {
+            if(Session["DevId"] != null)
+            {
+                ApplicationDAO appdao = new ApplicationDAO();
+                ReviewDAO rdao = new ReviewDAO();
+                IList<Application> apps = appdao.GetDevGames(int.Parse(Session["DevId"].ToString()));
+                UserDAO udao = new UserDAO();
+                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                //IList<Review> revs = new List<Review>();
+                //foreach (var a in apps)
+                //{
+                //    IList<Review> rev = rdao.SearchByAppId(a.Id);
+                //    foreach(var r in rev)
+                //    {
+                //        revs.Add(r);
+                //    }                    
+                //}
+                ViewBag.Apps = apps;
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

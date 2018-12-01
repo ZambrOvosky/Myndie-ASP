@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_DeveloperLayout.cshtml";
+}
+
+<section class="no-padding-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 block">
+                <div class="title"><strong>Your Apps</strong></div>
+                <div class="block-body">
+                    @foreach(var a in ViewBag.Apps)
+                    {
+                        <h2>@a.Name:</h2>
+                        if(a.Id != null)
+                        {
+                            @Html.Action("_ListReview", "Review", new { Appid = a.Id})
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

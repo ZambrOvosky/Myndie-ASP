@@ -687,6 +687,8 @@
     <Content Include="Views\User\ChatMobile.cshtml" />
     <Content Include="Views\Application\UpdateApp.cshtml" />
     <Content Include="Views\User\_UserChatMobile.cshtml" />
+    <Content Include="Views\Application\SearchAllGenres.cshtml" />
+    <Content Include="Views\Review\YourReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

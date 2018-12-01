@@ -31,5 +31,15 @@ namespace Myndie.DAO
             context.ApplicationGenres.Remove(app);
             Update();
         }
+
+        public IList<ApplicationGenre> ListByApplication(int id)
+        {
+            return (from a in context.ApplicationGenres where a.ApplicationId == id orderby a.Id select a).ToList();
+        }
+
+        public IList<ApplicationGenre> ListByGenre(int id)
+        {
+            return (from a in context.ApplicationGenres where a.GenreId == id orderby a.Id select a).ToList();
+        }
     }
 }

@@ -61,6 +61,8 @@ EditGame Buttons
 EditGame Att
 Erro Preco negativo
 Index Last News
+Link Game e Genre
+Fazer Busca por Genero e Linkar com a partial View RightSide
 
 /Feitos
 
@@ -70,8 +72,6 @@ Developer dashboard
 
 Formatar o preço com masked TxtBox
 
-Link Game e Genre
-Fazer Busca por Genero e Linkar com a partial View RightSide
 
 Approved tela de produtos no dashboard
 Ultimo Grafico

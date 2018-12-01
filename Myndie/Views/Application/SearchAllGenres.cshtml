@@ -1,0 +1,105 @@
+﻿
+@{
+
+}
+
+<!-- Main Content -->
+<section class="content-wrap">
+    <!-- Banner -->
+    <div class="myndie-banner myndie-banner-parallax banner-top xsmall">
+        <div class="image" style="background-image: url('../../assets/images/banner-blog-bg.jpg')">
+        </div>
+
+        <div class="info">
+            <div>
+                <div class="container">
+                    <h1>Search</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Banner -->
+
+    <div class="container myndie-store">
+
+        <!-- Games List -->
+        <div class="col-md-9">
+
+            <div class="isotope-list">
+                @if (ViewBag.Apps.Count == 0)
+                {
+                    <center><h2><strong>No Results</strong></h2></center>
+                }
+                else
+                {
+                    foreach (var a in ViewBag.Apps)
+                    {
+                        <!-- Single Product Block -->
+                        <a href="~/Application/Product/@a.Id" class="item angled-bg">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-xs-4">
+                                    <div class="angled-img">
+                                        <div class="img">
+                                            @if (a.ImageUrl != null && a.ImageUrl != "")
+                                            {
+                                                <img src="@a.ImageUrl" style="height: 80px" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg" alt="">
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-9 col-xs-8">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-md-9">
+                                            <h4>@a.Name</h4>
+                                            <div class="rating">
+                                                <i class="entypo-star"></i>
+                                                <i class="entypo-star"></i>
+                                                <i class="entypo-star"></i>
+                                                <i class="entypo-star"></i>
+                                                <i class="entypo-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-3 align-right">
+                                            <div class="price">
+                                                US$ @a.Price
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- /Single Product Block -->
+                    }
+                }
+
+
+            </div>
+
+        </div>
+        <!-- /Games List -->
+        <!-- Right Side -->
+        <div class="col-md-3">
+            <!-- Side Categories -->
+            <div class="side-block">
+                <h4 class="block-title">Categories</h4>
+                <ul class="block-content">
+                    @foreach (var g in ViewBag.Genres)
+                    {
+                        <li>
+                            <a href="~/Application/SearchByGenre/@g.Id">@g.Name</a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+            <!-- /Side Categories -->
+        </div>
+        <!-- /Right Side -->
+    </div>
+</section>
+<!-- /Main Content -->

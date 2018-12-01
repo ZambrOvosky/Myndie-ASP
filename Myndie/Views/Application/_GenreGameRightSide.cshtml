@@ -5,12 +5,12 @@
         <h4 class="block-title">Categories</h4>
         <ul class="block-content">
             <li>
-                <a href="#!">All</a>
+                <a href="~/Application/SearchAllGenres">All</a>
             </li>
             @foreach (var g in ViewBag.GenreSide)
             {
             <li>
-                <a href="#!">@g.Name</a>
+                <a href="~/Application/SearchByGenre/@g.Id">@g.Name</a>
             </li>
 
             }

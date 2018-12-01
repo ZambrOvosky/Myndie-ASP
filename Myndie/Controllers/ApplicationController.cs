@@ -41,13 +41,6 @@ namespace Myndie.Controllers
         public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File, IList<Genre> genres)
         {
             var result = "";
-            //foreach(var g in genres)
-            //{
-            //    Genre ge = new Genre();
-            //    ge.Id = g.Id;
-            //    ge.IsChecked = g.IsChecked;
-            //    gens.Add(ge);
-            //}
 
             if (ModelState.IsValid)
             {
@@ -58,7 +51,9 @@ namespace Myndie.Controllers
                     Application uniq = dao.IsUnique(app);
                     DeveloperDAO ddao = new DeveloperDAO();
                     ImageDAO idao = new ImageDAO();
+                    ApplicationGenreDAO agdao = new ApplicationGenreDAO();
                     Developer Dev = ddao.SearchById(int.Parse(Session["DevId"].ToString()));
+                    bool ImgError = false, FileError = false, AGError = false;
                     if (Dev != null)
                     {
                         if (app.ReleaseDate.Year >= 1900 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
@@ -74,6 +69,24 @@ namespace Myndie.Controllers
                                     ddao.Update();
 
                                     Application appreg = dao.GetDevLastGame(Dev.Id);
+                                    try
+                                    {
+                                        foreach (var g in genres)
+                                        {
+                                            if (g.IsChecked == true)
+                                            {
+                                                ApplicationGenre ag = new ApplicationGenre();
+                                                ag.ApplicationId = appreg.Id;
+                                                ag.GenreId = g.Id;
+                                                agdao.Add(ag);
+                                            }
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        AGError = true;
+                                    }
+
                                     try
                                     {
 
@@ -101,7 +114,8 @@ namespace Myndie.Controllers
                                     {
                                         appreg.ImageUrl = "../../../assets/images/game-kingdoms-of-amalur-reckoning-4-500x375.jpg";
                                         dao.Update();
-                                        result = "Error on Uploading Images, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                                        ImgError = true;
+                                        result = result + "Error on Uploading Images, try later";
                                     }
                                     try
                                     {
@@ -118,10 +132,14 @@ namespace Myndie.Controllers
                                     }
                                     catch
                                     {
-                                        result = "Error on Uploading Files, try later"; return Json(result, JsonRequestBehavior.AllowGet);
+                                        FileError = true;
+                                        result = result + "Error on Uploading Files, try later";
                                     }
 
-
+                                    if(ImgError || FileError || AGError)
+                                    {
+                                        return Json(result, JsonRequestBehavior.AllowGet);
+                                    }
 
 
                                     result = "Successfully Registered";
@@ -269,6 +287,8 @@ namespace Myndie.Controllers
                 UserDAO udao = new UserDAO();
                 TypeAppDAO tdao = new TypeAppDAO();
                 PegiDAO pdao = new PegiDAO();
+                GenreDAO gdao = new GenreDAO();
+                ApplicationGenreDAO agdao = new ApplicationGenreDAO();
                 if (Session["ModId"] != null || App.DeveloperId == int.Parse(Session["DevId"].ToString()))
                 {
                     ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
@@ -277,6 +297,19 @@ namespace Myndie.Controllers
                     ViewBag.App = App;
                     ViewBag.Types = tdao.List();
                     ViewBag.Pegis = pdao.List();
+                    IList<Genre> genres = gdao.ListId();
+                    IList <ApplicationGenre> agens = agdao.ListByApplication(id);
+                    foreach(var ag in agens)
+                    {
+                        foreach(var g in genres)
+                        {
+                            if(ag.GenreId == g.Id)
+                            {
+                                g.IsChecked = true;
+                            }
+                        }
+                    }
+                    ViewBag.Genres = genres;
                     return View();
                 }
                 return RedirectToAction("Index", "Home");
@@ -552,6 +585,80 @@ namespace Myndie.Controllers
                 return RedirectToAction("Index", "Home");
             }
             
+        }
+
+        public ActionResult UpdateGenres(IList<Genre> genres, int appId)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            Application app = dao.SearchById(appId);
+            if(Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString())){
+
+                ApplicationGenreDAO agdao = new ApplicationGenreDAO();
+                IList<ApplicationGenre> ags = agdao.ListByApplication(appId);
+                foreach (var g in genres)
+                {
+                    foreach (var ag in ags)
+                    {
+                        if (ag.GenreId == g.Id)
+                        {
+                            if (!g.IsChecked)
+                            {
+                                agdao.Remove(ag);
+                            }
+                        }
+                    }
+                    if (g.IsChecked == true)
+                    {
+                        ApplicationGenre ag = new ApplicationGenre();
+                        ag.ApplicationId = appId;
+                        ag.GenreId = g.Id;
+                        agdao.Add(ag);
+                    }
+                }
+                return RedirectToAction("EditApp", "Application", new { id = appId });
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult SearchByGenre(int id)
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                ApplicationGenreDAO agdao = new ApplicationGenreDAO();
+                IList<ApplicationGenre> agens = agdao.ListByGenre(id);
+                IList<Application> apps = new List<Application>();
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+                foreach (var ag in agens)
+                {
+                    apps.Add(dao.SearchById(ag.ApplicationId));
+                }
+                ViewBag.Apps = apps;
+                return View("Search");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+        }
+
+        public ActionResult SearchAllGenres()
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            GenreDAO gdao = new GenreDAO();
+            CartDAO cdao = new CartDAO();
+            if (Session["Id"] != null)
+            {
+                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+            }
+            ViewBag.Apps = dao.ListTop10();
+            ViewBag.Genres = gdao.List();
+            return View();
         }
     }
 }
