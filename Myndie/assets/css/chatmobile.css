@@ -28,7 +28,6 @@
     padding: 15px;
     color: #fff;
     background: #232930;
-    display: none;
 }
 
 /*.chat-header button {
@@ -53,6 +52,7 @@
     height: 365px;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 5px;
 }
 
 /*.conteudo p{
