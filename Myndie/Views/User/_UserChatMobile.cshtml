@@ -3,6 +3,10 @@
 @if (Session["Id"] != null)
 {
     <div class="chat-box fixed-positioning">
+        <div class="chat-header">
+            <span>Online Chat <span id="smgs"></span></span>
+            <button class="btn btn-xs">Show</button>
+        </div>
         <div class="chat-content">
             <div class="conteudo">
                 <ul id="discussion"></ul>
@@ -41,7 +45,7 @@
             $('#smgs').text("");
             isOpen = false;
         } else {
-            chatContent.style.maxHeight = 500 + "px";
+            chatContent.style.maxHeight = 1080 + "px";
             chatContent.classList.add('active');
             toggleButton.innerText = "Hide";
             isOpen = true;
@@ -49,17 +53,17 @@
         }
     })
     // Outside click
-    //window.addEventListener('click', function (e) {
-    //    if (!chatBox.contains(e.target)) {
-    //        chatContent.style.maxHeight = null;
-    //        chatContent.classList.remove('active');
-    //        toggleButton.innerText = "Show";
-    //        isOpen = false;
-    //        $('#smgs').text("");
-    //    }
-    //});
+    window.addEventListener('click', function (e) {
+        if (!chatBox.contains(e.target)) {
+            chatContent.style.maxHeight = null;
+            chatContent.classList.remove('active');
+            toggleButton.innerText = "Show";
+            isOpen = false;
+            $('#smgs').text("");
+        }
+    });
     //(() => {
-    //    chatContent.style.maxHeight = 500 + "px";
+    //    chatContent.style.maxHeight = 1080 + "px";
     //    chatContent.classList.add('active');
     //    toggleButton.innerText = "Hide"
     //})();
