@@ -291,7 +291,7 @@ namespace Myndie.Controllers
                 a.TypeAppId = app.TypeAppId;
                 a.PegiId = app.PegiId;
                 dao.Update();
-                return RedirectToAction("EditGame", "Application", new { id = app.Id });
+                return RedirectToAction("EditApp", "Application", new { id = app.Id });
             }
             return RedirectToAction("Index", "Home");
 
@@ -386,7 +386,7 @@ namespace Myndie.Controllers
                         dao.Update();
                     }
 
-                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                    return RedirectToAction("EditApp", "Application", new { id = a.Id });
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -405,7 +405,7 @@ namespace Myndie.Controllers
                     Image i = idao.SearchById(id);
                     a.ImageUrl = i.Url;
                     dao.Update();
-                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                    return RedirectToAction("EditApp", "Application", new { id = a.Id });
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -428,7 +428,7 @@ namespace Myndie.Controllers
                     im.UserId = int.Parse(Session["Id"].ToString());
                     im.ApplicationId = a.Id;
                     idao.Add(im);
-                    return RedirectToAction("EditGame", "Application", new { id = a.Id });
+                    return RedirectToAction("EditApp", "Application", new { id = a.Id });
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -473,7 +473,7 @@ namespace Myndie.Controllers
                     ImageDAO idao = new ImageDAO();
                     Image i = idao.SearchById(id);
                     idao.Remove(i);
-                    return RedirectToAction("EditGame", "Application", new { id = AppId});
+                    return RedirectToAction("EditApp", "Application", new { id = AppId});
                 }
                 return RedirectToAction("Index", "Home");
             }
