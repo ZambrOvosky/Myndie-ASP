@@ -2,7 +2,7 @@
 {
     <div class="chat-box fixed-positioning">
         <div class="chat-header">
-            <span>Chat online <span id="smgs"></span></span>
+            <span>Online Chat <span id="smgs"></span></span>
             <button class="btn btn-xs">Show</button>
         </div>
         <div class="chat-content">
@@ -47,6 +47,7 @@
             chatContent.classList.add('active');
             toggleButton.innerText = "Hide";
             isOpen = true;
+            $('#smgs').text("");
         }
     })
     // Outside click
@@ -56,6 +57,7 @@
             chatContent.classList.remove('active');
             toggleButton.innerText = "Show";
             isOpen = false;
+            $('#smgs').text("");
         }
     });
     (() => {
@@ -75,7 +77,7 @@
                 if (isNaN(number)) {
                     number = 0;
                 }
-                if (htmlEncode(name) != $('#displayname').val) {
+                if (htmlEncode(name) != $('#displayname').val && !isOpen) {
                     $('#smgs').text(number + 1);
                 }
                 if (isOpen) {
