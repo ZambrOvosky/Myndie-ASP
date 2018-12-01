@@ -292,6 +292,7 @@
     <Content Include="assets\css\cavalo.css" />
     <Content Include="assets\css\chatmobile.css" />
     <Content Include="assets\css\component.css" />
+    <Content Include="assets\css\chat.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\dropzone\dropzone.css" />
