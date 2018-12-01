@@ -37,21 +37,21 @@
     let chatBox = document.querySelector(".chat-box");
     let toggleButton = document.querySelector(".chat-header button")
     let chatContent = document.querySelector(".chat-content");
-    toggleButton.addEventListener('click', () => {
-        if (chatContent.style.maxHeight) {
-            chatContent.style.maxHeight = null;
-            chatContent.classList.remove('active');
-            toggleButton.innerText = "Show"
-            $('#smgs').text("");
-            isOpen = false;
-        } else {
-            chatContent.style.maxHeight = 1080 + "px";
-            chatContent.classList.add('active');
-            toggleButton.innerText = "Hide";
-            isOpen = true;
-            $('#smgs').text("");
-        }
-    })
+    //toggleButton.addEventListener('click', () => {
+    //    if (chatContent.style.maxHeight) {
+    //        chatContent.style.maxHeight = null;
+    //        chatContent.classList.remove('active');
+    //        toggleButton.innerText = "Show"
+    //        $('#smgs').text("");
+    //        isOpen = false;
+    //    } else {
+    //        chatContent.style.maxHeight = 1080 + "px";
+    //        chatContent.classList.add('active');
+    //        toggleButton.innerText = "Hide";
+    //        isOpen = true;
+    //        $('#smgs').text("");
+    //    }
+    //})
     // Outside click
     window.addEventListener('click', function (e) {
         if (!chatBox.contains(e.target)) {

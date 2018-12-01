@@ -41,7 +41,7 @@
 
 
 .chat-content {
-    max-height: 100%;
+    height: 100%;
     overflow-wrap: break-word;
     transition: 1s ease-in-out;
     background: #232930;
@@ -49,7 +49,7 @@
 }
 
 .conteudo {
-    height: 500px;
+    height: 350px;
     overflow-y: auto;
     overflow-x: hidden;
 }
