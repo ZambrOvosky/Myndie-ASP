@@ -1,6 +1,8 @@
-﻿@if (Session["Id"] != null)
+﻿<link href="~/assets/css/chatmobile.css" rel="stylesheet" />
+
+@if (Session["Id"] != null)
 {
-    <div class="chat-box fixed-positioning" width="100%">
+    <div class="chat-box fixed-positioning">
         <div class="chat-content">
             <div class="conteudo">
                 <ul id="discussion"></ul>
@@ -47,20 +49,20 @@
         }
     })
     // Outside click
-    window.addEventListener('click', function (e) {
-        if (!chatBox.contains(e.target)) {
-            chatContent.style.maxHeight = null;
-            chatContent.classList.remove('active');
-            toggleButton.innerText = "Show";
-            isOpen = false;
-            $('#smgs').text("");
-        }
-    });
-    (() => {
-        chatContent.style.maxHeight = 500 + "px";
-        chatContent.classList.add('active');
-        toggleButton.innerText = "Hide"
-    })();
+    //window.addEventListener('click', function (e) {
+    //    if (!chatBox.contains(e.target)) {
+    //        chatContent.style.maxHeight = null;
+    //        chatContent.classList.remove('active');
+    //        toggleButton.innerText = "Show";
+    //        isOpen = false;
+    //        $('#smgs').text("");
+    //    }
+    //});
+    //(() => {
+    //    chatContent.style.maxHeight = 500 + "px";
+    //    chatContent.classList.add('active');
+    //    toggleButton.innerText = "Hide"
+    //})();
     $(function () {
             var x = 50;
             // Reference the auto-generated proxy for the hub.
