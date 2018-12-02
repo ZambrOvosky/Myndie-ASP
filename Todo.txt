@@ -66,15 +66,16 @@ Fazer Busca por Genero e Linkar com a partial View RightSide
 Ultimo Grafico
 Developer dashboard
 Sales dev
-
+Review Contar para a app
+Approved tela de produtos no dashboard
+Text Area para desc
+Pagina de Admin Devs
 
 /Feitos
 
 AddGame Erro no Upload
-Review Contar para a app
 Formatar o preço com masked TxtBox
 
-Approved tela de produtos no dashboard
 Profile de User p/ outros
 Linkar esse profile na _ListReview
 
@@ -82,7 +83,5 @@ Revisar Registers -> Crashs
 
 Formatar Release Date //N sei
 
-Text Area para desc
-Pagina de Admin Devs
 
 
