@@ -136,16 +136,10 @@ namespace Myndie.Controllers
 
         public PartialViewResult _GameValue(int id)
         {
-            try
-            {
-                ApplicationDAO adao = new ApplicationDAO();
-                ViewBag.App = adao.SearchById(id);
-                return PartialView();
-            }
-            catch
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            ApplicationDAO adao = new ApplicationDAO();
+            ViewBag.App = adao.SearchById(id);
+            return PartialView();
         }
     }
 }

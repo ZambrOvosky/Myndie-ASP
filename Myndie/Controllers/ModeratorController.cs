@@ -121,29 +121,23 @@ namespace Myndie.Controllers
 
         public PartialViewResult GenreIndex()
         {
-            try
+            if (Session["ModId"] != null)
             {
-                if (Session["ModId"] != null)
-                {
-                    GenreDAO dao = new GenreDAO();
-                    UserDAO udao = new UserDAO();
-                    ModeratorDAO mdao = new ModeratorDAO();
-                    ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
-                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                    ViewBag.User = u;
-                    ViewBag.Genre = new Genre();
-                    ViewBag.Genres = dao.List();
-                    return PartialView();
-                }
-                else
-                {
-                    return PartialView();
-                }
+                GenreDAO dao = new GenreDAO();
+                UserDAO udao = new UserDAO();
+                ModeratorDAO mdao = new ModeratorDAO();
+                ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.User = u;
+                ViewBag.Genre = new Genre();
+                ViewBag.Genres = dao.List();
+                return PartialView();
             }
-            catch
+            else
             {
-                return RedirectToAction("Index", "Home");
+                return PartialView();
             }
+
 
         }
     }
