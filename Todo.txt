@@ -63,6 +63,7 @@ Erro Preco negativo
 Index Last News
 Link Game e Genre
 Fazer Busca por Genero e Linkar com a partial View RightSide
+Ultimo Grafico
 
 /Feitos
 
@@ -74,7 +75,6 @@ Formatar o preço com masked TxtBox
 
 
 Approved tela de produtos no dashboard
-Ultimo Grafico
 Profile de User p/ outros
 Linkar esse profile na _ListReview
 
