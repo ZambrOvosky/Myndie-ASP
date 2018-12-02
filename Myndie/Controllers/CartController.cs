@@ -31,7 +31,7 @@ namespace Myndie.Controllers
                     c.Price = app.Price;
                     dao.Add(c);
                 }
-                return RedirectToAction("Product", "Application", new { id = appid });
+                return RedirectToAction("Cart", "Cart");
             }
             catch
             {
@@ -44,6 +44,10 @@ namespace Myndie.Controllers
             try
             {
                 CartDAO dao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = dao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
                 if (Session["Id"] != null)
                 {
                     ViewBag.FullCart = dao.GetUserCart(int.Parse(Session["Id"].ToString()));

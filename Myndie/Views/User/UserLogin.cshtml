@@ -1,0 +1,67 @@
+﻿
+@{
+}
+
+<section class="content-wrap full myndie-login">
+    <!-- Banner -->
+    <div class="myndie-banner banner-top">
+        <div class="image" style="background-image: url('../../assets/images/banner-bg.jpg')"></div>
+        <div class="info">
+            <div>
+                <div class="container align-center">
+                    <div class="myndie-form">
+                        <h1>Login</h1>
+                        <form onsubmit="return LoginUser(this)"  enctype="multipart/form-data" method="post">
+                            <div class="myndie-input">
+                                <input type="text" name="user.Username" placeholder="Login">
+                            </div>
+                            <div class="myndie-input">
+                                <input type="password" name="User.Password" placeholder="Password">
+                            </div>
+                            <div class="col-md-12">
+                                <a href="~/User/ForgotYourPassword" class="small m-0">Forgot your password?</a>
+                                or
+                                <a href="~/User/Register" class="small text-right">Sign Up</a>
+                            </div>
+                            <br />
+                            <br />
+                            <button class="btn btn-danger">Login</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Banner -->
+</section>
+
+
+<script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+
+
+    function LoginUser(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "../../../User/Login",
+            data: new FormData(formData),
+            success: function (result) {
+                if (result != 'Logged In') {
+                    alert(result);
+                }
+                else {
+                    location.reload();
+                }
+
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+
+        $.ajax(ajaxConfig);
+        return false;
+    }
+</script>

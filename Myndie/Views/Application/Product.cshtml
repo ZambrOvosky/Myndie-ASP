@@ -23,7 +23,7 @@
                     }
                     else
                     {
-                            <a href="@Url.Action("Register", "User")" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                            <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
                     }
 
                     @if (Session["Id"] != null)
@@ -39,7 +39,7 @@
 
                     }
                     else {
-                        <a href="@Url.Action("Register", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                        <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
                     }
                 </div>
             </div>
