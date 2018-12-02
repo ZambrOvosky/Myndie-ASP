@@ -14,7 +14,6 @@
 <script>
     @*var values = JSON.parse('"@Html.Raw(ViewBag.AppName)"');*@
     var values = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.AppName));
-    console.log(values);
     var obj = [];
     values.forEach(add);
 
@@ -22,7 +21,6 @@
         var o = { name: item };
         obj[i] = o; 
     }
-    console.log(obj);
     $('#search').typeahead({
         displayText: function (item) {
             return item.name

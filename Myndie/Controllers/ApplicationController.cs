@@ -187,6 +187,7 @@ namespace Myndie.Controllers
                 Application app = dao.SearchById(id);
                 Developer dev = ddao.SearchById(app.DeveloperId);
                 CartDAO cdao = new CartDAO();
+                PegiDAO pdao = new PegiDAO();
                 ViewBag.SellItem = false;
                 if (Session["Id"] != null)
                 {
@@ -197,6 +198,7 @@ namespace Myndie.Controllers
                 }
                 ViewBag.App = app;
                 ViewBag.Dev = dev;
+                ViewBag.Pegi = pdao.SearchById(app.PegiId);
                 ViewBag.DevUser = udao.SearchByDev(dev.Id);
                 ViewBag.Img = idao.SearchAppImages(id);
                 ViewBag.Similar = dao.ListLast10();

@@ -70,7 +70,7 @@
 
     <div class="container myndie-store">
 
-        <div class="col-md-9">
+        <div class="col-md-9 mb-0">
             <!-- Post Info -->
             <article>
 
@@ -82,6 +82,10 @@
                 </h2>
                 <div class="description">
                     @ViewBag.App.Desc
+                    <div class="mb-0">
+                        <br />
+                        <img src="@ViewBag.Pegi.PhotoPath" style="height: 50px; width: 40px" title="@ViewBag.Pegi.Desc" />
+                    </div>
                 </div>
                 
                 <!-- /Description -->
