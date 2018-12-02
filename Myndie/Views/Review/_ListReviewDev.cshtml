@@ -1,0 +1,55 @@
+﻿
+@foreach (var r in ViewBag.Revs)
+{
+    <div class="list-group card-list-group">
+        <div class="list-group-item py-5">
+            <div class="media">
+                @foreach (var u in ViewBag.UserRevs)
+                {
+                    if (r.UserId == u.Id)
+                    {
+                        <div style="background-image: url(@u.Picture)" class="media-object avatar avatar-md mr-3"></div>
+                    }
+                }
+                <div class="media-body mt-0">
+                    <div class="media-heading">
+                        <small class="float-right text-muted">@r.Date</small>
+
+                        @foreach (var u in ViewBag.UserRevs)
+                        {
+                            if (r.UserId == u.Id)
+                            {
+                                <h5 class="mb-0">@u.Name - <small class="text-muted">Version: @r.Version</small></h5>
+                            }
+                        }
+
+                    </div>
+                    <div class="text-small">@r.Desc</div><br />
+                    <div class="float-right text-primary">
+                        @if (r.Value >= 1)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if (r.Value >= 2)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if (r.Value >= 3)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if (r.Value >= 4)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                        @if (r.Value >= 5)
+                        {
+                            <i class="entypo-star"></i>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -56,6 +56,35 @@ namespace Myndie.Controllers
             return PartialView();
         }
 
+        [ChildActionOnly]
+        public PartialViewResult _ListReviewDev(int AppId)
+        {
+            ReviewDAO dao = new ReviewDAO();
+            UserDAO udao = new UserDAO();
+            IList<Review> list = dao.SearchByAppId(AppId);
+            IList<User> users = new List<User>();
+            bool b = false;
+            foreach (var r in list)
+            {
+                b = false;
+                foreach (var u in users)
+                {
+                    if (u.Id == r.UserId)
+                    {
+                        b = true;
+                    }
+                }
+                if (!b)
+                {
+                    users.Add(udao.SearchById(r.UserId));
+                }
+
+            }
+            ViewBag.Revs = list;
+            ViewBag.UserRevs = users;
+            return PartialView();
+        }
+
         public ActionResult YourReviews()
         {
             if(Session["DevId"] != null)

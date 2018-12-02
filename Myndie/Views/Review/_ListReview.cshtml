@@ -1,31 +1,21 @@
-﻿
-@foreach (var r in ViewBag.Revs)
-{
-    <div class="list-group card-list-group">
-        <div class="list-group-item py-5">
-            <div class="media">
+﻿<ul class="reviews-list">
+    @foreach (var r in ViewBag.Revs)
+    {
+        <li>
+            <article>
                 @foreach (var u in ViewBag.UserRevs)
                 {
                     if (r.UserId == u.Id)
                     {
-                        <div style="background-image: url(@u.Picture)" class="media-object avatar avatar-md mr-3"></div>
+                        <div class="review-avatar pull-left">
+                            <img src="@u.Picture" style="height: 50px" alt="">
+                        </div>
+                        @*PROFILEDEUSER*@
+                        <a class="review-author h4" href="">@u.Name</a>
                     }
                 }
-                <div class="media-body mt-0">
-                    <div class="media-heading">
-                        <small class="float-right text-muted">@r.Date</small>                  
-                        
-                        @foreach (var u in ViewBag.UserRevs)
-                        {
-                            if (r.UserId == u.Id)
-                            {
-                                <h5 class="mb-0">@u.Name - <small class="text-muted">Version: @r.Version</small></h5>
-                            }
-                        }
-                        
-                    </div>
-                    <div class="text-small">@r.Desc</div><br />
-                    <div class="float-right text-primary">
+                <div class="review-cont clearfix">
+                    <div class="rating pull-right">
                         @if (r.Value >= 1)
                         {
                             <i class="entypo-star"></i>
@@ -47,9 +37,15 @@
                             <i class="entypo-star"></i>
                         }
                     </div>
-
+                    <div class="date"><i class="entypo-calendar"></i> @r.Date</div>
+                    <div class="version"><small>Version: @r.Version</small></div>
+                    <div class="review-text">
+                        <p>
+                            @r.Desc
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-}
+            </article>
+        </li>
+    }
+</ul>
