@@ -123,20 +123,23 @@ namespace Myndie.DAO
 
         public IList<Application> GetGamesMonth()
         {
+            DateTime max = DateTime.Now.AddDays(-30);
             var type = (from t in context.TypeApps where t.Name == "Game" select t).FirstOrDefault();
-            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+            return (from a in context.Applications where a.TypeAppId == type.Id && a.ReleaseDate >= max select a).ToList();
         }
 
         public IList<Application> GetSoftwareMonth()
         {
+            DateTime max = DateTime.Now.AddDays(-30);
             var type = (from t in context.TypeApps where t.Name == "Software" select t).FirstOrDefault();
-            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+            return (from a in context.Applications where a.TypeAppId == type.Id && a.ReleaseDate >= max select a).ToList();
         }
 
         public IList<Application> GetMobileMonth()
         {
+            DateTime max = DateTime.Now.AddDays(-30);
             var type = (from t in context.TypeApps where t.Name == "Mobile" select t).FirstOrDefault();
-            return (from a in context.Applications where a.TypeAppId == type.Id select a).ToList();
+            return (from a in context.Applications where a.TypeAppId == type.Id && a.ReleaseDate >= max select a).ToList();
         }
     }
 }

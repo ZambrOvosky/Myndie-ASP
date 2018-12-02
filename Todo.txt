@@ -64,12 +64,12 @@ Index Last News
 Link Game e Genre
 Fazer Busca por Genero e Linkar com a partial View RightSide
 Ultimo Grafico
+Developer dashboard
 
 /Feitos
 
 AddGame Erro no Upload
 
-Developer dashboard
 
 Formatar o preço com masked TxtBox
 

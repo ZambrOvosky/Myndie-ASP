@@ -83,7 +83,6 @@
         "use strict";
         Chart.defaults.global.defaultFontColor = "#75787c";
         var Values = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.SaleCount) as String);
-        console.log(Values);
         for (var i = 0; i <= 7; i++) {
             if (Values[i] == null) {
                 var obj = { Date: Values[0].Date - i, TotalPrice: 0, Count: 0 };

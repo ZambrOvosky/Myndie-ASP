@@ -65,7 +65,8 @@ namespace Myndie.DAO
 
         public IList<User> GetMonthUsers()
         {
-            return (from u in context.Users where u.CrtDate.Year.Equals(DateTime.Now.Year) && u.CrtDate.Month.Equals(DateTime.Now.Month) select u).ToList();
+            DateTime max = DateTime.Now.AddDays(-30);
+            return (from u in context.Users where u.CrtDate >= max select u).ToList();
         }
     }
 }
