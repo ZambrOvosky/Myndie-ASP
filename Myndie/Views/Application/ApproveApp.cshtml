@@ -8,44 +8,73 @@
 
 <link href="~/Content/style.css" rel="stylesheet" />
 
-<div class="card">
-    <div class="card-header">
-        <h5 class="card-title">Images</h5>
-    </div>
-    <div style="background-image: url(../../../../img/photos/paul-morris-116514-unsplash.jpg);" class="card-header"></div>
-    <div class="card-body text-center">
-        <div id="carrousel">
-            <div class="container">
-                <div class="title col-md-12 text-center"> Your last uploads</div>
-                <div class="col-md-12">
-                    <div class="owl-carousel owl-theme">
-                        @foreach (var app in ViewBag.DevGames)
-                        {
-                            <a href="~/Application/EditApp/@app.Id">
-                                <img src="@app.ImageUrl" alt="@App.Name">
-                            </a>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+        <li class="breadcrumb-item">Approve            </li>
+        <li class="breadcrumb-item active">App name            </li>
+    </ul>
 </div>
-@*<div id="carrousel">
-    <div class="container">
-        <div class="title col-md-12 text-center"> Your last uploads</div>
-        <div class="col-md-12">
-            <div class="owl-carousel owl-theme">
-                @foreach (var app in ViewBag.DevGames)
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                @foreach (var a in ViewBag.App)
                 {
-                    <a href="~/Application/EditApp/@app.Id">
-                        <img src="@app.ImageUrl" alt="@App.Name">
-                    </a>
+                    <div class="card mb-2">
+                        <div class="card-header">
+                            <h5 class="card-title">images</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="media-body">
+                                <div id="carrousel">
+                                    <div class="container">
+                                        <div class="title col-md-12 text-center"> Your last uploads</div>
+                                        <div class="col-md-12">
+                                            <div class="owl-carousel owl-theme">
+                                                @foreach (var img in ViewBag.Img)
+                                                {
+                                                        <img src="@img.ImageUrl" alt="@App.Name">
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header">
+                            <h5 class="card-title">Description</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="media-body">
+                                <p class="text-muted mb-0">@a.Desc</p>
+                                <p class="text-muted mb-0 mt-2">
+                                    <ul class="social-links list-inline mb-0 mt-2">
+                                        <li class="list"><strong>Version: </strong> @a.Version</li>
+                                        <li class="list"><strong>Publisher Name: </strong> @a.PublisherName</li>
+                                        <li class="list"><strong>Price: </strong> @a.Price</li>
+                                        <li class="list"><strong>Type: </strong> @a.TypeId</li>
+                                        <li class="list"><strong>Genre: </strong> @a.GenreId</li>
+                                        <li class="list"><strong>Pegi: </strong> @a.PegiId</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary text-right"><i class="entypo-download"></i>  Download File</button>
+                            <button class="btn btn-primary text-left"><i class="entypo-download"></i>  Approve</button>
+                        </div>
+                    </div>
                 }
+                
             </div>
         </div>
     </div>
-</div>*@
+</section>
+
+
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>

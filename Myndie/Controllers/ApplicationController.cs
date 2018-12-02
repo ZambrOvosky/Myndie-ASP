@@ -662,8 +662,10 @@ namespace Myndie.Controllers
         }
         public ActionResult ApproveApp(int appId)
         {
+            ImageDAO idao = new ImageDAO();
             ApplicationDAO dao = new ApplicationDAO();
             ViewBag.App = dao.SearchById(appId);
+            ViewBag.Img = idao.SearchAppImages(appId);
             return View();
         }
 
