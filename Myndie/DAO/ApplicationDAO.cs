@@ -28,7 +28,7 @@ namespace Myndie.DAO
 
         public IList<Application> ListLast10()
         {
-            return (from a in context.Applications select a).OrderByDescending(a => a.Id).Take(10).ToList();
+            return (from a in context.Applications where a.Approved == 1 select a).OrderByDescending(a => a.Id).Take(10).ToList();
         }
 
         public IList<Application> ListTop10()
@@ -71,12 +71,12 @@ namespace Myndie.DAO
 
         public IList<Application> Search(string s)
         {
-            return (from a in context.Applications where a.Name.Contains(s) select a).ToList();
+            return (from a in context.Applications where a.Name.Contains(s) && a.Approved == 1 select a).ToList();
         }
 
         public IList<Application> SearchByType(int id)
         {
-            return (from a in context.Applications where a.TypeAppId == id select a).ToList();
+            return (from a in context.Applications where a.TypeAppId == id && a.Approved == 1 select a).ToList();
         }
 
         public IList<Application> AppsToApprove()
@@ -118,7 +118,7 @@ namespace Myndie.DAO
 
         public IList<Application> GetFreeApps()
         {
-            return (from a in context.Applications where a.Price == 0 select a).ToList();
+            return (from a in context.Applications where a.Price == 0 && a.Approved == 1 select a).ToList();
         }
 
         public IList<Application> GetGamesMonth()

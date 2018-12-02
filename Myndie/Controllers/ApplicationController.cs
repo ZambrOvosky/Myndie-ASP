@@ -660,13 +660,56 @@ namespace Myndie.Controllers
             ViewBag.Genres = gdao.List();
             return View();
         }
-        public ActionResult ApproveApp(int appId)
+        public ActionResult ApproveApp(int id)
         {
-            ImageDAO idao = new ImageDAO();
-            ApplicationDAO dao = new ApplicationDAO();
-            ViewBag.App = dao.SearchById(appId);
-            ViewBag.Img = idao.SearchAppImages(appId);
-            return View();
+            try
+            {
+                if (Session["ModId"] != null)
+                {
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ImageDAO idao = new ImageDAO();
+                    ApplicationDAO dao = new ApplicationDAO();
+                    TypeAppDAO tdao = new TypeAppDAO();
+                    GenreDAO gdao = new GenreDAO();
+                    PegiDAO pdao = new PegiDAO();
+                    ApplicationGenreDAO agdao = new ApplicationGenreDAO();
+
+                    ViewBag.Types = tdao.List();
+                    ViewBag.Pegis = pdao.List();
+                    ViewBag.AppGens = agdao.ListByApplication(id);
+                    ViewBag.Genres = gdao.List();
+                    ViewBag.User = u;
+                    ViewBag.App = dao.SearchById(id);
+                    ViewBag.Img = idao.SearchAppImages(id);
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch { return RedirectToAction("Index", "Home"); }            
+        }
+
+        public ActionResult Approve (int id)
+        {
+            try
+            {
+                if (Session["ModId"] != null)
+                {
+                    ApplicationDAO dao = new ApplicationDAO();
+                    Application a = dao.SearchById(id);
+                    a.Approved = 1;
+                    dao.Update();
+                    return RedirectToAction("ProfileView", "Moderator");
+                }
+                else { 
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         public PartialViewResult _SearchAuto()
