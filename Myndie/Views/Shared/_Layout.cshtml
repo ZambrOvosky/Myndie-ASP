@@ -124,11 +124,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <br />
-                        <form action="~/Application/Search" autocomplete="on" id="FormSearch">
-                            <div class="myndie-input" id="searchIndex">
-                                <input type="text" name="search" placeholder="Search">
-                            </div>
-                        </form>
+                        @Html.Action("_SearchAuto", "Application")
                     </li>
                     <li>
                         <a onClick="document.getElementById('FormSearch').submit()">
@@ -464,21 +460,7 @@
     </script>
 
     <script>
-        //$('#emailto').typeahead({
-        //    displayText: function (item) {
-        //        return item.name + ' ' + item.surname + ', ' + item.company
-        //    },
-        //    afterSelect: function (item) {
-        //        this.$element[0].value = item.email
-        //    },
-        //    source: [
-        //        { "name": "Marcos", "surname": "Siolin", "company": "Vortex", "email": "marcossion@combot.com", "city": "Talpa" },
-        //        { "name": "Léo", "surname": "Noguerira", "company": "Voryex", "email": "leonogueirac@franscene.com", "city": "Vienna" },
-        //        { "name": "Igor", "surname": "Myamoto", "company": "Voryexo", "email": "danoninho@whiskeycomp.com", "city": "Belva" },
-        //        { "name": "João", "surname": "Vitor", "company": "Voryexu", "email": "zambrovosky@opticom.com", "city": "Lodoga" },
-        //        { "name": "Jade", "surname": "Cristina", "company": "Voryexa", "email": "zavitoskione@irack.com", "city": "Bodega" }
-        //    ]
-        //});
+        
 
         function AjaxPost(formData) {
             var ajaxConfig = {

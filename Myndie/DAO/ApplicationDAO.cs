@@ -142,5 +142,9 @@ namespace Myndie.DAO
             return (from a in context.Applications where a.TypeAppId == type.Id && a.ReleaseDate >= max select a).ToList();
         }
 
+        public IList<string> GetAppsName()
+        {
+            return (from a in context.Applications select a.Name).ToList();
+        }
     }
 }
