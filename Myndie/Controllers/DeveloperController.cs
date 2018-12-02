@@ -113,5 +113,21 @@ namespace Myndie.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Sales()
+        {
+            if (Session["DevId"] != null)
+            {
+                DeveloperDAO dao = new DeveloperDAO();
+                UserDAO udao = new UserDAO();
+                SellDAO sdao = new SellDAO();
+                Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                ViewBag.Dev = d;
+                ViewBag.SaleCount = sdao.DevGet7DaysSells(int.Parse(Session["DevId"].ToString()));
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

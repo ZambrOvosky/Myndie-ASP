@@ -42,6 +42,7 @@ namespace Myndie.Controllers
             {
                 UserDAO udao = new UserDAO();
                 ModeratorDAO dao = new ModeratorDAO();
+                SellDAO sdao = new SellDAO();
                 ApplicationDAO adao = new ApplicationDAO();
                 ViewBag.Mod = dao.SearchById(int.Parse(Session["ModId"].ToString()));
                 User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
@@ -49,6 +50,7 @@ namespace Myndie.Controllers
                 ViewBag.NewGame = adao.GetGamesMonth().Count;
                 ViewBag.NewSoft = adao.GetSoftwareMonth().Count;
                 ViewBag.NewMob = adao.GetMobileMonth().Count;
+                ViewBag.SaleCount = sdao.Get7DaysSells();
                 ViewBag.User = u;
                 return View();
             }
