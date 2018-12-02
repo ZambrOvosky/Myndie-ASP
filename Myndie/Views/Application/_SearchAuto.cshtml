@@ -5,23 +5,40 @@
 </form>
 
 
-<script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- Bootstrap TypeAhead-->
 <script src="../assets/myndie/js/bootstrap3-typeahead.min.js"></script>
 <!-- TypeAhead init-->
 <script src="../assets/myndie/js/forms-autocomplete.js"></script>
+<script src="~/Scripts/typeahead.jquery.min.js"></script>
+<script src="~/Scripts/typeahead.mvc.model.js"></script>
+<script src="~/Scripts/bloodhound.min.js"></script>
+<script src="~/Scripts/typeahead.bundle.js"></script>
 <script>
-    @*var values = JSON.parse('"@Html.Raw(ViewBag.AppName)"');*@
     var values = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.AppName));
-    $('#search').typeahead({
-        displayText: function (item) {
-            return item.name
-        },
-        afterSelect: function (item) {
-            this.$element[0].value = item.name
-        },
-        
-        source: [{"Name" : "Roger"}
-            ]
+   
+
+    $(function () {
+        var $search = $('#search').hide(),
+            values = [@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.AppName))];
+
+        var apps = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: values
+            //,prefetch: '/path/to/prefetch'
+            //,remote: {/* You can use this for ajax call*/ }
+        });
+
+        apps.initialize();
+
+        $('#search').typeahead({ highlight: true, minLength: 2 }, {
+            name: 'values', displayKey: 'Name', source: values.ttAdapter()
+        })
+            .on("typeahead:selected", function (obj, app) {
+                $search.html("Selected Company: " + JSON.stringify(app)).show();
+            });
+
     });
+    console.log($search);
 </script>
