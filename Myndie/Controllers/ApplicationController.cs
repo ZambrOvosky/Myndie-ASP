@@ -660,5 +660,11 @@ namespace Myndie.Controllers
             ViewBag.Genres = gdao.List();
             return View();
         }
+        public ActionResult ApproveApp(int? appId)
+        {
+            ApplicationDAO dao = new ApplicationDAO();
+            ViewBag.App = dao.SearchById(appId);
+            return View();
+        }
     }
 }

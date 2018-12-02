@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_DeveloperLayout.cshtml";
+}
+<link href="~/assets/css/entypo/css/entypo.css" rel="stylesheet" />
+
+<link href="~/assets/css/cavalo.css" rel="stylesheet" />
+
+<link href="~/Content/style.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Images</h5>
+    </div>
+    <div style="background-image: url(../../../../img/photos/paul-morris-116514-unsplash.jpg);" class="card-header"></div>
+    <div class="card-body text-center">
+        <div id="carrousel">
+            <div class="container">
+                <div class="title col-md-12 text-center"> Your last uploads</div>
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var app in ViewBag.DevGames)
+                        {
+                            <a href="~/Application/EditApp/@app.Id">
+                                <img src="@app.ImageUrl" alt="@App.Name">
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div id="carrousel">
+    <div class="container">
+        <div class="title col-md-12 text-center"> Your last uploads</div>
+        <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+                @foreach (var app in ViewBag.DevGames)
+                {
+                    <a href="~/Application/EditApp/@app.Id">
+                        <img src="@app.ImageUrl" alt="@App.Name">
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>*@
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" src="~/assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Owl Carousel -->
+<script type="text/javascript" src="~/assets/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<script src="~/assets/myndie/js/cavalo1.js"></script>
+
+<script src="~/assets/myndie/js/cavalo2.js"></script>
+
+<script src="~/assets/myndie/js/index.js"></script>

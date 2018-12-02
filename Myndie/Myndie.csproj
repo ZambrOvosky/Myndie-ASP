@@ -691,6 +691,7 @@
     <Content Include="Views\Developer\Sales.cshtml" />
     <Content Include="Views\User\ForgotYourPasswordMobile.cshtml" />
     <Content Include="Views\Review\_ListReviewDev.cshtml" />
+    <Content Include="Views\Application\ApproveApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
