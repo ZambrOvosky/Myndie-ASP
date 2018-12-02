@@ -25,6 +25,11 @@ namespace Myndie.Controllers
                 review.Date = DateTime.Now;
                 User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
                 review.UserId = u.Id;
+                Review rev = dao.SearchByUserApp(review.UserId, review.ApplicationId);
+                if (rev != null)
+                {
+                    dao.Remove(rev);
+                }
                 dao.Add(review);
                 IList<Review> revs = dao.SearchByAppId(review.ApplicationId);
                 double totalrate = 0;

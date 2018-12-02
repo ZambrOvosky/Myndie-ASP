@@ -41,5 +41,10 @@ namespace Myndie.DAO
         {
             return (from r in context.Reviews where r.ApplicationId == AppId select r).ToList();
         }
+
+        public Review SearchByUserApp(int UserId, int AppId)
+        {
+            return (from r in context.Reviews where r.UserId == UserId && r.ApplicationId == AppId select r).FirstOrDefault();
+        }
     }
 }
