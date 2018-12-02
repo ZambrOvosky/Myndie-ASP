@@ -65,14 +65,14 @@ Link Game e Genre
 Fazer Busca por Genero e Linkar com a partial View RightSide
 Ultimo Grafico
 Developer dashboard
+Sales dev
+
 
 /Feitos
 
 AddGame Erro no Upload
 
-
 Formatar o preço com masked TxtBox
-
 
 Approved tela de produtos no dashboard
 Profile de User p/ outros
