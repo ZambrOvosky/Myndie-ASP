@@ -24,91 +24,126 @@ namespace Myndie.Controllers
         //        return View();
         //    }
         //    return RedirectToAction("../Home/Index");
-            
+
         //}
 
         public ActionResult Index()
         {
-            if (Session["ModId"] != null)
+            try
             {
-                GenreDAO dao = new GenreDAO();
-                UserDAO udao = new UserDAO();
-                ModeratorDAO mdao = new ModeratorDAO();
-                ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.Genre = new Genre();
-                ViewBag.Genres = dao.List();
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    GenreDAO dao = new GenreDAO();
+                    UserDAO udao = new UserDAO();
+                    ModeratorDAO mdao = new ModeratorDAO();
+                    ViewBag.Mod = mdao.SearchById(int.Parse(Session["ModId"].ToString()));
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Genre = new Genre();
+                    ViewBag.Genres = dao.List();
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult Validate(Genre genre)
         {
-            if (ModelState.IsValid)
+            try
             {
-                GenreDAO dao = new GenreDAO();
-                if (dao.IsUnique(genre))
+                if (ModelState.IsValid)
                 {
-                    dao.Add(genre);
+                    GenreDAO dao = new GenreDAO();
+                    if (dao.IsUnique(genre))
+                    {
+                        dao.Add(genre);
+                        return RedirectToAction("Index");
+                    }
                     return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                ViewBag.Genre = genre;
+                return View("Index");
             }
-            ViewBag.Genre= genre;
-            return View("Index");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
 
         public ActionResult Edit(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                GenreDAO dao = new GenreDAO();
-                UserDAO udao = new UserDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.Genre = dao.SearchById(id);
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    GenreDAO dao = new GenreDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Genre = dao.SearchById(id);
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult EditConfirm(Genre genre)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                GenreDAO dao = new GenreDAO();
-                Genre g = dao.SearchById(genre.Id);
-                g.Name = genre.Name;
-                dao.Update();
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    GenreDAO dao = new GenreDAO();
+                    Genre g = dao.SearchById(genre.Id);
+                    g.Name = genre.Name;
+                    dao.Update();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult Remove(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                GenreDAO dao = new GenreDAO();
-                Genre g = dao.SearchById(id);
-                dao.Remove(g);
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    GenreDAO dao = new GenreDAO();
+                    Genre g = dao.SearchById(id);
+                    dao.Remove(g);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
     }

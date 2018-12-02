@@ -20,22 +20,28 @@ namespace Myndie.Controllers
 
         public ActionResult Register()
         {
-            if (Session["DevId"] != null)
+            try
             {
-                TypeAppDAO tdao = new TypeAppDAO();
-                PegiDAO pdao = new PegiDAO();
-                UserDAO udao = new UserDAO();
-                GenreDAO gdao = new GenreDAO();
-                ViewBag.Class = "";
-                ViewBag.Type = tdao.List();
-                ViewBag.Pegi = pdao.List();
-                ViewBag.App = new Application();
-                ViewBag.Genres = gdao.ListId();
-                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                return View();
+                if (Session["DevId"] != null)
+                {
+                    TypeAppDAO tdao = new TypeAppDAO();
+                    PegiDAO pdao = new PegiDAO();
+                    UserDAO udao = new UserDAO();
+                    GenreDAO gdao = new GenreDAO();
+                    ViewBag.Class = "";
+                    ViewBag.Type = tdao.List();
+                    ViewBag.Pegi = pdao.List();
+                    ViewBag.App = new Application();
+                    ViewBag.Genres = gdao.ListId();
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");
-
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Validate(Application app, IList<HttpPostedFileBase> images, HttpPostedFileBase File, IList<Genre> genres)
@@ -58,7 +64,7 @@ namespace Myndie.Controllers
                     {
                         if (app.ReleaseDate.Year >= 1900 && app.ReleaseDate.Year <= DateTime.Now.Year + 1)
                         {
-                            if(app.Price >= 0 && app.Price <= 1000)
+                            if (app.Price >= 0 && app.Price <= 1000)
                             {
                                 if (uniq == null)
                                 {
@@ -136,7 +142,7 @@ namespace Myndie.Controllers
                                         result = result + "Error on Uploading Files, try later";
                                     }
 
-                                    if(ImgError || FileError || AGError)
+                                    if (ImgError || FileError || AGError)
                                     {
                                         return Json(result, JsonRequestBehavior.AllowGet);
                                     }
@@ -148,7 +154,7 @@ namespace Myndie.Controllers
                                 }
                                 else { result = "There is already a game with this name"; return Json(result, JsonRequestBehavior.AllowGet); }
                             }
-                            else { result = "Application Price is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }                            
+                            else { result = "Application Price is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }
                         }
                         else { result = "The release date is not acceptable"; return Json(result, JsonRequestBehavior.AllowGet); }
                     }
@@ -204,26 +210,40 @@ namespace Myndie.Controllers
 
         public ActionResult Search(string search)
         {
-            ApplicationDAO dao = new ApplicationDAO();
-            ViewBag.Apps = dao.Search(search);
-            CartDAO cdao = new CartDAO();
-            if (Session["Id"] != null)
+            try
             {
-                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                ApplicationDAO dao = new ApplicationDAO();
+                ViewBag.Apps = dao.Search(search);
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+                return View();
             }
-            return View();
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult SearchByType(int Type)
         {
-            ApplicationDAO dao = new ApplicationDAO();
-            ViewBag.Apps = dao.SearchByType(Type);
-            CartDAO cdao = new CartDAO();
-            if (Session["Id"] != null)
+            try
             {
-                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                ApplicationDAO dao = new ApplicationDAO();
+                ViewBag.Apps = dao.SearchByType(Type);
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+                return View("Search");
             }
-            return View("Search");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public string GetAppImage(int id)
@@ -298,12 +318,12 @@ namespace Myndie.Controllers
                     ViewBag.Types = tdao.List();
                     ViewBag.Pegis = pdao.List();
                     IList<Genre> genres = gdao.ListId();
-                    IList <ApplicationGenre> agens = agdao.ListByApplication(id);
-                    foreach(var ag in agens)
+                    IList<ApplicationGenre> agens = agdao.ListByApplication(id);
+                    foreach (var ag in agens)
                     {
-                        foreach(var g in genres)
+                        foreach (var g in genres)
                         {
-                            if(ag.GenreId == g.Id)
+                            if (ag.GenreId == g.Id)
                             {
                                 g.IsChecked = true;
                             }
@@ -323,20 +343,26 @@ namespace Myndie.Controllers
 
         public ActionResult UpdateInfo(Application app)
         {
-            if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString()))
+            try
             {
-                ApplicationDAO dao = new ApplicationDAO();
-                Application a = dao.SearchById(app.Id);
-                a.Name = app.Name;
-                a.Desc = app.Desc;
-                a.Price = app.Price;
-                a.TypeAppId = app.TypeAppId;
-                a.PegiId = app.PegiId;
-                dao.Update();
-                return RedirectToAction("EditApp", "Application", new { id = app.Id });
+                if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString()))
+                {
+                    ApplicationDAO dao = new ApplicationDAO();
+                    Application a = dao.SearchById(app.Id);
+                    a.Name = app.Name;
+                    a.Desc = app.Desc;
+                    a.Price = app.Price;
+                    a.TypeAppId = app.TypeAppId;
+                    a.PegiId = app.PegiId;
+                    dao.Update();
+                    return RedirectToAction("EditApp", "Application", new { id = app.Id });
+                }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
-
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Remove(int id)
@@ -374,7 +400,7 @@ namespace Myndie.Controllers
                         {
                             System.IO.File.Delete(fullPathArch);
                         }
-                        
+
                     }
                     catch { }
                     dao.Remove(a);
@@ -479,29 +505,36 @@ namespace Myndie.Controllers
 
         public ActionResult Explore(string type)
         {
-            ApplicationDAO dao = new ApplicationDAO();
-            CartDAO cdao = new CartDAO();
-            if (Session["Id"] != null)
+            try
             {
-                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                ApplicationDAO dao = new ApplicationDAO();
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+                if (type.Equals("Featured"))
+                {
+                    ViewBag.Apps = dao.GetTopApps();
+                }
+                else if (type.Equals("Explore"))
+                {
+                    ViewBag.Apps = dao.List();
+                }
+                else if (type.Equals("Free"))
+                {
+                    ViewBag.Apps = dao.GetFreeApps();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View("Search");
             }
-            if (type.Equals("Featured"))
-            {
-                ViewBag.Apps = dao.GetTopApps();  
-            }
-            else if (type.Equals("Explore"))
-            {
-                ViewBag.Apps = dao.List();
-            }
-            else if (type.Equals("Free"))
-            {
-                ViewBag.Apps = dao.GetFreeApps();
-            }
-            else
+            catch
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View("Search");
         }
 
         public ActionResult RemoveImage(int id, int AppId)
@@ -515,14 +548,14 @@ namespace Myndie.Controllers
                     ImageDAO idao = new ImageDAO();
                     Image i = idao.SearchById(id);
                     idao.Remove(i);
-                    return RedirectToAction("EditApp", "Application", new { id = AppId});
+                    return RedirectToAction("EditApp", "Application", new { id = AppId });
                 }
                 return RedirectToAction("Index", "Home");
             }
             catch
             {
                 return RedirectToAction("Index", "Home");
-            }            
+            }
         }
 
         public ActionResult UpdateApp(int id)
@@ -579,45 +612,53 @@ namespace Myndie.Controllers
                     return RedirectToAction("Summary", "Developer");
                 }
                 return RedirectToAction("Index", "Home");
-            }             
+            }
             catch
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         public ActionResult UpdateGenres(IList<Genre> genres, int appId)
         {
-            ApplicationDAO dao = new ApplicationDAO();
-            Application app = dao.SearchById(appId);
-            if(Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString())){
-
-                ApplicationGenreDAO agdao = new ApplicationGenreDAO();
-                IList<ApplicationGenre> ags = agdao.ListByApplication(appId);
-                foreach (var g in genres)
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application app = dao.SearchById(appId);
+                if (Session["ModId"] != null || app.DeveloperId == int.Parse(Session["DevId"].ToString()))
                 {
-                    foreach (var ag in ags)
+
+                    ApplicationGenreDAO agdao = new ApplicationGenreDAO();
+                    IList<ApplicationGenre> ags = agdao.ListByApplication(appId);
+                    foreach (var g in genres)
                     {
-                        if (ag.GenreId == g.Id)
+                        foreach (var ag in ags)
                         {
-                            if (!g.IsChecked)
+                            if (ag.GenreId == g.Id)
                             {
-                                agdao.Remove(ag);
+                                if (!g.IsChecked)
+                                {
+                                    agdao.Remove(ag);
+                                }
                             }
                         }
+                        if (g.IsChecked == true)
+                        {
+                            ApplicationGenre ag = new ApplicationGenre();
+                            ag.ApplicationId = appId;
+                            ag.GenreId = g.Id;
+                            agdao.Add(ag);
+                        }
                     }
-                    if (g.IsChecked == true)
-                    {
-                        ApplicationGenre ag = new ApplicationGenre();
-                        ag.ApplicationId = appId;
-                        ag.GenreId = g.Id;
-                        agdao.Add(ag);
-                    }
+                    return RedirectToAction("EditApp", "Application", new { id = appId });
                 }
-                return RedirectToAction("EditApp", "Application", new { id = appId });
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult SearchByGenre(int id)
@@ -644,21 +685,28 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         public ActionResult SearchAllGenres()
         {
-            ApplicationDAO dao = new ApplicationDAO();
-            GenreDAO gdao = new GenreDAO();
-            CartDAO cdao = new CartDAO();
-            if (Session["Id"] != null)
+            try
             {
-                ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                ApplicationDAO dao = new ApplicationDAO();
+                GenreDAO gdao = new GenreDAO();
+                CartDAO cdao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                }
+                ViewBag.Apps = dao.ListTop10();
+                ViewBag.Genres = gdao.List();
+                return View();
             }
-            ViewBag.Apps = dao.ListTop10();
-            ViewBag.Genres = gdao.List();
-            return View();
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         public ActionResult ApproveApp(int id)
         {
@@ -686,10 +734,10 @@ namespace Myndie.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
-            catch { return RedirectToAction("Index", "Home"); }            
+            catch { return RedirectToAction("Index", "Home"); }
         }
 
-        public ActionResult Approve (int id)
+        public ActionResult Approve(int id)
         {
             try
             {
@@ -701,7 +749,8 @@ namespace Myndie.Controllers
                     dao.Update();
                     return RedirectToAction("ProfileView", "Moderator");
                 }
-                else { 
+                else
+                {
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -709,7 +758,7 @@ namespace Myndie.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         public PartialViewResult _SearchAuto()
@@ -717,6 +766,20 @@ namespace Myndie.Controllers
             ApplicationDAO dao = new ApplicationDAO();
             ViewBag.AppName = dao.GetAppsName();
             return PartialView();
+        }
+
+        public ActionResult SearchMyndie()
+        {
+            try
+            {
+                ApplicationDAO dao = new ApplicationDAO();
+                Application a = dao.SearchById(39);
+                return RedirectToAction("Product", "Application", new { id = a.Id });
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

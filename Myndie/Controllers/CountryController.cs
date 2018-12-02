@@ -31,7 +31,7 @@ namespace Myndie.Controllers
             catch
             {
                 return RedirectToAction("../Home/Index");
-            }      
+            }
         }
 
         public ActionResult Index()
@@ -54,70 +54,98 @@ namespace Myndie.Controllers
             catch
             {
                 return RedirectToAction("../Home/Index");
-            }      
+            }
         }
 
         public ActionResult Validate(Country country)
         {
-            if (ModelState.IsValid)
+            try
             {
-                CountryDAO dao = new CountryDAO();
-                if (dao.IsUnique(country))
-                {                    
-                    dao.Add(country);
+                if (ModelState.IsValid)
+                {
+                    CountryDAO dao = new CountryDAO();
+                    if (dao.IsUnique(country))
+                    {
+                        dao.Add(country);
+                        return RedirectToAction("Index");
+                    }
                     return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                ViewBag.Country = country;
+                return View("Index");
             }
-            ViewBag.Country = country;
-            return View("Index");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Edit(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                CountryDAO dao = new CountryDAO();
-                UserDAO udao = new UserDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.Country = dao.SearchById(id);
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    CountryDAO dao = new CountryDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Country = dao.SearchById(id);
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult EditConfirm(Country country)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                CountryDAO dao = new CountryDAO();
-                Country g = dao.SearchById(country.Id);
-                g.Name = country.Name;
-                dao.Update();
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    CountryDAO dao = new CountryDAO();
+                    Country g = dao.SearchById(country.Id);
+                    g.Name = country.Name;
+                    dao.Update();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult Remove(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                CountryDAO dao = new CountryDAO();
-                Country c = dao.SearchById(id);
-                dao.Remove(c);
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    CountryDAO dao = new CountryDAO();
+                    Country c = dao.SearchById(id);
+                    dao.Remove(c);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
     }

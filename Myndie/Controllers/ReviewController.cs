@@ -18,24 +18,31 @@ namespace Myndie.Controllers
 
         public ActionResult Register(Review review)
         {
-            ReviewDAO dao = new ReviewDAO();
-            UserDAO udao = new UserDAO();
-            review.Date = DateTime.Now;
-            User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-            review.UserId = u.Id;
-            dao.Add(review);
-            IList<Review> revs = dao.SearchByAppId(review.ApplicationId);
-            double totalrate = 0;
-            foreach (var r in revs)
+            try
             {
-                totalrate += r.Value;
+                ReviewDAO dao = new ReviewDAO();
+                UserDAO udao = new UserDAO();
+                review.Date = DateTime.Now;
+                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                review.UserId = u.Id;
+                dao.Add(review);
+                IList<Review> revs = dao.SearchByAppId(review.ApplicationId);
+                double totalrate = 0;
+                foreach (var r in revs)
+                {
+                    totalrate += r.Value;
+                }
+                totalrate = Math.Round(totalrate / revs.Count);
+                ApplicationDAO appdao = new ApplicationDAO();
+                Application a = appdao.SearchById(review.ApplicationId);
+                a.Value = int.Parse(totalrate.ToString());
+                appdao.Update();
+                return RedirectToAction("Product", "Application", new { id = review.ApplicationId });
             }
-            totalrate = Math.Round(totalrate / revs.Count);
-            ApplicationDAO appdao = new ApplicationDAO();
-            Application a = appdao.SearchById(review.ApplicationId);
-            a.Value = int.Parse(totalrate.ToString());
-            appdao.Update();
-            return RedirectToAction("Product","Application", new { id = review.ApplicationId});
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [ChildActionOnly]
@@ -60,7 +67,7 @@ namespace Myndie.Controllers
                 {
                     users.Add(udao.SearchById(r.UserId));
                 }
-                
+
             }
             ViewBag.Revs = list;
             ViewBag.UserRevs = users;
@@ -98,33 +105,47 @@ namespace Myndie.Controllers
 
         public ActionResult YourReviews()
         {
-            if(Session["DevId"] != null)
+            try
             {
-                ApplicationDAO appdao = new ApplicationDAO();
-                ReviewDAO rdao = new ReviewDAO();
-                IList<Application> apps = appdao.GetDevGames(int.Parse(Session["DevId"].ToString()));
-                UserDAO udao = new UserDAO();
-                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                //IList<Review> revs = new List<Review>();
-                //foreach (var a in apps)
-                //{
-                //    IList<Review> rev = rdao.SearchByAppId(a.Id);
-                //    foreach(var r in rev)
-                //    {
-                //        revs.Add(r);
-                //    }                    
-                //}
-                ViewBag.Apps = apps;
-                return View();
+                if (Session["DevId"] != null)
+                {
+                    ApplicationDAO appdao = new ApplicationDAO();
+                    ReviewDAO rdao = new ReviewDAO();
+                    IList<Application> apps = appdao.GetDevGames(int.Parse(Session["DevId"].ToString()));
+                    UserDAO udao = new UserDAO();
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    //IList<Review> revs = new List<Review>();
+                    //foreach (var a in apps)
+                    //{
+                    //    IList<Review> rev = rdao.SearchByAppId(a.Id);
+                    //    foreach(var r in rev)
+                    //    {
+                    //        revs.Add(r);
+                    //    }                    
+                    //}
+                    ViewBag.Apps = apps;
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public PartialViewResult _GameValue(int id)
         {
-            ApplicationDAO adao = new ApplicationDAO();
-            ViewBag.App = adao.SearchById(id);
-            return PartialView();
+            try
+            {
+                ApplicationDAO adao = new ApplicationDAO();
+                ViewBag.App = adao.SearchById(id);
+                return PartialView();
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

@@ -144,7 +144,7 @@ namespace Myndie.DAO
 
         public IList<string> GetAppsName()
         {
-            return (from a in context.Applications select a.Name).ToList();
+            return (from a in context.Applications where a.Approved == 1 select a.Name).ToList();
         }
     }
 }

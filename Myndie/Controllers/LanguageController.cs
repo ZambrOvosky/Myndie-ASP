@@ -18,90 +18,132 @@ namespace Myndie.Controllers
 
         public ActionResult Register()
         {
-            if (Session["ModId"] != null)
+            try
             {
-                ViewBag.Lang = new Language();
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    ViewBag.Lang = new Language();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");            
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Index()
         {
-            if (Session["ModId"] != null)
+            try
             {
-                LanguageDAO dao = new LanguageDAO();
-                UserDAO udao = new UserDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.Lang = new Language();
-                ViewBag.Langs = dao.List();
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    LanguageDAO dao = new LanguageDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Lang = new Language();
+                    ViewBag.Langs = dao.List();
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Validate(Language language)
         {
-            if (ModelState.IsValid)
+            try
             {
-                LanguageDAO dao = new LanguageDAO();
-                if (dao.IsUnique(language))
-                {                    
-                    dao.Add(language);
+                if (ModelState.IsValid)
+                {
+                    LanguageDAO dao = new LanguageDAO();
+                    if (dao.IsUnique(language))
+                    {
+                        dao.Add(language);
+                        return RedirectToAction("Index");
+                    }
                     return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                ViewBag.Lang = language;
+                return View("Index");
             }
-            ViewBag.Lang = language;
-            return View("Index");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Edit(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                LanguageDAO dao = new LanguageDAO();
-                UserDAO udao = new UserDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.User = u;
-                ViewBag.Language = dao.SearchById(id);
-                return View();
+                if (Session["ModId"] != null)
+                {
+                    LanguageDAO dao = new LanguageDAO();
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.User = u;
+                    ViewBag.Language = dao.SearchById(id);
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult EditConfirm(Language language)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                LanguageDAO dao = new LanguageDAO();
-                Language l = dao.SearchById(language.Id);
-                l.Name = language.Name;
-                dao.Update();
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    LanguageDAO dao = new LanguageDAO();
+                    Language l = dao.SearchById(language.Id);
+                    l.Name = language.Name;
+                    dao.Update();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
         public ActionResult Remove(int id)
         {
-            if (Session["ModId"] != null)
+            try
             {
-                LanguageDAO dao = new LanguageDAO();
-                Language l = dao.SearchById(id);
-                dao.Remove(l);
-                return RedirectToAction("Index");
+                if (Session["ModId"] != null)
+                {
+                    LanguageDAO dao = new LanguageDAO();
+                    Language l = dao.SearchById(id);
+                    dao.Remove(l);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
     }

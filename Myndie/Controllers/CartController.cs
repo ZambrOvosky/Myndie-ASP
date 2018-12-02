@@ -18,29 +18,43 @@ namespace Myndie.Controllers
 
         public ActionResult AddtoCart(int appid)
         {
-            CartDAO dao = new CartDAO();
-            if(!dao.CheckCart(appid, int.Parse(Session["Id"].ToString())))
+            try
             {
-                ApplicationDAO appdao = new ApplicationDAO();
-                Cart c = new Cart();
-                c.UserId = int.Parse(Session["Id"].ToString());
-                c.ApplicationId = appid;
-                Application app = appdao.SearchById(appid);
-                c.Price = app.Price;
-                dao.Add(c);
+                CartDAO dao = new CartDAO();
+                if (!dao.CheckCart(appid, int.Parse(Session["Id"].ToString())))
+                {
+                    ApplicationDAO appdao = new ApplicationDAO();
+                    Cart c = new Cart();
+                    c.UserId = int.Parse(Session["Id"].ToString());
+                    c.ApplicationId = appid;
+                    Application app = appdao.SearchById(appid);
+                    c.Price = app.Price;
+                    dao.Add(c);
+                }
+                return RedirectToAction("Product", "Application", new { id = appid });
             }
-            return RedirectToAction("Product","Application", new { id = appid });
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Cart()
         {
-            CartDAO dao = new CartDAO();
-            if (Session["Id"] != null)
+            try
             {
-                ViewBag.FullCart = dao.GetUserCart(int.Parse(Session["Id"].ToString()));
-                return View();
+                CartDAO dao = new CartDAO();
+                if (Session["Id"] != null)
+                {
+                    ViewBag.FullCart = dao.GetUserCart(int.Parse(Session["Id"].ToString()));
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult RemoveFromCart(int appid)

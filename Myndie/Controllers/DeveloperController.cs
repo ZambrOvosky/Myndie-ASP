@@ -18,62 +18,84 @@ namespace Myndie.Controllers
 
         public ActionResult Register()
         {
-            if (Session["Id"] != null)
+            try
             {
-                DeveloperDAO dao = new DeveloperDAO();
-                ViewBag.Dev = new Developer();
-                ViewBag.Class = "";
-                return View();
+                if (Session["Id"] != null)
+                {
+                    DeveloperDAO dao = new DeveloperDAO();
+                    ViewBag.Dev = new Developer();
+                    ViewBag.Class = "";
+                    return View();
+                }
+                return RedirectToAction("../Home/Index");
             }
-            return RedirectToAction("../Home/Index");           
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Validate(Developer dev)
         {
-            if(ModelState.IsValid){
-                DeveloperDAO dao = new DeveloperDAO();
-                dev.NumSoft = 0;
-                dao.Add(dev);
-                Developer devel = dao.AttachDevUser(dev);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    DeveloperDAO dao = new DeveloperDAO();
+                    dev.NumSoft = 0;
+                    dao.Add(dev);
+                    Developer devel = dao.AttachDevUser(dev);
 
-                UserDAO udao = new UserDAO();
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                u.DeveloperId = devel.Id;
-                udao.Update();
-                Session["DevId"] = u.DeveloperId;
-                return RedirectToAction("ProfileView", "Developer");
+                    UserDAO udao = new UserDAO();
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    u.DeveloperId = devel.Id;
+                    udao.Update();
+                    Session["DevId"] = u.DeveloperId;
+                    return RedirectToAction("ProfileView", "Developer");
+                }
+                ViewBag.Class = "alert alert-danger";
+                ViewBag.Dev = dev;
+                return View("Register");
             }
-            ViewBag.Class = "alert alert-danger";
-            ViewBag.Dev = dev;
-            return View("Register");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult ProfileView()
         {
-            if (Session["DevId"] != null)
+            try
             {
-                DeveloperDAO dao = new DeveloperDAO();
-                ApplicationDAO appdao = new ApplicationDAO();
-                UserDAO udao = new UserDAO();
-                CountryDAO cdao = new CountryDAO();
-                Developer dev = dao.SearchById(int.Parse(Session["DevId"].ToString()));
-                User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
-
-                CartDAO cardao = new CartDAO();
-                if (Session["Id"] != null)
+                if (Session["DevId"] != null)
                 {
-                    ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
-                }
+                    DeveloperDAO dao = new DeveloperDAO();
+                    ApplicationDAO appdao = new ApplicationDAO();
+                    UserDAO udao = new UserDAO();
+                    CountryDAO cdao = new CountryDAO();
+                    Developer dev = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                    User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
 
-                ViewBag.DevGames = appdao.GetDevGames(dev.Id);
-                ViewBag.Dev = dev;
-                ViewBag.User = u;
-                ViewBag.CountryUser = cdao.SearchById(u.CountryId);
-                return View();
+                    CartDAO cardao = new CartDAO();
+                    if (Session["Id"] != null)
+                    {
+                        ViewBag.Cart = cardao.SearchCartUser(int.Parse(Session["Id"].ToString()));
+                    }
+
+                    ViewBag.DevGames = appdao.GetDevGames(dev.Id);
+                    ViewBag.Dev = dev;
+                    ViewBag.User = u;
+                    ViewBag.CountryUser = cdao.SearchById(u.CountryId);
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("../Home/Index");
+                }
             }
-            else
+            catch
             {
-                return RedirectToAction("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -100,34 +122,48 @@ namespace Myndie.Controllers
 
         public ActionResult Summary()
         {
-            if (Session["DevId"] != null)
+            try
             {
-                DeveloperDAO dao = new DeveloperDAO();
-                UserDAO udao = new UserDAO();
-                ApplicationDAO adao = new ApplicationDAO();
-                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
-                ViewBag.Apps = adao.GetDevGames(d.Id);
-                ViewBag.Dev = d;
-                return View();
+                if (Session["DevId"] != null)
+                {
+                    DeveloperDAO dao = new DeveloperDAO();
+                    UserDAO udao = new UserDAO();
+                    ApplicationDAO adao = new ApplicationDAO();
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                    ViewBag.Apps = adao.GetDevGames(d.Id);
+                    ViewBag.Dev = d;
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Sales()
         {
-            if (Session["DevId"] != null)
+            try
             {
-                DeveloperDAO dao = new DeveloperDAO();
-                UserDAO udao = new UserDAO();
-                SellDAO sdao = new SellDAO();
-                Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
-                ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
-                ViewBag.Dev = d;
-                ViewBag.SaleCount = sdao.DevGet7DaysSells(int.Parse(Session["DevId"].ToString()));
-                return View();
+                if (Session["DevId"] != null)
+                {
+                    DeveloperDAO dao = new DeveloperDAO();
+                    UserDAO udao = new UserDAO();
+                    SellDAO sdao = new SellDAO();
+                    Developer d = dao.SearchById(int.Parse(Session["DevId"].ToString()));
+                    ViewBag.User = udao.SearchById(int.Parse(Session["Id"].ToString()));
+                    ViewBag.Dev = d;
+                    ViewBag.SaleCount = sdao.DevGet7DaysSells(int.Parse(Session["DevId"].ToString()));
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
