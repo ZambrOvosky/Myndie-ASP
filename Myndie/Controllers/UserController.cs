@@ -327,6 +327,11 @@ namespace Myndie.Controllers
             return View();
         }
 
+        public ActionResult ForgotYourPasswordMobile()
+        {
+            return View();
+        }
+
         public JsonResult SendEmailToUser(string Email)
         {
             string result = "";

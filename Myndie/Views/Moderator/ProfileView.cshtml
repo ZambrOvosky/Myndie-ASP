@@ -67,10 +67,62 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="line-cahrt block">
-                        <canvas id="lineCahrt"></canvas>
+                        <canvas id="SellChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+
+
+<script src="~/assets/vendor/jquery/www_subdomain/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        "use strict";
+        Chart.defaults.global.defaultFontColor = "#75787c";
+        var Values = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.SaleCount) as String);
+        console.log(Values);
+        for (var i = 0; i <= 7; i++) {
+            if (Values[i] == null) {
+                var obj = { Date: Values[0].Date - i, TotalPrice: 0, Count: 0 };
+                Values[i] = obj;
+            }
+        }
+        var r = !0;
+        $(window).outerWidth() < 576 && (r = !1);
+        var a = $("#SellChart"), o = (new Chart(a, {
+            type: "line", options: {
+                scales: {
+                    xAxes: [{
+                        display: !0, gridLines: {
+                            display: !1
+                        }
+                    }
+                    ], yAxes: [{
+                        ticks: {
+                            max: 60, min: 10
+                        }
+                        , display: !0, gridLines: {
+                            display: !1
+                        }
+                    }
+                    ]
+                }
+                , legend: {
+                    display: r
+                }
+            }
+            , data: {
+                labels: [Values[6].Date, Values[5].Date, Values[4].Date, Values[3].Date, Values[2].Date, Values[1].Date, Values[0].Date], datasets: [{
+                    label: "Sales Count", fill: !0, lineTension: .2, backgroundColor: "transparent", borderColor: "#864DD9", pointBorderColor: "#864DD9", pointHoverBackgroundColor: "#864DD9", borderCapStyle: "butt", borderDash: [], borderDashOffset: 0, borderJoinStyle: "miter", borderWidth: 2, pointBackgroundColor: "#fff", pointBorderWidth: 5, pointHoverRadius: 5, pointHoverBorderColor: "#fff", pointHoverBorderWidth: 2, pointRadius: 1, pointHitRadius: 0,
+                    data: [Values[6].Count, Values[5].Count, Values[4].Count, Values[3].Count, Values[2].Count, Values[1].Count, Values[0].Count] /*data: [2, 27, 20, 35, 30, 40, 33, 25, 39]*/, spanGaps: !1
+                }
+                ]
+            }
+        }
+        )
+        )
+    })
+</script>

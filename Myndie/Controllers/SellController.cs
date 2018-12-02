@@ -94,6 +94,7 @@ namespace Myndie.Controllers
                     ViewBag.Sells = dao.List();
                     ViewBag.Graph1 = dao.Get7DaysSells();
                     ViewBag.Graph2 = dao.GetMonthlySells();
+                    ViewBag.SaleCount = dao.Get7DaysSells();
                     UserDAO udao = new UserDAO();
                     User u = udao.SearchById(int.Parse(Session["Id"].ToString()));                    
                    
