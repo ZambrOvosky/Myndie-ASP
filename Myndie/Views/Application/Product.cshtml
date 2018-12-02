@@ -156,7 +156,7 @@
 
                 <!-- /Reviews List -->
                 <!-- Review Form -->
-                @if(Session["Id"] != null)
+                @if(Session["Id"] != null && ViewBag.SellItem)
                 {
                 <h2>Add a Review</h2>
                 <form action="/Review/Register" class="review-form mb-0">
@@ -225,11 +225,26 @@
                         <div>
                             <h4>@sim.Name</h4>
                             <div class="rating">
-                                <i class="entypo-star"></i>
-                                <i class="entypo-star"></i>
-                                <i class="entypo-star"></i>
-                                <i class="entypo-star"></i>
-                                <i class="entypo-star-half-o"></i>
+                                @if (sim.Value >= 1)
+                                {
+                                    <i class="entypo-star"></i>
+                                }
+                                @if(sim.Value >= 2)
+                                {
+                                    <i class="entypo-star"></i>
+                                }
+                                 @if(sim.Value >= 3)
+                                {
+                                     <i class="entypo-star"></i>
+                                }
+                                  @if(sim.Value >= 4)
+                                {
+                                      <i class="entypo-star"></i>
+                                }
+                                   @if(sim.Value >= 5)
+                                {
+                                       <i class="entypo-star"></i>
+                                }
                             </div>
                         </div>
                     </div>

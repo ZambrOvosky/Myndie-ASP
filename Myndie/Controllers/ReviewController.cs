@@ -24,6 +24,17 @@ namespace Myndie.Controllers
             User u = udao.SearchById(int.Parse(Session["Id"].ToString()));
             review.UserId = u.Id;
             dao.Add(review);
+            IList<Review> revs = dao.SearchByAppId(review.ApplicationId);
+            double totalrate = 0;
+            foreach (var r in revs)
+            {
+                totalrate += r.Value;
+            }
+            totalrate = Math.Round(totalrate / revs.Count);
+            ApplicationDAO appdao = new ApplicationDAO();
+            Application a = appdao.SearchById(review.ApplicationId);
+            a.Value = int.Parse(totalrate.ToString());
+            appdao.Update();
             return RedirectToAction("Product","Application", new { id = review.ApplicationId});
         }
 
@@ -107,6 +118,13 @@ namespace Myndie.Controllers
                 return View();
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        public PartialViewResult _GameValue(int id)
+        {
+            ApplicationDAO adao = new ApplicationDAO();
+            ViewBag.App = adao.SearchById(id);
+            return PartialView();
         }
     }
 }

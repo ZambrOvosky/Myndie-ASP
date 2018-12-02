@@ -57,11 +57,26 @@
                                         <div class="col-xs-6 col-md-9">
                                             <h4>@a.Name</h4>
                                             <div class="rating">
-                                                <i class="entypo-star"></i>
-                                                <i class="entypo-star"></i>
-                                                <i class="entypo-star"></i>
-                                                <i class="entypo-star"></i>
-                                                <i class="entypo-star"></i>
+                                                @if (a.Value >= 1)
+                                                {
+                                                    <i class="entypo-star"></i>
+                                                }
+                                                @if(a.Value >= 2)
+                                                {
+                                                    <i class="entypo-star"></i>
+                                                }
+                                                 @if(a.Value >= 3)
+                                                {
+                                                     <i class="entypo-star"></i>
+                                                }
+                                                  @if(a.Value >= 4)
+                                                {
+                                                      <i class="entypo-star"></i>
+                                                }
+                                                   @if(a.Value >= 5)
+                                                {
+                                                       <i class="entypo-star"></i>
+                                                }
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-md-3 align-right">

@@ -22,41 +22,37 @@
             <h2 class="mt-0">Your Games in Cart</h2>
             <!-- Single Product Block -->
             @foreach (var a in ViewBag.FullCart)
-        {
-            <div class="item angled-bg">
-                <a href="~/Application/Product/@a.ApplicationId">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-3 col-xs-4">
-                            <div class="angled-img">
-                                <div class="img">
-                                    <img style="height: 100px" src="@Html.Action("GetAppImage", "Application", new { id = a.ApplicationId})" alt="">
+            {
+                <div class="item angled-bg">
+                    <a href="~/Application/Product/@a.ApplicationId">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-3 col-xs-4">
+                                <div class="angled-img">
+                                    <div class="img">
+                                        <img style="height: 100px" src="@Html.Action("GetAppImage", "Application", new { id = a.ApplicationId})" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-9 col-xs-8">
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-9">
+                                        <h4>@Html.Action("GetAppName", "Application", new { id = a.ApplicationId })</h4>
+                                        <div class="rating hidden-xs">
+                                           @Html.Action("_GameValue", "Review", new { id = a.ApplicationId})
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-3 align-right">
+                                        <div class="price">
+                                            US$@a.Price
+                                        </div>
+                                        <a href="@Url.Action("RemoveFromCart", "Cart", new { appid = a.ApplicationId})" class="remove entypo-cancel"></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-10 col-md-9 col-xs-8">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-9">
-                                    <h4>@Html.Action("GetAppName", "Application", new { id = a.ApplicationId })</h4>
-                                    <div class="rating hidden-xs">
-                                        <i class="entypo-star"></i>
-                                        <i class="entypo-star"></i>
-                                        <i class="entypo-star"></i>
-                                        <i class="entypo-star"></i>
-                                        <i class="entypo-star"></i>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-md-3 align-right">
-                                    <div class="price">
-                                        US$@a.Price
-                                    </div>
-                                    <a href="@Url.Action("RemoveFromCart", "Cart", new { appid = a.ApplicationId})" class="remove entypo-cancel"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-    }
+                    </a>
+                </div>
+            }
             <!-- /Single Product Block -->
             <!-- /Single Product Block -->
             <div class="align-right h3 mr-20 mb-20">

@@ -39,11 +39,26 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-empty"></i>
+                            @if (app.Value >= 1)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 2)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 3)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 4)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 5)
+                            {
+                                <i class="entypo-star"></i>
+                            }
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -79,11 +94,26 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-empty"></i>
+                            @if (app.Value >= 1)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 2)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 3)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 4)
+                            {
+                                <i class="entypo-star"></i>
+                            }
+                            @if (app.Value >= 5)
+                            {
+                                <i class="entypo-star"></i>
+                            }
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -113,11 +143,26 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="rating">
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star"></i>
-                            <i class="entypo-star-empty"></i>
+                            @if (sim.Value >= 1)
+                                {
+                                    <i class="entypo-star"></i>
+                                }
+                                @if(sim.Value >= 2)
+                                {
+                                    <i class="entypo-star"></i>
+                                }
+                                 @if(sim.Value >= 3)
+                                {
+                                     <i class="entypo-star"></i>
+                                }
+                                  @if(sim.Value >= 4)
+                                {
+                                      <i class="entypo-star"></i>
+                                }
+                                   @if(sim.Value >= 5)
+                                {
+                                       <i class="entypo-star"></i>
+                                }
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -241,29 +286,29 @@
             <div class="row vertical-gutter">
                 <div class="col-md-4">
                     <a href="~/Application/Product/@u.ApplicationId" class="angled-img">
-                        @foreach(var a in ViewBag.AppsinUpdates)
+                        @foreach (var a in ViewBag.AppsinUpdates)
                         {
-                            if(u.ApplicationId == a.Id)
+                            if (u.ApplicationId == a.Id)
                             {
-                            <div class="img">
-                                <img src="@a.ImageUrl" style="height: 250px; width: 350px" alt="">
-                            </div>
-                            <div class="myndie-hexagon-rating myndie-hexagon-rating-small" data-max="5" data-size="50" title="@a.Value out of 5">
-                                <span>@a.Value</span>
-                            </div>
-                            }                            
-                        }                        
+                                <div class="img">
+                                    <img src="@a.ImageUrl" style="height: 250px; width: 350px" alt="">
+                                </div>
+                                <div class="myndie-hexagon-rating myndie-hexagon-rating-small" data-max="5" data-size="50" title="@a.Value out of 5">
+                                    <span>@a.Value</span>
+                                </div>
+                            }
+                        }
                     </a>
                 </div>
                 <div class="col-md-8">
                     <div class="clearfix">
-                        @foreach(var a in ViewBag.AppsinUpdates)
+                        @foreach (var a in ViewBag.AppsinUpdates)
                         {
-                            if(u.ApplicationId == a.Id)
+                            if (u.ApplicationId == a.Id)
                             {
                                 <h3 class="h2 pull-left m-0"><a href="~/Application/Product/@u.ApplicationId">@a.Name</a></h3>
                             }
-                        }                        
+                        }
                         <span class="date pull-right"><i class="entypo-calendar"></i> Today</span>
                     </div>
                     <div class="description">
