@@ -708,6 +708,7 @@
     <Content Include="Views\Review\_GameValue.cshtml" />
     <Content Include="Views\Application\ApproveApp.cshtml" />
     <Content Include="Views\Application\_SearchAuto.cshtml" />
+    <Content Include="Views\User\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

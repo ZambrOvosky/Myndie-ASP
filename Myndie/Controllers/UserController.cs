@@ -208,6 +208,7 @@ namespace Myndie.Controllers
                 LanguageDAO ldao = new LanguageDAO();
                 ViewBag.User = u2;
                 ViewBag.Country = cdao.List();
+                ViewBag.UserCountry = cdao.SearchById(u.CountryId);
                 ViewBag.Lang = ldao.List();
                 //result = "Error";
                 //return Json(result, JsonRequestBehavior.AllowGet);
@@ -368,7 +369,10 @@ namespace Myndie.Controllers
                     Wishlist w = new Wishlist();
                     w.ApplicationId = ApplicationId;
                     w.UserId = UserId;
-                    wdao.Add(w);
+                    if (!wdao.IsInWishList(w.UserId, w.ApplicationId))
+                    {
+                        wdao.Add(w);
+                    }                    
                     return RedirectToAction("Product", "Application", new { id = ApplicationId });
                 }
                 return RedirectToAction("Index", "Home");
@@ -554,6 +558,22 @@ namespace Myndie.Controllers
                     return RedirectToAction("ChatMobile", "User");
                 }
                 return RedirectToAction("../Home/Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult UserLogin()
+        {
+            try
+            {
+                if(Session["Id"] == null)
+                {
+                    return View();
+                }
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
