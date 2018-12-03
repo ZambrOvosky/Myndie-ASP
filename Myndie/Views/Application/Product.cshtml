@@ -130,7 +130,7 @@
             </div>*@
             <!-- /Information -->
             <!-- developer -->
-            <div class="reviews-block mb-0">
+            @*<div class="reviews-block mb-0">
                 <h2>Developer</h2>
                 <article>
                     <div class="review-avatar pull-left">
@@ -141,6 +141,25 @@
                         <div class="review-text">
                             <p>
                                @ViewBag.Dev.Info
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>*@
+
+            <!-- /developer -->
+            <!-- developer -->
+            <div class="reviews-block mb-0">
+                <h2>About the developer</h2>
+                <article>
+                    <div class="review-avatar pull-left">
+                        <img src="@ViewBag.DevUser.Picture" alt="@ViewBag.Dev.Name">
+                    </div>
+                    <div class="review-cont clearfix">
+                        <a class="review-author h4">@ViewBag.Dev.Name</a>
+                        <div class="review-text">
+                            <p>
+                                @ViewBag.Dev.Info
                             </p>
                         </div>
                     </div>
