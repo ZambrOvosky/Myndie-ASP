@@ -174,7 +174,7 @@ pre {
 }
 
 .breadcrumb a {
-    color: #DB6574;
+    color: #D92B4C;
     text-decoration: none !important
 }
 
@@ -255,7 +255,7 @@ pre {
 }
 
 .dropdown-menu a:hover {
-    background: #DB6574;
+    background: #D92B4C;
     color: #fff
 }
 
@@ -330,7 +330,7 @@ i[class*='icon-'] {
 
 .megamenu ul a:hover {
     background: none;
-    color: #DB6574 !important
+    color: #D92B4C !important
 }
 
 .megamenu .megamenu-buttons {
@@ -781,7 +781,7 @@ nav#sidebar li a:hover {
 }
 
 nav#sidebar li a:hover i {
-    color: #DB6574
+    color: #D92B4C
 }
 
 nav#sidebar li a i {
@@ -803,7 +803,7 @@ nav#sidebar li li a:hover {
 }
 
 nav#sidebar li li a:hover i {
-    color: #DB6574
+    color: #D92B4C
 }
 
 nav#sidebar li::before {
@@ -819,7 +819,7 @@ nav#sidebar li::before {
 }
 
 nav#sidebar li.active::before {
-    background: #DB6574
+    background: #D92B4C
 }
 
 nav#sidebar li.active>a {
@@ -828,7 +828,7 @@ nav#sidebar li.active>a {
 }
 
 nav#sidebar li.active i {
-    color: #DB6574
+    color: #D92B4C
 }
 
 nav#sidebar li li.active>a {
@@ -1185,7 +1185,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .user-block span {
     font-weight: 300;
-    color: #75787f
+    color: #ffffff
 }
 
 .user-block .contributions {
@@ -1208,7 +1208,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .user-block .item i {
     margin-right: 10px;
-    color: #6a6c70
+    color: #ffffff
 }
 
 .user-block a.user-title {
@@ -1259,7 +1259,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .public-user-block .item i {
     margin-right: 10px;
-    color: #6a6c70
+    color: #ffffff
 }
 
 .public-user-block .item strong {
@@ -1459,7 +1459,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 .messages-block .content .date {
-    color: #70737a
+    color: #ffffff
 }
 
 .modal-open .modal {
@@ -1568,7 +1568,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 .login-page .form-holder .form a.forgot-pass,
 .login-page .form-holder .form a.signup {
     font-size: 0.9rem;
-    color: #DB6574
+    color: #D92B4C
 }
 
 .login-page .form-holder .form small {
@@ -1604,32 +1604,32 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
     border: 1px solid #444951;
     background: transparent;
     border-radius: 0;
-    color: #979a9f;
+    color: #ffffff;
     padding: .45rem .75rem
 }
 
 .form-control::-moz-placeholder {
     font-size: 0.9rem;
     font-family: "Muli", sans-serif;
-    color: #787b82
+    color: #ffffff
 }
 
 .form-control::-webkit-input-placeholder {
     font-size: 0.9rem;
     font-family: "Muli", sans-serif;
-    color: #787b82
+    color: #ffffff
 }
 
 .form-control:-ms-input-placeholder {
     font-size: 0.9rem;
     font-family: "Muli", sans-serif;
-    color: #787b82
+    color: #ffffff
 }
 
 .form-control:focus {
-    color: #979a9f;
+    color: #ffffff;
     background-color: transparent;
-    border-color: #DB6574;
+    border-color: #D92B4C;
     outline: none;
     -webkit-box-shadow: 0 0 0 .2rem rgba(219, 101, 116, 0.25);
     box-shadow: 0 0 0 .2rem rgba(219, 101, 116, 0.25)
@@ -1642,7 +1642,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .form-control:disabled,
 .form-control[readonly] {
-    background: #444951
+    background: #ffffff
 }
 
 .form-control-sm {
@@ -1660,7 +1660,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 }
 
 .form-control-label {
-    color: #777
+    color: rgb(241, 241, 241)
 }
 
 button,
@@ -1686,14 +1686,14 @@ input[type='submit'] {
 }
 
 .custom-select:focus {
-    border-color: #DB6574;
+    border-color: #D92B4C;
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none
 }
 
 .custom-select:focus::-ms-value {
-    color: #495057;
+    color: #ffffff;
     background-color: transparent
 }
 
@@ -1705,7 +1705,7 @@ input[type='submit'] {
 }
 
 .custom-select:disabled {
-    color: #868e96;
+    color: #dadada;
     background-color: #e9ecef
 }
 
@@ -1743,7 +1743,7 @@ input[type='submit'] {
 
 .input-group .dropdown-menu {
     padding: 15px;
-    color: #777;
+    color: rgb(212, 212, 212);
     border-radius: 0;
     margin-top: 5px
 }
@@ -1756,7 +1756,7 @@ input[type='submit'] {
 }
 
 .input-group .dropdown-menu a:hover {
-    color: #DB6574;
+    color: #D92B4C;
     background: none !important
 }
 
@@ -1820,7 +1820,7 @@ form label {
 
 .checkbox-template:checked::before,
 .radio-template:checked::before {
-    background: #DB6574
+    background: #D92B4C
 }
 
 .checkbox-template:checked::after,
@@ -1864,11 +1864,11 @@ input.input-material.is-invalid {
 }
 
 input.input-material:focus {
-    border-color: #DB6574
+    border-color: #D92B4C
 }
 
 input.input-material ~ label {
-    color: #aaa;
+    color: rgb(238, 238, 238);
     position: absolute;
     top: 14px;
     left: 0;
@@ -1881,7 +1881,7 @@ input.input-material ~ label {
 input.input-material ~ label.active {
     font-size: 0.85rem;
     top: -10px;
-    color: #DB6574
+    color: #D92B4C
 }
 
 input.input-material ~ label.is-invalid ~ label {
@@ -1923,7 +1923,7 @@ input.input-material ~ label.is-invalid ~ label {
 }
 
 .noUi-handle {
-    background: #6a6c70;
+    background: #ffffff;
     -webkit-box-shadow: none;
     box-shadow: none;
     border: none;
@@ -1944,7 +1944,7 @@ input.input-material ~ label.is-invalid ~ label {
 }
 
 .noUi-connect {
-    background: #DB6574
+    background: #D92B4C
 }
 
 .datepicker-dropdown.dropdown-menu {
@@ -1964,8 +1964,8 @@ input.input-material ~ label.is-invalid ~ label {
 
 .datepicker-dropdown.dropdown-menu td.active,
 .datepicker-dropdown.dropdown-menu td:active {
-    background-color: #DB6574 !important;
-    border-color: #DB6574 !important
+    background-color: #D92B4C !important;
+    border-color: #D92B4C !important
 }
 
 .datepicker-dropdown.dropdown-menu:before,
@@ -2001,7 +2001,7 @@ input.input-material ~ label.is-invalid ~ label {
 
 .bootstrap-select .dropdown-menu li a:hover {
     background: #34373d;
-    color: #DB6574
+    color: #D92B4C
 }
 
 .bootstrap-select .dropdown-toggle:focus {
@@ -2013,7 +2013,7 @@ input.input-material ~ label.is-invalid ~ label {
 }
 
 .bootstrap-tagsinput .label-info {
-    background-color: #DB6574;
+    background-color: #D92B4C;
     display: inline-block;
     padding: 2px 10px;
     border-radius: 3px;
@@ -2062,7 +2062,7 @@ input.input-material ~ label.is-invalid ~ label {
 
 .ms-container .ms-selectable,
 .ms-container .ms-selection {
-    color: #555555;
+    color: #f3f3f3;
     float: left;
     width: 45%
 }
@@ -2104,7 +2104,7 @@ input.input-material ~ label.is-invalid ~ label {
     margin: 0;
     padding: 5px 0px 0px 5px;
     cursor: pointer;
-    color: #999
+    color: rgb(255, 255, 255)
 }
 
 .ms-container .ms-selectable li.ms-elem-selectable,
@@ -2119,12 +2119,12 @@ input.input-material ~ label.is-invalid ~ label {
     cursor: pointer;
     color: #fff;
     text-decoration: none;
-    background-color: #DB6574
+    background-color: #D92B4C
 }
 
 .ms-container .ms-selectable li.disabled,
 .ms-container .ms-selection li.disabled {
-    color: #aaa;
+    color: rgb(255, 255, 255);
     cursor: text
 }
 
@@ -2149,7 +2149,7 @@ input.input-material ~ label.is-invalid ~ label {
 .note-editor.note-frame .note-editing-area .note-editable {
     padding: 10px;
     overflow: auto;
-    color: #98a6ad;
+    color: #ffffff;
     background-color: #2d3035
 }
 
@@ -2218,7 +2218,7 @@ input.input-material ~ label.is-invalid ~ label {
     background: #ced4da no-repeat center/cover;
     position: relative;
     text-align: center;
-    color: #868e96;
+    color: #ffffff;
     font-weight: 600;
     vertical-align: bottom
 }
@@ -2271,7 +2271,7 @@ input.input-material ~ label.is-invalid ~ label {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-weight: bold;
-    color: #adb5bd;
+    color: #ffffff;
     font-size: 0.9rem
 }
 
@@ -2993,7 +2993,7 @@ ul.messenger-theme-flat .messenger-message .messenger-close {
     position: absolute;
     top: 0px;
     right: 0px;
-    color: #888;
+    color: rgb(255, 255, 255);
     opacity: 1;
     font-weight: bold;
     display: block;
@@ -3007,11 +3007,11 @@ ul.messenger-theme-flat .messenger-message .messenger-close {
 }
 
 ul.messenger-theme-flat .messenger-message .messenger-close:hover {
-    color: #bbb
+    color: rgb(255, 255, 255)
 }
 
 ul.messenger-theme-flat .messenger-message .messenger-close:active {
-    color: #777
+    color: rgb(255, 255, 255)
 }
 
 ul.messenger-theme-flat .messenger-message .messenger-actions {
@@ -3022,7 +3022,7 @@ ul.messenger-theme-flat .messenger-message .messenger-actions {
 ul.messenger-theme-flat .messenger-message .messenger-actions a {
     border-radius: 4px;
     text-decoration: none;
-    color: #aaa;
+    color: rgb(255, 255, 255);
     background: #2e2e2e;
     display: inline-block;
     padding: 10px;
@@ -3038,7 +3038,7 @@ ul.messenger-theme-flat .messenger-message .messenger-actions a:hover {
 
 ul.messenger-theme-flat .messenger-message .messenger-actions a:active {
     background: #292929;
-    color: #aaa
+    color: rgb(255, 255, 255)
 }
 
 ul.messenger-theme-flat .messenger-message .messenger-actions .messenger-phrase {
@@ -3156,9 +3156,9 @@ ul.messenger-theme-flat .messenger-spinner {
 
 .fc-event,
 .fc-event-dot {
-    background-color: #DB6574;
+    background-color: #D92B4C;
     color: #fff !important;
-    border-color: #DB6574
+    border-color: #D92B4C
 }
 
 .fc .alert-info {
@@ -3218,7 +3218,7 @@ ul.messenger-theme-flat .messenger-spinner {
 }
 
 .infobox .about {
-    color: #868e96;
+    color: #ffffff;
     font-size: .875rem
 }
 
@@ -3251,7 +3251,7 @@ ul.messenger-theme-flat .messenger-spinner {
 
 .infobox h3 a:focus,
 .infobox h3 a:hover {
-    color: #DB6574
+    color: #D92B4C
 }
 
 .infobox .image {
@@ -3273,7 +3273,7 @@ ul.messenger-theme-flat .messenger-spinner {
 .sk-rotating-plane {
     width: 40px;
     height: 40px;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     margin: 0;
     -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
     animation: sk-rotatePlane 1.2s infinite ease-in-out
@@ -3320,7 +3320,7 @@ ul.messenger-theme-flat .messenger-spinner {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     opacity: 0.6;
     position: absolute;
     top: 0;
@@ -3367,7 +3367,7 @@ ul.messenger-theme-flat .messenger-spinner {
 }
 
 .sk-wave .sk-rect {
-    background-color: #DB6574;
+    background-color: #D92B4C;
     height: 100%;
     width: 6px;
     display: inline-block;
@@ -3434,7 +3434,7 @@ ul.messenger-theme-flat .messenger-spinner {
 }
 
 .sk-wandering-cubes .sk-cube {
-    background-color: #DB6574;
+    background-color: #D92B4C;
     width: 10px;
     height: 10px;
     position: absolute;
@@ -3507,7 +3507,7 @@ ul.messenger-theme-flat .messenger-spinner {
     width: 40px;
     height: 40px;
     margin: 0;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     border-radius: 100%;
     -webkit-animation: sk-pulseScaleOut 1.0s infinite ease-in-out;
     animation: sk-pulseScaleOut 1.0s infinite ease-in-out
@@ -3553,7 +3553,7 @@ ul.messenger-theme-flat .messenger-spinner {
     display: inline-block;
     position: absolute;
     top: 0;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     border-radius: 100%;
     -webkit-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
     animation: sk-chasingDotsBounce 2s infinite ease-in-out
@@ -3613,7 +3613,7 @@ ul.messenger-theme-flat .messenger-spinner {
 .sk-three-bounce .sk-child {
     width: 20px;
     height: 20px;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
@@ -3677,7 +3677,7 @@ ul.messenger-theme-flat .messenger-spinner {
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     border-radius: 100%;
     -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
     animation: sk-circleBounceDelay 1.2s infinite ease-in-out both
@@ -3828,7 +3828,7 @@ ul.messenger-theme-flat .messenger-spinner {
 .sk-cube-grid .sk-cube {
     width: 33.33%;
     height: 33.33%;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
@@ -3926,7 +3926,7 @@ ul.messenger-theme-flat .messenger-spinner {
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     border-radius: 100%;
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out both
@@ -4089,7 +4089,7 @@ ul.messenger-theme-flat .messenger-spinner {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #DB6574;
+    background-color: #D92B4C;
     -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
     animation: sk-foldCubeAngle 2.4s infinite linear both;
     -webkit-transform-origin: 100% 100%;
@@ -4322,9 +4322,9 @@ ul.messenger-theme-flat .messenger-spinner {
 }
 
 .btn-primary {
-    color: color-yiq(#DB6574);
-    background-color: #DB6574;
-    border-color: #DB6574
+    color: color-yiq(#D92B4C);
+    background-color: #D92B4C;
+    border-color: #D92B4C
 }
 
 .btn-primary:hover {
@@ -4341,9 +4341,9 @@ ul.messenger-theme-flat .messenger-spinner {
 
 .btn-primary.disabled,
 .btn-primary:disabled {
-    color: color-yiq(#DB6574);
-    background-color: #DB6574;
-    border-color: #DB6574
+    color: color-yiq(#D92B4C);
+    background-color: #D92B4C;
+    border-color: #D92B4C
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
@@ -4642,16 +4642,16 @@ ul.messenger-theme-flat .messenger-spinner {
 }
 
 .btn-outline-primary {
-    color: #DB6574;
+    color: #D92B4C;
     background-color: transparent;
     background-image: none;
-    border-color: #DB6574
+    border-color: #D92B4C
 }
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #DB6574;
-    border-color: #DB6574
+    background-color: #D92B4C;
+    border-color: #D92B4C
 }
 
 .btn-outline-primary:focus,
@@ -4662,16 +4662,16 @@ ul.messenger-theme-flat .messenger-spinner {
 
 .btn-outline-primary.disabled,
 .btn-outline-primary:disabled {
-    color: #DB6574;
+    color: #D92B4C;
     background-color: transparent
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show>.btn-outline-primary.dropdown-toggle {
-    color: color-yiq(#DB6574);
-    background-color: #DB6574;
-    border-color: #DB6574
+    color: color-yiq(#D92B4C);
+    background-color: #D92B4C;
+    border-color: #D92B4C
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -4702,7 +4702,7 @@ ul.messenger-theme-flat .messenger-spinner {
 
 .btn-outline-secondary.disabled,
 .btn-outline-secondary:disabled {
-    color: #868e96;
+    color: #ffffff;
     background-color: transparent
 }
 
@@ -4985,7 +4985,7 @@ body {
 }
 
 a {
-    color: #DB6574;
+    color: #D92B4C;
     text-decoration: none
 }
 
@@ -5093,11 +5093,11 @@ mark,
     padding: .5rem 1rem;
     margin-bottom: 2rem;
     font-size: 1.25rem;
-    border-left: 5px solid #DB6574
+    border-left: 5px solid #D92B4C
 }
 
 .blockquote-footer {
-    color: #868e96
+    color: #ffffff
 }
 
 .blockquote-footer::before {
@@ -5105,7 +5105,7 @@ mark,
 }
 
 .text-primary {
-    color: #DB6574 !important
+    color: #D92B4C !important
 }
 
 a.text-primary:focus,
@@ -5125,8 +5125,8 @@ a.text-primary:hover {
 
 .page-item.active .page-link {
     color: #fff;
-    background-color: #DB6574;
-    border-color: #DB6574
+    background-color: #D92B4C;
+    border-color: #D92B4C
 }
 
 .page-item.disabled .page-link {
@@ -5192,7 +5192,7 @@ a.text-primary:hover {
 }
 
 .bg-primary {
-    background-color: #DB6574 !important
+    background-color: #D92B4C !important
 }
 
 a.bg-primary:focus,
@@ -5264,7 +5264,7 @@ a.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #DB6574 !important
+    border-color: #D92B4C !important
 }
 
 .border-secondary {
@@ -5296,7 +5296,7 @@ a.bg-dark:hover {
 }
 
 .text-primary {
-    color: #DB6574 !important
+    color: #D92B4C !important
 }
 
 a.text-primary:focus,
@@ -5310,7 +5310,7 @@ a.text-primary:hover {
 
 a.text-secondary:focus,
 a.text-secondary:hover {
-    color: #6c757d !important
+    color: #c4c4c4 !important
 }
 
 .text-success {
@@ -5368,13 +5368,13 @@ a.text-dark:hover {
 }
 
 .badge-primary {
-    color: color-yiq(#DB6574);
-    background-color: #DB6574
+    color: color-yiq(#D92B4C);
+    background-color: #D92B4C
 }
 
 .badge-primary[href]:focus,
 .badge-primary[href]:hover {
-    color: color-yiq(#DB6574);
+    color: color-yiq(#D92B4C);
     text-decoration: none;
     background-color: #d13c4f
 }
@@ -5466,7 +5466,7 @@ a.text-dark:hover {
 code {
     padding: .2rem .4rem;
     font-size: 90%;
-    color: #DB6574;
+    color: #D92B4C;
     background-color: #22252a;
     border-radius: .25rem
 }
@@ -5486,7 +5486,7 @@ pre code {
 }
 
 .nav-link.disabled {
-    color: #868e96
+    color: #dadada
 }
 
 .nav-tabs .nav-item {
@@ -5505,7 +5505,7 @@ pre code {
 }
 
 .nav-tabs .nav-link.disabled {
-    color: #868e96
+    color: #dfdfdf
 }
 
 .nav-tabs .nav-link.active,
@@ -5526,7 +5526,7 @@ pre code {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #DB6574
+    background-color: #D92B4C
 }
 
 .card {
