@@ -342,7 +342,6 @@ namespace Myndie.Controllers
             }
 
         }
-
         public ActionResult UpdateInfo(Application app)
         {
             try

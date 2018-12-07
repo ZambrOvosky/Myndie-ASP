@@ -18,29 +18,32 @@
                         <a href="@Url.Action("Library", "User")" class="btn btn-lg" title="Go to Library">Go to Library</a>
                         }
                         else {
-                            <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id })" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                            <a href="@Url.Action("AddtoCart", "Cart", new { appid = ViewBag.App.Id })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                            //Whishlist button
+                            if (Session["Id"] != null)
+                            {
+                                if (ViewBag.IsInWish)
+                                {
+                                    <a href="@Url.Action("RemoveFromWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()), loc = "Product" })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="entypo-heart"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("AddtoWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()) })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                                }
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
+                            }
                         }
                     }
                     else
                     {
-                            <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" title="Add to Cart">US$ @ViewBag.App.Price</a>
+                            <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="bottom" title="You must be logged to add to cart">US$ @ViewBag.App.Price</a>
                     }
 
-                    @if (Session["Id"] != null)
-                    {
-                        if (ViewBag.IsInWish)
-                        {
-                            <a href="@Url.Action("RemoveFromWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()), loc = "Product" })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Remove from Wishlist"><i class="entypo-heart"></i></a>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("AddtoWishlist", "User", new { ApplicationId = ViewBag.App.Id, UserId = int.Parse(Session["Id"].ToString()) })" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
-                        }
-
-                    }
-                    else {
-                        <a href="@Url.Action("UserLogin", "User")" class="btn btn-lg" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="entypo-heart-empty"></i></a>
-                    }
+                    
                 </div>
             </div>
         </div>
@@ -176,10 +179,16 @@
                 {
                     @Html.Action("_ListReview", "Review", new { Appid = ViewBag.App.Id})
                 }
+                else
+                {
+                    <div class="alert" role="alert">
+                        <strong class="text-center">No reviews were made :(</strong>
+                    </div><hr>
+                }
 
                 <!-- /Reviews List -->
                 <!-- Review Form -->
-                @if(Session["Id"] != null && ViewBag.SellItem)
+                @if (Session["Id"] != null && ViewBag.SellItem)
                 {
                 <h2>Add a Review</h2>
                 <form action="/Review/Register" class="review-form mb-0">
@@ -217,6 +226,23 @@
                 </form>
 
                 }
+                else
+                {
+                    if (Session["Id"] != null)
+                    {
+                        <div class="alert" role="alert">
+                            <strong class="text-center">You must buy the game to make a review </strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert" role="alert">
+                            <a href="~/User/UserLogin">Log in</a> in and buy to review <strong class="text-center">@ViewBag.App.Name</strong>
+                        </div>
+                    }
+
+                }
+                
                 <!-- /Review Form -->
             </div>
             <!-- /Reviews -->
