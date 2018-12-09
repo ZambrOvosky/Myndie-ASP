@@ -1,4 +1,4 @@
-/*!-----------------------------------------------------------------
+,/*!-----------------------------------------------------------------
   Name: myndie - Game Template based on Bootstrap
   Version: 3.0.0
   Purchase: http://themeforest.net/item/myndie-game-template-based-on-bootstrap/11306207?ref=_nK
@@ -4133,8 +4133,7 @@ textarea {
 }
 
 .navbar-myndie.navbar-small {
-    background: #121212;
-    background: rgba(41, 49, 57, .94)
+    background: rgb(35, 41, 48, .4);
 }
 
 .navbar-myndie.navbar-small .navbar-brand {
