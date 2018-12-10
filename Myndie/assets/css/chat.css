@@ -26,7 +26,7 @@
     align-items: center;
     padding: 15px;
     color: #fff;
-    background: #7E8B8D;
+    background: #2A2A2A;
 }
 
 /*.chat-header button {
@@ -43,7 +43,7 @@
     max-height: 0;
     overflow-wrap: break-word;
     transition: 1s ease-in-out;
-    background: #232930;
+    background: #121212;
 }
 
 .conteudo {

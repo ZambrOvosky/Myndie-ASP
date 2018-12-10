@@ -8,7 +8,7 @@
 
         <div class="info">
             <div>
-                <div class="container">
+                <div class="container align-center">
                     <h1>@ViewBag.App.Name</h1>
                     <br>
                     @if(Session["Id"] != null)
@@ -50,13 +50,13 @@
     </div>
     <!-- /Banner -->
     <!-- Images With Text -->
-    <div class="myndie-carousel gallery-popup">
-        @*<a class="angled-img" href="https://www.youtube.com/watch?v=shesQlPmIvc">
+    @*<div class="myndie-carousel gallery-popup">
+        <a class="angled-img" href="https://www.youtube.com/watch?v=shesQlPmIvc">
                 <div class="img">
                     <img src="~/assets/images/game-bloodborne-500x375.jpg" alt="">
                 </div>
                 <i class="entypo-play icon"></i>
-            </a>*@
+            </a>
         @foreach (var img in ViewBag.Img)
         {
             <a class="angled-img" href="@img.Url">
@@ -67,7 +67,7 @@
             </a>
         }
 
-    </div>
+    </div>*@
     <!-- /Images With Text -->
 
 
@@ -78,7 +78,7 @@
             <article>
 
                 <!-- Description -->
-                <h2 class="mt-0">Description                          
+                <h2 class="mt-0">Description</h2>                          
                 <div class="date">
                     <i class="entypo-calendar"></i>Release Date: @ViewBag.App.ReleaseDate
                 </div>
@@ -92,6 +92,17 @@
                 </div>
                 
                 <!-- /Description -->
+                <div class="myndie-carousel gallery-popup">
+                    @foreach (var img in ViewBag.Img)
+                    {
+                        <a class="angled-img" href="@img.Url">
+                            <div class="img">
+                                <img src="@img.Url">
+                            </div>
+                            <i class="entypo-search icon"></i>
+                        </a>
+                    }      
+                </div>
                 <!-- Post Share -->
                 @*<div class="btn-group social-list social-likes" data-counters="no">
                     <span class="btn btn-default facebook" title="Share link on Facebook"></span>
@@ -151,25 +162,7 @@
             </div>*@
 
             <!-- /developer -->
-            <!-- developer -->
-            <div class="reviews-block mb-0">
-                <h2>About the developer</h2>
-                <article>
-                    <div class="review-avatar pull-left">
-                        <img src="@ViewBag.DevUser.Picture" alt="@ViewBag.Dev.Name">
-                    </div>
-                    <div class="review-cont clearfix">
-                        <a class="review-author h4">@ViewBag.Dev.Name</a>
-                        <div class="review-text">
-                            <p>
-                                @ViewBag.Dev.Info
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
 
-            <!-- /developer -->
             <!-- Reviews -->
             <div class="reviews-block mb-0">
                 <h2>Reviews <small></small></h2>
@@ -247,7 +240,16 @@
             </div>
             <!-- /Reviews -->
         </div>
-
+        <!-- developer -->       
+            <div class="col-md-3">
+                <div class="side-block">
+                    <h4 class="block-title">About <strong>@ViewBag.Dev.Name</strong></h4>
+                    <div class="block-content">
+                        @ViewBag.Dev.Info
+                    </div>
+                </div>
+            </div>
+        <!-- /developer -->
         @Html.Action("_GenreGameRightSide", "Application")
     </div>
 
