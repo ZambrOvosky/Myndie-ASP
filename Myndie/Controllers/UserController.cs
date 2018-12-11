@@ -338,6 +338,7 @@ namespace Myndie.Controllers
                 {
                     WishlistDAO wdao = new WishlistDAO();
                     ApplicationDAO adao = new ApplicationDAO();
+                    CartDAO cdao = new CartDAO();
 
                     int UserId = int.Parse(Session["Id"].ToString());
 
@@ -347,6 +348,8 @@ namespace Myndie.Controllers
                     {
                         apps.Add(adao.SearchById(w.ApplicationId));
                     }
+
+                    ViewBag.Cart = cdao.SearchCartUser(int.Parse(Session["Id"].ToString()));
                     ViewBag.WishApps = wishs;
                     ViewBag.Apps = apps;
                     return View();

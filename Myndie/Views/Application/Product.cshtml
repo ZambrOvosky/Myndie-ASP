@@ -97,7 +97,7 @@
                     {
                         <a class="angled-img" href="@img.Url">
                             <div class="img">
-                                <img src="@img.Url">
+                                <img src="@img.Url" style="height:100px; width:200px;">
                             </div>
                             <i class="entypo-search icon"></i>
                         </a>
@@ -224,13 +224,13 @@
                     if (Session["Id"] != null)
                     {
                         <div class="alert" role="alert">
-                            <strong class="text-center">You must buy the game to make a review </strong>
+                            <strong class="text-center">You must buy the game to review it</strong>
                         </div>
                     }
                     else
                     {
                         <div class="alert" role="alert">
-                            <a href="~/User/UserLogin">Log in</a> in and buy to review <strong class="text-center">@ViewBag.App.Name</strong>
+                            <a href="~/User/UserLogin">Log in</a> in and buy it to review <strong class="text-center">@ViewBag.App.Name</strong>
                         </div>
                     }
 

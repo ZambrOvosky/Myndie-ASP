@@ -14,7 +14,7 @@
                     <div class="title text-primary"><strong>@ViewBag.App.Name</strong></div>
                     <div class="block-body">
                         <form class="form-horizontal" action="/Application/UpdateAppData" method="post" enctype="multipart/form-data">
-                            <input type="hidden" value="@ViewBag.App.Id" name="update.ApplicationId" />
+                            <input type="hidden" id ="Text" value="@ViewBag.App.Id" name="update.ApplicationId" />
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="file" name="file" id="file-01" required class="inputfile inputfile-01 hide" />
@@ -24,8 +24,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 h4 form-control-label text-secondary"><strong>Notes:</strong></label><br />
                                 <div class="col-sm-12">
-                                    @*<textarea class="form-control" required name="update.Value"></textarea>*@
-                                    <textarea class="summernote" name="update.Value" required></textarea>
+                                    <textarea class="form-control" required name="update.Value"></textarea>
+                                    @*<textarea class="summernote" name="update.Value" required></textarea>*@
                                 </div>
                                 <div class="col-md-12 float-left">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block ml-0 mt-3">Update</button>

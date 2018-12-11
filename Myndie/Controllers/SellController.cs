@@ -68,6 +68,17 @@ namespace Myndie.Controllers
                         si.SellId = s.Id;
                         sidao.Add(si);
                         cdao.Remove(c);
+
+                        //Removing from Wishlist
+                        WishlistDAO wdao = new WishlistDAO();
+                        IList<Wishlist> wishs = wdao.GetUserList(int.Parse(Session["Id"].ToString()));
+                        foreach(var w in wishs)
+                        {
+                            if(w.ApplicationId == c.ApplicationId)
+                            {
+                                wdao.Remove(w);
+                            }
+                        }
                     }
                     return RedirectToAction("Library", "User");
                 }
