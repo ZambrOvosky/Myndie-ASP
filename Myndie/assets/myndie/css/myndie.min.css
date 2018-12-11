@@ -9,7 +9,7 @@
   Main 5:    #1464d2
 
   Dark 1:    #171e22
-  Dark 2:    #121212
+  Dark 2:    #232930
   Dark 3:    #293139
   Dark 4:    #303e47
 
@@ -56,7 +56,7 @@ body {
     letter-spacing: .06em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #121212;
+    background: #232930;
    
     background: rgba(49, 49, 49, .9)
 }
@@ -205,7 +205,7 @@ img {
 .content-wrap {
     max-width: 100%;
     margin: 0 auto;
-    background: #121212;
+    background: #232930;
     padding: .1px;
     overflow: hidden
 }
@@ -2543,12 +2543,12 @@ img.rounded {
 .dropdown-menu>li>a {
     padding: 10px 20px;
     text-decoration: none;
-    color: #121212
+    color: #232930
 }
 
 .dropdown-menu>li>a:focus,
 .dropdown-menu>li>a:hover {
-    color: #121212;
+    color: #232930;
     background-color: #f2f2f2
 }
 
@@ -3202,7 +3202,7 @@ fieldset[disabled] .btn {
 }
 
 .modal-content {
-    background-color: #121212;
+    background-color: #232930;
     border: none;
     border-radius: 0;
     box-shadow: none
@@ -3232,7 +3232,7 @@ fieldset[disabled] .btn {
 
 .tooltip-inner {
     position: relative;
-    color: #121212;
+    color: #232930;
     background: 0 0;
     padding: 8px 18px;
     border-radius: 0
@@ -3265,7 +3265,7 @@ fieldset[disabled] .btn {
 .popover {
     font: inherit;
     background-color: #fff;
-    color: #121212;
+    color: #232930;
     border: none;
     border-radius: 0
 }
@@ -3645,7 +3645,7 @@ textarea {
 .myndie-textarea.input-filled .icon,
 .myndie-textarea.input-filled input,
 .myndie-textarea.input-filled textarea {
-    color: #121212
+    color: #232930
 }
 
 .myndie-textarea:after {
@@ -4006,7 +4006,7 @@ textarea {
 .navbar-myndie .navbar-nav>li>.dropdown-menu {
     display: table;
     border: none;
-    background: #121212;
+    background: #232930;
     background: rgba(41, 49, 57, .8)
 }
 
@@ -4126,7 +4126,7 @@ textarea {
 }
 
 .navbar-myndie.navbar-small {
-    background: #2A2A2A;
+    background: rgb(35, 41, 48, .4);
 }
 
 .navbar-myndie.navbar-small .navbar-brand {
@@ -4212,11 +4212,11 @@ textarea {
         background: 0 0
     }
     .navbar-myndie .navbar-header {
-        background: #121212;
-        background: rgba(36, 36, 36, 0.4)
+        background: #232930;
+        background: rgba(41, 49, 57, .94)
     }
     .navbar-myndie.navbar-small .navbar-header {
-        background: #121212;
+        background: #232930;
         background: rgba(41, 49, 57, .94)
     }
     .navbar-myndie .navbar-collapse {
@@ -4231,7 +4231,7 @@ textarea {
         overflow-y: auto;
         max-height: 100%;
         border: none;
-        background: #121212;
+        background: #232930;
         -o-transition: .3s padding-top ease, .5s -o-transform ease;
         transition: .3s padding-top ease, .5s -webkit-transform ease;
         transition: .3s padding-top ease, .5s transform ease
@@ -4429,7 +4429,7 @@ textarea {
     left: 100%;
     right: auto;
     border: solid transparent;
-    border-left-color: #121212;
+    border-left-color: #232930;
     border-left-color: rgba(41, 49, 57, .8);
     border-width: 6px
 }
@@ -4597,15 +4597,15 @@ textarea {
 .myndie-carousel.owl-carousel .owl-nav .owl-prev,
 .myndie-carousel.owl-carousel .owl-nav .owl-prev:hover {
     left: 0;
-    background: -o-linear-gradient(left, #121212, rgba(49, 49, 49, 0));
-    background: linear-gradient(to right, #121212, rgba(49, 49, 49, 0))
+    background: -o-linear-gradient(left, #232930, rgba(49, 49, 49, 0));
+    background: linear-gradient(to right, #232930, rgba(49, 49, 49, 0))
 }
 
 .myndie-carousel.owl-carousel .owl-nav .owl-next,
 .myndie-carousel.owl-carousel .owl-nav .owl-next:hover {
     right: -.1px;
-    background: -o-linear-gradient(right, #121212, rgba(49, 49, 49, 0));
-    background: linear-gradient(to left, #121212, rgba(49, 49, 49, 0))
+    background: -o-linear-gradient(right, #232930, rgba(49, 49, 49, 0));
+    background: linear-gradient(to left, #232930, rgba(49, 49, 49, 0))
 }
 
 .owl-carousel .owl-dot.active,
@@ -4851,7 +4851,7 @@ textarea {
 .search-block {
     position: fixed;
     display: table;
-    background: #121212;
+    background: #232930;
     top: 0;
     left: 0;
     width: 100%;
@@ -4900,7 +4900,7 @@ textarea {
     text-decoration: none;
     font-size: 3rem;
     z-index: 2;
-    text-shadow: 1px 1px 1px #121212
+    text-shadow: 1px 1px 1px #232930
 }
 
 .search-block>.search-toggle,
@@ -5529,7 +5529,7 @@ h2+.myndie-news {
 
 .myndie-user-navigation ul li.active>a:after {
     background: rgba(255, 255, 255, .1);
-    background-color: #121212
+    background-color: #232930
 }
 
 .myndie-user-navigation+.info {
@@ -6173,7 +6173,7 @@ footer .social .social-icons .social-icon>a i:after {
 .mfp-bg,
 .mfp-figure:after,
 .rs-myndie {
-    background: #121212
+    background: #232930
 }
 
 .pricing-table li>strong {
@@ -6402,7 +6402,7 @@ button.mfp-close:before {
 }
 
 .sweet-alert {
-    background-color: #121212;
+    background-color: #232930;
     color: inherit
 }
 
@@ -6414,7 +6414,7 @@ button.mfp-close:before {
 .sweet-alert .icon.success .fix,
 .sweet-alert .icon.success:after,
 .sweet-alert .icon.success:before {
-    background: #121212
+    background: #232930
 }
 
 .sweet-alert .lead {
@@ -6422,7 +6422,7 @@ button.mfp-close:before {
 }
 
 .sweet-overlay {
-    background-color: #121212
+    background-color: #232930
 }
 
 .social-likes__widget:after,
@@ -6455,7 +6455,7 @@ footer .widgets {
 
 footer .copyright,
 footer .social {
-    background: #121212;
+    background: #232930;
     text-align: center
 }
 
@@ -6600,7 +6600,7 @@ footer .copyright {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #121212;
+    background: #232930;
     z-index: 100000000
 }
 
